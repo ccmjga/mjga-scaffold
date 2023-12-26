@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+logging:
+  file:
+    path: /var/log
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
+cors:
+  allowedOrigins: ${ALLOWED_ORIGINS}
+  allowedMethods: ${ALLOWED_METHODS}
+  allowedHeaders: ${ALLOWED_HEADERS}
+spring:
+  datasource:
+    url: jdbc:postgresql://${DATABASE_HOST_PORT}/${DATABASE_DB}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+jwt:
+  secret: ${JWT_SECRET:secret}
+  expiration-min: ${JWT_EXPIRATION_MIN:100}
+  cookie-name: ${JWT_COOKIE_NAME:jwt}

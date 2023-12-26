@@ -1,0 +1,43 @@
+services:
+  database:
+    image: 'postgres:15.4'
+    container_name: database
+    hostname: database
+    environment:
+      POSTGRES_DB: ${DATABASE_DB}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - ${DATABASE_EXPOSE_PORT}:5432
+    volumes:
+      - ${DATABASE_INIT}:/docker-entrypoint-initdb.d
+      - ${DATABASE_STORE}:/var/lib/postgresql/data
+#      - ${DATABASE_SSL}:/etc/ssl/certs
+    restart: always
+#    command: >
+#      -c ssl=on
+#      -c ssl_cert_file=/etc/ssl/certs/localhost.crt
+#      -c ssl_key_file=/etc/ssl/certs/localhost.key
+  web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: web
+    hostname: web
+    environment:
+      WAIT_HOSTS: database:5432
+      LOG_PATH: ${LOG_PATH}
+      DATABASE_DB: ${DATABASE_DB}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_HOST_PORT: ${DATABASE_HOST_PORT}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS}
+      ALLOWED_METHODS: ${ALLOWED_METHODS}
+      ALLOWED_HEADERS: ${ALLOWED_HEADERS}
+    depends_on:
+      - database
+    ports:
+      - ${WEB_EXPOSE_PORT}:8080
+    volumes:
+      - ${LOG_PATH}:/var/log
+    restart: always
