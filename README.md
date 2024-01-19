@@ -3,20 +3,31 @@
 
 [MJGA](https://www.mjga.cc) is a modern Java web scaffold built based on the following principles:
 
-* Modern technology stack: The scaffold is designed to be international and keeps up with the trends in the open-source community.
-* Lightweight: Select the components and modules you prefer on the website with a lightweight footprint.
-* Comprehensive testing: Rigorous unit tests designed from the ground up and executed in isolated environments.
-* Meticulous coding: Every variable, function, module, and component follows best practices.
-* Not-all-in-one: MJGA maintains its boundaries to adapt to both present and future needs.
+### One philosophy
+1. Manages the entire lifecycle of an application and its environment through docker-compose.yml.
+2. Customizes all property variables through the .env file.
 
-## Database First Template
+### Out of box:
+
+1. Foundational business functions such as authentication, permission management, and cache abstraction.
+2. Code Check&Format, CI/CD Plugin, and Docker Integration, all ready to use out of the box.
+3. Comprehensive unit testing that is well-designed and isolates the runtime environment.
+
+### Modern, Configurable, Meticulous coding, Not-all-in-one
+
+1. Modern: technology choices closely follow the trends in the open-source community.
+2. Configurable: supports component selection and configuration on a web page.
+3. Meticulous coding: considers best practices for every variable, function, module, and component.
+4. Not-all-in-one: both now and in the future, [MJGA](https://www.mjga.cc) will maintain its boundaries.
+
+## Database First
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/) 
 
 | Technology  | Version | Description                | 
 |-------------|---------|----------------------------|
 | OpenJdk     | 17      |                            | 
-| SpringBoot  | 3.1.2   | Core framework             |
+| SpringBoot  | 3.2.1   | Core framework             |
 | Jooq        | 3.18.6  | Generates type-safe SQL queries |
 | Gradle      | 8.4     | Automation build tool      |
 | Pmd         | 6.55.0  | Static code analysis tool  |
@@ -44,10 +55,30 @@ docker-compose up -d
 (Optional) Start on local machine
 
 ```shell
-# change DATABASE_HOST_PORT
+# confirm .env and make sure process can use it
 nano/vim ${projectRoot}/.env
 ${projectRoot}/gradlew bootRun
 ```
+
+### Generate DB Mapping Source
+```shell
+# confirm .env and make sure process can use it
+nano/vim ${projectRoot}/.env
+# generate schema mapping codes
+./gradlew generateJooq
+# output ->
+# projectRootDir/build/generated-src
+# └── jooq
+#    └── tables # table mapping
+#       ├── daos # Data Access Layer
+#       ├── pojos # mapping dto
+#       └── records # jooq query record
+
+```
+
+[More Document](https://www.mjga.cc/doc/db-first)
+
+
 
 ## Test coverage
 
