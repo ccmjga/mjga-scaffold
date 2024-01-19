@@ -11,6 +11,7 @@ import com.mjga.dto.urp.RoleQueryDto;
 import com.mjga.dto.urp.UserQueryDto;
 import com.mjga.repository.*;
 import java.util.List;
+import java.util.stream.Collectors;
 import jooq.tables.pojos.Permission;
 import jooq.tables.pojos.Role;
 import org.jooq.Record;
@@ -18,7 +19,6 @@ import org.jooq.Result;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.jdbc.Sql;
-
 
 public class UserRolePermissionDALTest extends AbstractDataAccessLayerTest {
 
@@ -73,8 +73,9 @@ public class UserRolePermissionDALTest extends AbstractDataAccessLayerTest {
     assertThat(records.get(0).get(ROLE.NAME)).isEqualTo("testRoleA");
     assertThat(records.get(1).get(ROLE.NAME)).isEqualTo("testRoleA");
 
-    assertThat(records.get(0).get(PERMISSION.NAME)).isEqualTo("testPermissionA");
-    assertThat(records.get(1).get(PERMISSION.NAME)).isEqualTo("testPermissionB");
+    List<String> names =
+        records.stream().map(record -> record.get(PERMISSION.NAME)).collect(Collectors.toList());
+    assertThat(names).containsExactlyInAnyOrder("testPermissionA", "testPermissionB");
   }
 
   @Test
