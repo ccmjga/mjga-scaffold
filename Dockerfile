@@ -3,6 +3,7 @@ COPY --from=ghcr.io/ufoscout/docker-compose-wait:latest /wait /opt/wait
 WORKDIR /usr/src/app/mjga
 COPY . .
 EXPOSE 8080
+RUN chmod a+x ./gradlew
 RUN mkdir -p /var/log
 CMD /opt/wait && \
     ./gradlew generateJooq && \

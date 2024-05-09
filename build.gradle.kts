@@ -4,12 +4,12 @@ import org.jooq.meta.jaxb.Logging
 plugins {
     java
     jacoco
-    id("org.springframework.boot") version "3.2.1"
-    id("io.spring.dependency-management") version "1.1.0"
-    id("org.springdoc.openapi-gradle-plugin") version "1.6.0"
+    id("org.springframework.boot") version "3.2.5"
+    id("io.spring.dependency-management") version "1.1.4"
+    id("org.springdoc.openapi-gradle-plugin") version "1.8.0"
     id("pmd")
-    id("nu.studer.jooq") version "8.2"
-    id("com.diffplug.spotless") version "6.18.0"
+    id("nu.studer.jooq") version "8.2.3"
+    id("com.diffplug.spotless") version "6.25.0"
 }
 
 group = "com.mjga"
@@ -45,9 +45,9 @@ dependencies {
     implementation("org.jooq:jooq-meta:3.18.6")
     implementation("com.auth0:java-jwt:4.4.0")
     implementation("com.github.ben-manes.caffeine:caffeine:3.1.8")
-    implementation("org.testcontainers:junit-jupiter:1.19.0")
-    implementation("org.testcontainers:postgresql:1.19.0")
-    implementation("org.testcontainers:testcontainers-bom:1.19.0")
+    testImplementation("org.testcontainers:junit-jupiter:1.19.7")
+    testImplementation("org.testcontainers:postgresql:1.19.7")
+    testImplementation("org.testcontainers:testcontainers-bom:1.19.7")
     runtimeOnly("org.postgresql:postgresql")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
