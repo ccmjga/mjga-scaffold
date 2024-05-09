@@ -1,5 +1,5 @@
 # Make Java Great Again!
-*🧧🎖️🥇🏅🏆
+🧧🎖️🥇🏅🏆
 
 ![modern](https://img.shields.io/badge/Modern-blue) ![Lightweight](https://img.shields.io/badge/Lightweight-green) ![Test](https://img.shields.io/badge/Comprehensive_Testing-yellow) ![Meticulous coding](https://img.shields.io/badge/Meticulous_coding-red) ![Meticulous coding](https://img.shields.io/badge/Not_all_in_one-purple)
 
