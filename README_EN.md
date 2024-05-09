@@ -4,6 +4,9 @@
 
 ![modern](https://img.shields.io/badge/Modern-blue) ![Lightweight](https://img.shields.io/badge/Lightweight-green) ![Test](https://img.shields.io/badge/Comprehensive_Testing-yellow) ![Meticulous coding](https://img.shields.io/badge/Meticulous_coding-red) ![Meticulous coding](https://img.shields.io/badge/Not_all_in_one-purple)
 
+- [English](README_EN.md)
+- [中文](README_EN.md)
+
 [MJGA](https://www.mjga.cc) is a modern Java Web scaffold designed based on the following principles.
 
 ## Containerization and Cloud Native 🍋
