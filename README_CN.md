@@ -1,4 +1,5 @@
 # Make Java Great Again!
+
 🧧🎖️🥇🏅🏆
 
 ![modern](https://img.shields.io/badge/Modern-blue) ![Lightweight](https://img.shields.io/badge/Lightweight-green) ![Test](https://img.shields.io/badge/Comprehensive_Testing-yellow) ![Meticulous coding](https://img.shields.io/badge/Meticulous_coding-red) ![Meticulous coding](https://img.shields.io/badge/Not_all_in_one-purple)
@@ -31,17 +32,17 @@
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-| 技术栈            | 版本号    |                |
-|----------------|--------|----------------|
-| OpenJdk        | 17     |                |
-| SpringBoot     | 3.2.5  | 核心框架           |
-| SpringDoc      | 2.2.0  | 生成 OpenAPI 文档  |
-| TestContainers | 1.19.7 | 为测试环境提供容器支持    |
-| Jooq           | 3.18.6 | 生成类型安全的 SQL 查询 |
-| Gradle         | 8.7    | 自动化构建工具        |
-| Pmd            | 6.55.0 | 静态代码分析工具       |
-| Spotless       | 6.25.0 | 代码格式化          |
-| ...            | ...    | ...            |
+| 技术栈            | 版本号     |                |
+|----------------|---------|----------------|
+| OpenJdk        | 17/21   | LTS            |
+| SpringBoot     | 3.3.3   | 核心框架           |
+| SpringDoc      | 2.6.0   | 生成 OpenAPI 文档  |
+| TestContainers | 1.20.1  | 为测试环境提供容器支持    |
+| Jooq           | 3.19.11 | 生成类型安全的 SQL 查询 |
+| Gradle         | 8.10.0  | 自动化构建工具        |
+| Pmd            | 7.5.0   | 静态代码分析工具       |
+| Spotless       | 6.25.0  | 代码格式化          |
+| ...            | ...     | ...            |
 
 ## 快速开始 🍉
 

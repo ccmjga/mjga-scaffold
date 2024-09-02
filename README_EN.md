@@ -35,18 +35,20 @@
 
 | Technology Stack | Version | Description                                       |
 |------------------|---------|---------------------------------------------------|
-| OpenJdk          | 17      |                                                   |
-| SpringBoot       | 3.2.5   | Core Framework                                    |
-| SpringDoc        | 2.2.0   | Generate OpenAPI Documentation                    |
-| TestContainers   | 1.19.7  | Provide Container Support for Testing Environment |
-| Jooq             | 3.18.6  | Generate Type-Safe SQL Queries                    |
-| Gradle           | 8.7     | Automation Build Tool                             |
-| Pmd              | 6.55.0  | Static Code Analysis Tool                         |
+| OpenJdk          | 17/21   | LTS                                               |
+| SpringBoot       | 3.3.3   | Core Framework                                    |
+| SpringDoc        | 2.2.6   | Generate OpenAPI Documentation                    |
+| TestContainers   | 1.20.1  | Provide Container Support for Testing Environment |
+| Jooq             | 3.19.11 | Generate Type-Safe SQL Queries                    |
+| Gradle           | 8.10.0  | Automation Build Tool                             |
+| Pmd              | 7.5.0   | Static Code Analysis Tool                         |
 | Spotless         | 6.25.0  | Code Formatting                                   |
 | ...              | ...     | ...                                               |
 
 ## Quick Start 🍉
+
 ### Start with Docker (Recommended)
+
 1. Confirm the default environment variable configuration.
 
 ```shell
