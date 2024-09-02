@@ -3,7 +3,6 @@ package com.mjga.dto.urp;
 import java.util.List;
 import lombok.*;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data

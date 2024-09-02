@@ -29,7 +29,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.test.web.servlet.MockMvc;
 
-
 @WebMvcTest(value = {SignController.class, UserRolePermissionController.class})
 @Import({WebSecurityConfig.class, HttpFireWallConfig.class})
 public class AuthenticationAndAuthorityTest {

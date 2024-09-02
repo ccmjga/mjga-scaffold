@@ -3,7 +3,6 @@ package com.mjga.dto;
 import jakarta.annotation.Nullable;
 import lombok.*;
 
-
 @Data
 public class PageResponseDto<T> {
   private long total;

@@ -4,11 +4,11 @@ import org.jooq.meta.jaxb.Logging
 plugins {
     java
     jacoco
-    id("org.springframework.boot") version "3.2.5"
-    id("io.spring.dependency-management") version "1.1.4"
+    id("org.springframework.boot") version "3.3.3"
+    id("io.spring.dependency-management") version "1.1.6"
     id("org.springdoc.openapi-gradle-plugin") version "1.8.0"
     id("pmd")
-    id("nu.studer.jooq") version "8.2.3"
+    id("nu.studer.jooq") version "9.0"
     id("com.diffplug.spotless") version "6.25.0"
 }
 
@@ -38,16 +38,16 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-websocket")
     implementation("org.springframework.boot:spring-boot-starter-aop")
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
-    implementation("org.apache.commons:commons-lang3:3.13.0")
+    implementation("org.apache.commons:commons-lang3:3.17.0")
     implementation("org.apache.commons:commons-collections4:4.4")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
-    implementation("org.jooq:jooq-codegen:3.18.6")
-    implementation("org.jooq:jooq-meta:3.18.6")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
+    implementation("org.jooq:jooq-codegen:3.19.11")
+    implementation("org.jooq:jooq-meta:3.19.11")
     implementation("com.auth0:java-jwt:4.4.0")
     implementation("com.github.ben-manes.caffeine:caffeine:3.1.8")
-    testImplementation("org.testcontainers:junit-jupiter:1.19.7")
-    testImplementation("org.testcontainers:postgresql:1.19.7")
-    testImplementation("org.testcontainers:testcontainers-bom:1.19.7")
+    testImplementation("org.testcontainers:junit-jupiter:1.20.1")
+    testImplementation("org.testcontainers:postgresql:1.20.1")
+    testImplementation("org.testcontainers:testcontainers-bom:1.20.1")
     runtimeOnly("org.postgresql:postgresql")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -69,18 +69,19 @@ tasks.withType<Test> {
 tasks.test {
     finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
 }
+
 tasks.jacocoTestReport {
     dependsOn(tasks.test) // tests are required to run before generating the report
 }
 
 jacoco {
-    toolVersion = "0.8.9"
-    reportsDirectory.set(layout.buildDirectory.dir("reports/jacoco/test"))
+    toolVersion = "0.8.12"
+    reportsDirectory.set(layout.buildDirectory.dir("reports/jacoco"))
 }
 
 pmd {
     isConsoleOutput = true
-    toolVersion = "6.55.0"
+    toolVersion = "7.5.0"
     rulesMinimumPriority.set(5)
     ruleSetFiles = files("pmd-rules.xml")
 }
@@ -111,7 +112,7 @@ spotless {
 }
 
 jooq {
-    version.set("3.18.6") // default (can be omitted)
+    version.set("3.19.11") // default (can be omitted)
     edition.set(nu.studer.gradle.jooq.JooqEdition.OSS) // default (can be omitted)
     configurations {
 

@@ -23,7 +23,6 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
-
 @WebMvcTest(value = {UserRolePermissionController.class})
 @Import({HttpFireWallConfig.class})
 public class JacksonAnnotationMvcTest {

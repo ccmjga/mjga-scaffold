@@ -41,7 +41,6 @@ import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-
 @ExtendWith(MockitoExtension.class)
 class UserRolePermissionUnitTest {
   @InjectMocks @Spy private UserRolePermissionService userRolePermissionService;

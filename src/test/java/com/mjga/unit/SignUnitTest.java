@@ -21,7 +21,6 @@ import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-
 @ExtendWith(MockitoExtension.class)
 public class SignUnitTest {
   @InjectMocks @Spy private SignService signService;

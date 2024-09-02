@@ -10,7 +10,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.SpringSecurityCoreVersion;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
 @Setter
 @Getter
 @ToString
@@ -26,7 +25,7 @@ public class CookieJwtAuthenticationToken extends AbstractAuthenticationToken {
     super(null);
     this.principal = principal;
     this.credentials = credentials;
-    setAuthenticated(false);
+    super.setAuthenticated(false);
   }
 
   public CookieJwtAuthenticationToken(
@@ -34,7 +33,7 @@ public class CookieJwtAuthenticationToken extends AbstractAuthenticationToken {
     super(authorities);
     this.principal = principal;
     this.credentials = credentials;
-    super.setAuthenticated(true); // must use super, as we override
+    super.setAuthenticated(true);
   }
 
   public static CookieJwtAuthenticationToken unauthenticated(String userIdentify, String token) {

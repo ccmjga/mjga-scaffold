@@ -27,8 +27,7 @@ public class SignService {
   public Long signIn(SignInDto signInDto) {
     User user = userRepository.fetchOneByUsername(signInDto.getUsername());
     if (user == null) {
-      throw new BusinessException(
-          String.format("%s user not found", signInDto.getUsername()));
+      throw new BusinessException(String.format("%s user not found", signInDto.getUsername()));
     }
     if (!passwordEncoder.matches(signInDto.getPassword(), user.getPassword())) {
       throw new BusinessException("password invalid");
