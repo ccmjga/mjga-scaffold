@@ -5,7 +5,10 @@
 - [English](README_EN.md)
 - [中文](README_EN.md)
 
-[MJGA](https://www.mjga.cc) 是一款基于以下理念设计的现代化 Java Web 脚手架。
+Mjga 是一款全新设计并打造的 Java Web 脚手架，带给你一种现代化的 Java 编程体验。
+
+- 访问地址：https://www.mjga.cc
+- 视频教程地址（持续更新中）：https://www.bilibili.com/video/BV1Erpje8ERF/
 
 ## 容器化与云原生 🍋
 

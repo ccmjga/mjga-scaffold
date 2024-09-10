@@ -7,7 +7,9 @@
 - [English](README_EN.md)
 - [中文](README_CN.md)
 
-[MJGA](https://www.mjga.cc) is a modern Java Web scaffold designed based on the following principles.
+Mjga is a newly designed and built Java Web scaffold that brings you a modern Java programming experience.
+
+- https://www.mjga.cc
 
 ## Containerization and Cloud Native 🍋
 
