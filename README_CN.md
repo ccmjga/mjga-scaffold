@@ -1,17 +1,17 @@
 # Make Java Great Again!
 
+- [English](README_EN.md)
+- [中文](README_CN.md)
+
 🧧🎖️🥇🏅🏆
 
 ![modern](https://img.shields.io/badge/Modern-blue) ![Lightweight](https://img.shields.io/badge/Lightweight-green) ![Test](https://img.shields.io/badge/Comprehensive_Testing-yellow) ![Meticulous coding](https://img.shields.io/badge/Meticulous_coding-red) ![Meticulous coding](https://img.shields.io/badge/Not_all_in_one-purple)
 
-- [English](README_EN.md)
-- [中文](README_CN.md)
+Mjga 是一款全新设计并打造的 Java Web 脚手架，带给你一种现代化的 Java 编程体验。 
 
-Mjga 是一款全新设计并打造的 Java Web 脚手架，带给你一种现代化的 Java 编程体验。
+**脚手架主页**
 
-**访问地址**
-
-https://www.mjga.cc
+[![portfolio](https://img.shields.io/badge/mjga-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.mjga.cc/)
 
 **视频教程（持续更新中）**
 
@@ -19,9 +19,6 @@ https://www.mjga.cc
 
 [2. 文件结构详解和 Docker 集成思路](https://www.bilibili.com/video/BV1octse4ERa/?share_source=copy_web\&vd_source=ad025dc4328969941f5a59161d7af2b7)
 
-**产品交流群**
-
-[![QQ](https://img.shields.io/badge/QQ-910248188-blue)](https://qm.qq.com/q/pz7B8vEL0k)
 
 ## 容器化与云原生 🍋
 
@@ -111,6 +108,6 @@ nano/vim ${projectRoot}/.env
 
 ![summary](https://www.mjga.cc/report/summary.png)
 
-## 🔗
+## 产品社区 🔗
 
-[![portfolio](https://img.shields.io/badge/mjga-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.mjga.cc/)
+[![QQ](https://img.shields.io/badge/QQ-910248188-blue)](https://qm.qq.com/q/pz7B8vEL0k)
