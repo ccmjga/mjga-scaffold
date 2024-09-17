@@ -1,9 +1,10 @@
 # Make Java Great Again!
 🧧🎖️🥇🏅🏆
 
-![modern](https://img.shields.io/badge/Modern-blue) ![Lightweight](https://img.shields.io/badge/Lightweight-green) ![Test](https://img.shields.io/badge/Comprehensive_Testing-yellow) ![Meticulous coding](https://img.shields.io/badge/Meticulous_coding-red) ![Meticulous coding](https://img.shields.io/badge/Not_all_in_one-purple)
 - [English](README_EN.md)
 - [中文](README_EN.md)
+
+![modern](https://img.shields.io/badge/Modern-blue) ![Lightweight](https://img.shields.io/badge/Lightweight-green) ![Test](https://img.shields.io/badge/Comprehensive_Testing-yellow) ![Meticulous coding](https://img.shields.io/badge/Meticulous_coding-red) ![Meticulous coding](https://img.shields.io/badge/Not_all_in_one-purple)
 
 Mjga 是一款全新设计并打造的 Java Web 脚手架，带给你一种现代化的 Java 编程体验。
 
