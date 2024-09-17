@@ -7,8 +7,19 @@
 
 Mjga 是一款全新设计并打造的 Java Web 脚手架，带给你一种现代化的 Java 编程体验。
 
-- 访问地址：https://www.mjga.cc
-- 视频教程地址（持续更新中）：https://www.bilibili.com/video/BV1Erpje8ERF/
+**访问地址**
+
+https://www.mjga.cc
+
+**视频教程（持续更新中）**
+
+[1. 快速启动脚手架与常用命令简介](https://www.bilibili.com/video/BV1Erpje8ERF/?share_source=copy_web\&vd_source=ad025dc4328969941f5a59161d7af2b7)
+
+[2. 文件结构详解和 Docker 集成思路](https://www.bilibili.com/video/BV1octse4ERa/?share_source=copy_web\&vd_source=ad025dc4328969941f5a59161d7af2b7)
+
+**产品交流群**
+
+[![QQ](https://img.shields.io/badge/QQ-910248188-blue)](https://qm.qq.com/q/pz7B8vEL0k)
 
 ## 容器化与云原生 🍋
 
