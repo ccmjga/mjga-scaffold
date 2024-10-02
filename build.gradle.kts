@@ -1,5 +1,5 @@
-import org.jooq.meta.jaxb.ForcedType
-import org.jooq.meta.jaxb.Logging
+val jooqVersion by extra("3.19.13")
+val testcontainersVersion by extra("1.20.1")
 
 plugins {
     java
@@ -8,12 +8,24 @@ plugins {
     id("io.spring.dependency-management") version "1.1.6"
     id("org.springdoc.openapi-gradle-plugin") version "1.8.0"
     id("pmd")
-    id("nu.studer.jooq") version "9.0"
+    id("org.jooq.jooq-codegen-gradle") version "3.19.13"
     id("com.diffplug.spotless") version "6.25.0"
 }
 
+sourceSets {
+    main {
+        java {
+            srcDir("build/generated-sources/jooq")
+        }
+    }
+    test {
+        java {
+            srcDir("build/generated-sources/jooq")
+        }
+    }
+}
+
 group = "com.mjga"
-version = "1.0"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 configurations {
@@ -35,19 +47,16 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-websocket")
     implementation("org.springframework.boot:spring-boot-starter-aop")
-    implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.apache.commons:commons-lang3:3.17.0")
     implementation("org.apache.commons:commons-collections4:4.4")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
-    implementation("org.jooq:jooq-codegen:3.19.11")
-    implementation("org.jooq:jooq-meta:3.19.11")
+    implementation("org.jooq:jooq-meta:$jooqVersion")
     implementation("com.auth0:java-jwt:4.4.0")
     implementation("com.github.ben-manes.caffeine:caffeine:3.1.8")
-    testImplementation("org.testcontainers:junit-jupiter:1.20.1")
-    testImplementation("org.testcontainers:postgresql:1.20.1")
-    testImplementation("org.testcontainers:testcontainers-bom:1.20.1")
+    testImplementation("org.testcontainers:junit-jupiter:$testcontainersVersion")
+    testImplementation("org.testcontainers:postgresql:$testcontainersVersion")
+    testImplementation("org.testcontainers:testcontainers-bom:$testcontainersVersion")
     runtimeOnly("org.postgresql:postgresql")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -57,7 +66,8 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-webflux")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
-    jooqGenerator("org.postgresql:postgresql")
+    jooqCodegen("org.postgresql:postgresql")
+    jooqCodegen("org.jooq:jooq-codegen:$jooqVersion")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.projectlombok:lombok")
 }
@@ -112,56 +122,57 @@ spotless {
 }
 
 jooq {
-    version.set("3.19.11") // default (can be omitted)
-    edition.set(nu.studer.gradle.jooq.JooqEdition.OSS) // default (can be omitted)
-    configurations {
-
-        create("main") { // name of the jOOQ configuration
-            generateSchemaSourceOnCompilation.set(false) // default (can be omitted)
-
-            jooqConfiguration.apply {
-                logging = Logging.WARN
-                jdbc.apply {
-                    driver = "org.postgresql.Driver"
-                    url = "jdbc:postgresql://${System.getenv("DATABASE_HOST_PORT")}/${System.getenv("DATABASE_DB")}"
-                    user = System.getenv("DATABASE_USER")
-                    password = System.getenv("DATABASE_PASSWORD")
+    configuration {
+        jdbc {
+            driver = "org.postgresql.Driver"
+            url = "jdbc:postgresql://${providers.gradleProperty("database.hostPort").get()}/${
+                providers.gradleProperty("database.name").get()
+            }"
+            user = providers.gradleProperty("database.user").get()
+            password = providers.gradleProperty("database.password").get()
+        }
+        generator {
+            database {
+                includes = ".*"
+                inputSchema = "mjga"
+                forcedTypes {
+                    forcedType {
+                        name = "varchar"
+                        includeExpression = ".*"
+                        includeTypes = "JSONB?"
+                    }
+                    forcedType {
+                        name = "varchar"
+                        includeExpression = ".*"
+                        includeTypes = "INET"
+                    }
                 }
-                generator.apply {
-                    name = "org.jooq.codegen.DefaultGenerator"
-                    database.apply {
-                        name = "org.jooq.meta.postgres.PostgresDatabase"
-                        inputSchema = "mjga"
-                        forcedTypes.addAll(
-                            listOf(
-                                ForcedType().apply {
-                                    name = "varchar"
-                                    includeExpression = ".*"
-                                    includeTypes = "JSONB?"
-                                },
-                                ForcedType().apply {
-                                    name = "varchar"
-                                    includeExpression = ".*"
-                                    includeTypes = "INET"
-                                },
-                            ),
-                        )
-                    }
-                    generate.apply {
-                        isDeprecated = false
-                        isRecords = true
-                        isImmutablePojos = false
-                        isFluentSetters = true
-                        isDaos = true
-                        isSpringDao = true
-                        isSpringAnnotations = true
-                    }
-                    target.apply {
-                        packageName = "jooq"
-                        directory = "build/generated-src/jooq/main" // default (can be omitted)
-                    }
-                    strategy.name = "org.jooq.codegen.DefaultGeneratorStrategy"
-                }
+            }
+            generate {
+                // Generate the DAO classes
+                isDaos = true
+                isRecords = true
+                isDeprecated = false
+                isImmutablePojos = false
+                isFluentSetters = true
+                // Annotate DAOs (and other types) with spring annotations, such as @Repository and @Autowired
+                // for auto-wiring the Configuration instance, e.g. from Spring Boot's jOOQ starter
+                isSpringAnnotations = true
+
+                // Generate Spring-specific DAOs containing @Transactional annotations
+                isSpringDao = true
+            }
+            target {
+                // The destination package of your generated classes (within the
+                // destination directory)
+                //
+                // jOOQ may append the schema name to this package if generating multiple schemas,
+                // e.g. org.jooq.your.packagename.schema1
+                // org.jooq.your.packagename.schema2
+                packageName = "org.jooq.generated"
+
+                // The destination directory of your generated classes
+//                directory = "build/generated-src/jooq"
             }
         }
     }

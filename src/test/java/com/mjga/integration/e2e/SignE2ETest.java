@@ -3,7 +3,7 @@ package com.mjga.integration.e2e;
 import com.mjga.repository.UserRepository;
 import com.mjga.repository.UserRoleMapRepository;
 import java.time.Duration;
-import jooq.tables.pojos.User;
+import org.jooq.generated.tables.pojos.User;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

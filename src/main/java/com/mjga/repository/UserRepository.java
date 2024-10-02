@@ -1,15 +1,15 @@
 package com.mjga.repository;
 
-import static jooq.tables.Permission.PERMISSION;
-import static jooq.tables.Role.ROLE;
-import static jooq.tables.RolePermissionMap.ROLE_PERMISSION_MAP;
-import static jooq.tables.User.USER;
-import static jooq.tables.UserRoleMap.USER_ROLE_MAP;
+import static org.jooq.generated.tables.Permission.PERMISSION;
+import static org.jooq.generated.tables.Role.ROLE;
+import static org.jooq.generated.tables.RolePermissionMap.ROLE_PERMISSION_MAP;
+import static org.jooq.generated.tables.User.USER;
+import static org.jooq.generated.tables.UserRoleMap.USER_ROLE_MAP;
 import static org.jooq.impl.DSL.*;
 
 import com.mjga.dto.PageRequestDto;
 import com.mjga.dto.urp.UserQueryDto;
-import jooq.tables.daos.*;
+import org.jooq.generated.tables.daos.*;
 import org.jooq.*;
 import org.jooq.Record;
 import org.jooq.impl.DSL;

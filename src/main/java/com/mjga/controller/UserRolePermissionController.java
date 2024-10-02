@@ -17,7 +17,7 @@ public class UserRolePermissionController {
 
   private final UserRolePermissionService userRolePermissionService;
 
-  @PreAuthorize("hasAuthority(T(com.mjga.modle.urp.EPermission).READ_USER_ROLE_PERMISSION)")
+  @PreAuthorize("hasAuthority(T(com.mjga.model.urp.EPermission).READ_USER_ROLE_PERMISSION)")
   @GetMapping("/user")
   @ResponseStatus(HttpStatus.OK)
   PageResponseDto<List<UserRolePermissionDto>> queryUser(
@@ -25,7 +25,7 @@ public class UserRolePermissionController {
     return userRolePermissionService.pageQueryUser(pageRequestDto, userQueryDto);
   }
 
-  @PreAuthorize("hasAuthority(T(com.mjga.modle.urp.EPermission).READ_USER_ROLE_PERMISSION)")
+  @PreAuthorize("hasAuthority(T(com.mjga.model.urp.EPermission).READ_USER_ROLE_PERMISSION)")
   @GetMapping("/role")
   @ResponseStatus(HttpStatus.OK)
   PageResponseDto<List<RoleDto>> queryRole(
@@ -33,7 +33,7 @@ public class UserRolePermissionController {
     return userRolePermissionService.pageQueryRole(pageRequestDto, roleQueryDto);
   }
 
-  @PreAuthorize("hasAuthority(T(com.mjga.modle.urp.EPermission).READ_USER_ROLE_PERMISSION)")
+  @PreAuthorize("hasAuthority(T(com.mjga.model.urp.EPermission).READ_USER_ROLE_PERMISSION)")
   @GetMapping("/permission")
   @ResponseStatus(HttpStatus.OK)
   PageResponseDto<List<PermissionDto>> queryPermission(
@@ -42,14 +42,14 @@ public class UserRolePermissionController {
     return userRolePermissionService.pageQueryPermission(pageRequestDto, permissionQueryDto);
   }
 
-  @PreAuthorize("hasAuthority(T(com.mjga.modle.urp.EPermission).WRITE_USER_ROLE_PERMISSION)")
+  @PreAuthorize("hasAuthority(T(com.mjga.model.urp.EPermission).WRITE_USER_ROLE_PERMISSION)")
   @PostMapping("/user/{userId}/bind-role")
   @ResponseStatus(HttpStatus.OK)
   void bindRoleToUser(@PathVariable Long userId, @RequestBody List<Long> roleIdList) {
     userRolePermissionService.bindRoleToUser(userId, roleIdList);
   }
 
-  @PreAuthorize("hasAuthority(T(com.mjga.modle.urp.EPermission).WRITE_USER_ROLE_PERMISSION)")
+  @PreAuthorize("hasAuthority(T(com.mjga.model.urp.EPermission).WRITE_USER_ROLE_PERMISSION)")
   @PostMapping("/role/{roleId}/bind-permission")
   @ResponseStatus(HttpStatus.OK)
   void bindPermissionToRole(@PathVariable Long roleId, @RequestBody List<Long> permissionIdList) {

@@ -1,4 +1,4 @@
-package com.mjga.modle.urp;
+package com.mjga.model.urp;
 
 public enum EPermission {
   WRITE_USER_ROLE_PERMISSION,

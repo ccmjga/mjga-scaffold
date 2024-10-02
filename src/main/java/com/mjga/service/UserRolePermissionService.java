@@ -1,18 +1,18 @@
 package com.mjga.service;
 
-import static jooq.tables.Permission.PERMISSION;
-import static jooq.tables.Role.ROLE;
-import static jooq.tables.User.USER;
+import static org.jooq.generated.tables.Permission.PERMISSION;
+import static org.jooq.generated.tables.Role.ROLE;
+import static org.jooq.generated.tables.User.USER;
 
 import com.mjga.dto.PageRequestDto;
 import com.mjga.dto.PageResponseDto;
 import com.mjga.dto.urp.*;
 import com.mjga.exception.BusinessException;
-import com.mjga.modle.urp.ERole;
+import com.mjga.model.urp.ERole;
 import com.mjga.repository.*;
 import java.util.*;
 import java.util.stream.Collectors;
-import jooq.tables.pojos.*;
+import org.jooq.generated.tables.pojos.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;

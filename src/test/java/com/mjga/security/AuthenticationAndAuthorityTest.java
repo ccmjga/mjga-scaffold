@@ -13,7 +13,7 @@ import com.mjga.config.security.WebSecurityConfig;
 import com.mjga.controller.SignController;
 import com.mjga.controller.UserRolePermissionController;
 import com.mjga.dto.sign.SignInDto;
-import com.mjga.modle.urp.EPermission;
+import com.mjga.model.urp.EPermission;
 import com.mjga.service.SignService;
 import com.mjga.service.UserRolePermissionService;
 import jakarta.servlet.http.HttpServletRequest;

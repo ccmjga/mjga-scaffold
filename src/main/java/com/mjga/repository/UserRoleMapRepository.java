@@ -1,8 +1,8 @@
 package com.mjga.repository;
 
-import static jooq.Tables.USER_ROLE_MAP;
+import static org.jooq.generated.Tables.USER_ROLE_MAP;
 
-import jooq.tables.daos.UserRoleMapDao;
+import org.jooq.generated.tables.daos.UserRoleMapDao;
 import org.jooq.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

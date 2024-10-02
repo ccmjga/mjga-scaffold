@@ -1,4 +1,4 @@
-package com.mjga.modle.urp;
+package com.mjga.model.urp;
 
 public enum ERole {
   ADMIN,

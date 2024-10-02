@@ -1,8 +1,8 @@
 package com.mjga.integration.persistence;
 
-import static jooq.tables.Permission.PERMISSION;
-import static jooq.tables.Role.ROLE;
-import static jooq.tables.User.USER;
+import static org.jooq.generated.tables.Permission.PERMISSION;
+import static org.jooq.generated.tables.Role.ROLE;
+import static org.jooq.generated.tables.User.USER;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.mjga.dto.PageRequestDto;
@@ -12,8 +12,8 @@ import com.mjga.dto.urp.UserQueryDto;
 import com.mjga.repository.*;
 import java.util.List;
 import java.util.stream.Collectors;
-import jooq.tables.pojos.Permission;
-import jooq.tables.pojos.Role;
+import org.jooq.generated.tables.pojos.Permission;
+import org.jooq.generated.tables.pojos.Role;
 import org.jooq.Record;
 import org.jooq.Result;
 import org.junit.jupiter.api.Test;

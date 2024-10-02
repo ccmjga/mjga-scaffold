@@ -1,8 +1,8 @@
 package com.mjga.repository;
 
-import static jooq.tables.RolePermissionMap.ROLE_PERMISSION_MAP;
+import static org.jooq.generated.tables.RolePermissionMap.ROLE_PERMISSION_MAP;
 
-import jooq.tables.daos.RolePermissionMapDao;
+import org.jooq.generated.tables.daos.RolePermissionMapDao;
 import org.jooq.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

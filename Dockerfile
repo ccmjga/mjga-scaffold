@@ -1,11 +1,9 @@
-FROM openjdk:17-alpine3.14
-COPY --from=ghcr.io/ufoscout/docker-compose-wait:latest /wait /opt/wait
+FROM openjdk:17-alpine3.14 AS RUNNER
 WORKDIR /usr/src/app/mjga
-COPY . .
-EXPOSE 8080
-RUN chmod a+x ./gradlew
 RUN mkdir -p /var/log
-CMD /opt/wait && \
-    ./gradlew generateJooq && \
-    ./gradlew bootJar --stacktrace && \
-    java --add-opens java.base/java.lang=ALL-UNNAMED -jar ./build/libs/app-1.0.jar
+COPY . .
+RUN chmod a+x ./gradlew
+RUN ./gradlew jooqCodegen &&  \
+    ./gradlew bootJar --stacktrace
+EXPOSE 8080
+CMD java --add-opens java.base/java.lang=ALL-UNNAMED -jar ./build/libs/app.jar

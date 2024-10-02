@@ -1,14 +1,14 @@
 package com.mjga.repository;
 
-import static jooq.tables.Permission.PERMISSION;
+import static org.jooq.generated.tables.Permission.PERMISSION;
 import static org.jooq.impl.DSL.asterisk;
 import static org.jooq.impl.DSL.noCondition;
 
 import com.mjga.dto.PageRequestDto;
 import com.mjga.dto.urp.PermissionQueryDto;
 import java.util.List;
-import jooq.tables.daos.PermissionDao;
-import jooq.tables.pojos.Permission;
+import org.jooq.generated.tables.daos.PermissionDao;
+import org.jooq.generated.tables.pojos.Permission;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jooq.Configuration;

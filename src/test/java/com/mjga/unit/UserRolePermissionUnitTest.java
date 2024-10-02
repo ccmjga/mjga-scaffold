@@ -1,8 +1,8 @@
 package com.mjga.unit;
 
-import static jooq.tables.Permission.PERMISSION;
-import static jooq.tables.Role.ROLE;
-import static jooq.tables.User.USER;
+import static org.jooq.generated.tables.Permission.PERMISSION;
+import static org.jooq.generated.tables.Role.ROLE;
+import static org.jooq.generated.tables.User.USER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.*;
@@ -19,10 +19,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import jooq.tables.pojos.Permission;
-import jooq.tables.pojos.Role;
-import jooq.tables.pojos.RolePermissionMap;
-import jooq.tables.pojos.UserRoleMap;
+import org.jooq.generated.tables.pojos.Permission;
+import org.jooq.generated.tables.pojos.Role;
+import org.jooq.generated.tables.pojos.RolePermissionMap;
+import org.jooq.generated.tables.pojos.UserRoleMap;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Result;
