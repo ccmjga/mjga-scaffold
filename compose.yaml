@@ -1,6 +1,6 @@
 services:
   database:
-    image: 'postgres:15.4'
+    image: 'postgres:16.4'
     container_name: database
     hostname: database
     environment:

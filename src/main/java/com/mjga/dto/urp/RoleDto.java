@@ -11,5 +11,5 @@ public class RoleDto {
   private Long id;
   private String code;
   private String name;
-  List<PermissionDto> permissionDtoList = new LinkedList<>();
+  List<PermissionDto> permissions = new LinkedList<>();
 }

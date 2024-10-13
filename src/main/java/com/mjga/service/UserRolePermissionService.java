@@ -12,12 +12,12 @@ import com.mjga.model.urp.ERole;
 import com.mjga.repository.*;
 import java.util.*;
 import java.util.stream.Collectors;
-import org.jooq.generated.tables.pojos.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.jooq.Record;
 import org.jooq.Result;
+import org.jooq.generated.tables.pojos.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,11 +47,12 @@ public class UserRolePermissionService {
   }
 
   public Optional<UserRolePermissionDto> queryUniqueUserWithRolePermission(Long userId) {
-    Result<Record> records = userRepository.fetchUniqueUserWithRolePermissionBy(userId);
-    if (records.isEmpty()) {
+    UserRolePermissionDto records =
+        userRepository.fetchUniqueUserDtoWithNestedRolePermissionBy(userId);
+    if (records == null) {
       return Optional.empty();
     } else {
-      return Optional.of(createRbacDto(records));
+      return Optional.of(records);
     }
   }
 
@@ -173,32 +174,12 @@ public class UserRolePermissionService {
             .toList());
   }
 
-  private UserRolePermissionDto createRbacDto(List<Record> userResult) {
-    UserRolePermissionDto userRolePermissionDto = createRbacDtoUserPart(userResult);
-    setCurrentUsersRole(userRolePermissionDto, userResult);
-    return userRolePermissionDto;
-  }
-
-  private void setCurrentUsersRole(
-      UserRolePermissionDto userRolePermissionDto, List<Record> userResult) {
-    if (userResult.get(0).getValue(ROLE.ID) != null) {
-      userResult.stream()
-          .collect(Collectors.groupingBy(record -> record.getValue(ROLE.ID)))
-          .forEach(
-              (roleId, roleResult) -> {
-                RoleDto roleDto = createRbacDtoRolePart(roleResult);
-                userRolePermissionDto.getRoleDtoList().add(roleDto);
-                setCurrentRolePermission(roleDto, roleResult);
-              });
-    }
-  }
-
   private void setCurrentRolePermission(RoleDto roleDto, List<Record> roleResult) {
     if (roleResult.get(0).getValue(PERMISSION.ID) != null) {
       roleResult.forEach(
           (record) -> {
             PermissionDto permissionDto = createRbacDtoPermissionPart(record);
-            roleDto.getPermissionDtoList().add(permissionDto);
+            roleDto.getPermissions().add(permissionDto);
           });
     }
   }
@@ -217,15 +198,5 @@ public class UserRolePermissionService {
     roleDto.setCode(roleResult.get(0).getValue(ROLE.CODE));
     roleDto.setName(roleResult.get(0).getValue(ROLE.NAME));
     return roleDto;
-  }
-
-  private UserRolePermissionDto createRbacDtoUserPart(List<Record> userResult) {
-    UserRolePermissionDto userRolePermissionDto = new UserRolePermissionDto();
-    userRolePermissionDto.setId(userResult.get(0).getValue(USER.ID));
-    userRolePermissionDto.setUsername(userResult.get(0).getValue(USER.USERNAME));
-    userRolePermissionDto.setPassword(userResult.get(0).getValue(USER.PASSWORD));
-    userRolePermissionDto.setEnable(userResult.get(0).getValue(USER.ENABLE));
-    userRolePermissionDto.setCreateTime(userResult.get(0).getValue(USER.CREATE_TIME));
-    return userRolePermissionDto;
   }
 }

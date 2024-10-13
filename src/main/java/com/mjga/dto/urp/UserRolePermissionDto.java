@@ -20,14 +20,14 @@ public class UserRolePermissionDto {
   private String password;
 
   private Boolean enable;
-  private List<RoleDto> roleDtoList = new LinkedList<>();
+  private List<RoleDto> roles = new LinkedList<>();
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
   private OffsetDateTime createTime;
 
   public Set<PermissionDto> getPermissions() {
-    return roleDtoList.stream()
-        .flatMap((roleDto) -> roleDto.getPermissionDtoList().stream())
+    return roles.stream()
+        .flatMap((roleDto) -> roleDto.getPermissions().stream())
         .collect(Collectors.toSet());
   }
 }

@@ -8,10 +8,13 @@ import static org.jooq.generated.tables.UserRoleMap.USER_ROLE_MAP;
 import static org.jooq.impl.DSL.*;
 
 import com.mjga.dto.PageRequestDto;
+import com.mjga.dto.urp.PermissionDto;
+import com.mjga.dto.urp.RoleDto;
 import com.mjga.dto.urp.UserQueryDto;
-import org.jooq.generated.tables.daos.*;
+import com.mjga.dto.urp.UserRolePermissionDto;
 import org.jooq.*;
 import org.jooq.Record;
+import org.jooq.generated.tables.daos.*;
 import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -37,6 +40,33 @@ public class UserRepository extends UserDao {
         .limit(pageRequestDto.getSize())
         .offset(pageRequestDto.getOffset())
         .fetch();
+  }
+
+  public UserRolePermissionDto fetchUniqueUserDtoWithNestedRolePermissionBy(Long userId) {
+    return ctx()
+        .select(
+            USER.asterisk(),
+            multiset(
+                    select(
+                            ROLE.asterisk(),
+                            multiset(
+                                    select(PERMISSION.asterisk())
+                                        .from(ROLE_PERMISSION_MAP)
+                                        .leftJoin(PERMISSION)
+                                        .on(ROLE_PERMISSION_MAP.PERMISSION_ID.eq(PERMISSION.ID))
+                                        .where(ROLE_PERMISSION_MAP.ROLE_ID.eq(ROLE.ID)))
+                                .convertFrom(
+                                    r -> r.map((record) -> record.into(PermissionDto.class)))
+                                .as("permissions"))
+                        .from(USER_ROLE_MAP)
+                        .leftJoin(ROLE)
+                        .on(USER_ROLE_MAP.ROLE_ID.eq(ROLE.ID))
+                        .where(USER.ID.eq(USER_ROLE_MAP.USER_ID)))
+                .convertFrom(r -> r.map((record) -> record.into(RoleDto.class)))
+                .as("roles"))
+        .from(USER)
+        .where(USER.ID.eq(userId))
+        .fetchOneInto(UserRolePermissionDto.class);
   }
 
   public Result<Record> fetchUniqueUserWithRolePermissionBy(Long userId) {
