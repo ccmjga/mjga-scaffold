@@ -40,7 +40,7 @@
 
 更多的组件正在开发中……
 
-![config.png](asset/config.png)
+![option.png](asset/option_cn.png)
 
 ## 快速开始 🍉
 

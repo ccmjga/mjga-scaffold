@@ -16,7 +16,7 @@
 
 ## 技术选型 🥝
 
-![stack_cn.png](asset/stack_cn.png)
+![option.png](asset/option_cn.png)
 
 ### 容器化与云原生 🍋
 
@@ -41,7 +41,7 @@
 
 更多的组件正在开发中……
 
-![config.png](asset/config.png)
+![stack.png](asset/stack_cn.png)
 
 ## 快速开始 🍉
 

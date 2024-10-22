@@ -21,7 +21,7 @@
 
 ## Stack 🥝
 
-![stack_cn.png](asset/stack_en.png)
+![option.png](asset/option_en.png)
 
 ### Containerization and Cloud-Native 🍋
 
@@ -46,7 +46,7 @@
 
 More components are under development...
 
-![config.png](asset/config_en.png)
+![stack.png](asset/stack_en.png)
 
 ## Quick Start 🍉
 
