@@ -23,7 +23,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             ex.getCause());
     return handleExceptionInternal(
         errorResponseException,
-        errorResponseException.getBody(),
+        null,
         errorResponseException.getHeaders(),
         errorResponseException.getStatusCode(),
         request);
@@ -49,7 +49,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             ex.getCause());
     return handleExceptionInternal(
         errorResponseException,
-        errorResponseException.getBody(),
+        null,
         errorResponseException.getHeaders(),
         errorResponseException.getStatusCode(),
         request);

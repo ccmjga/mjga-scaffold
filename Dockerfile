@@ -1,4 +1,4 @@
-FROM openjdk:17-alpine3.14 AS RUNNER
+FROM eclipse-temurin:17-jdk-alpine AS RUNNER
 ENV GRADLE_USER_HOME=/cache
 ENV WORKDIR=/usr/src/app/mjga
 WORKDIR $WORKDIR
