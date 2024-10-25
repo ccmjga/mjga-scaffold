@@ -2,13 +2,12 @@
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 ![logo.png](asset/logo.png)
-
 🏆🎖️🥇🥈🥉🏅
 
 - [English](README_EN.md)
 - [中文](README_CN.md)
 
-[Mjga](https://www.mjga.cc) 是一款全新设计的，基于云原生理念的打造的现代 Java Web 脚手架，它具备以下特点：
+[MJGA](https://www.mjga.cc) 是一款全新设计的，基于云原生理念的打造的现代 Java Web 脚手架，它具备以下特点：
 
 - 容器化的应用
 - 可装卸的组件
@@ -16,7 +15,7 @@
 
 ## 技术选型 🥝
 
-![option.png](asset/option_cn.png)
+![stack_cn.png](asset/stack_cn.png)
 
 ### 容器化与云原生 🍋
 
@@ -41,7 +40,7 @@
 
 更多的组件正在开发中……
 
-![stack.png](asset/stack_cn.png)
+![option.png](asset/option_cn.png)
 
 ## 快速开始 🍉
 
