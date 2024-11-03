@@ -4,7 +4,7 @@ val testcontainersVersion by extra("1.20.1")
 plugins {
     java
     jacoco
-    id("org.springframework.boot") version "3.3.3"
+    id("org.springframework.boot") version "3.3.5"
     id("io.spring.dependency-management") version "1.1.6"
     id("org.springdoc.openapi-gradle-plugin") version "1.8.0"
     id("pmd")
@@ -132,6 +132,7 @@ jooq {
         generator {
             database {
                 includes = ".*"
+                excludes = "qrtz_.*"
                 inputSchema = "mjga"
                 forcedTypes {
                     forcedType {

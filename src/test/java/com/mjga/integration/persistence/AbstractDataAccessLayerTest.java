@@ -12,7 +12,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @Testcontainers
 @TestPropertySource(
     properties = {
-      "spring.datasource.url=jdbc:tc:postgresql:15.4-alpine:///postgres?TC_INITSCRIPT=file:db.d/init/01-init.sql",
+      "spring.datasource.url=jdbc:tc:postgresql:16.4-alpine:///postgres?TC_INITSCRIPT=file:db.d/init/01-init.sql",
       "spring.docker.compose.skip.in-tests=true",
     })
 @ComponentScans({@ComponentScan("jooq.tables.daos"), @ComponentScan("com.mjga.repository")})

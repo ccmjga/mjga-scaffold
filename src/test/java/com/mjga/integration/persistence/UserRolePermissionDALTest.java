@@ -33,7 +33,10 @@ public class UserRolePermissionDALTest extends AbstractDataAccessLayerTest {
   @Autowired private PermissionRepository permissionRepository;
 
   @Test
-  @Sql(statements = "INSERT INTO mjga.user_role_map (id, user_id, role_id) VALUES (1, 1, 1)")
+  @Sql(statements = {
+          "INSERT INTO mjga.user (id, username, password) VALUES (1, 'testUserA','5EUX1AIlV09n2o')",
+          "INSERT INTO mjga.role (id, code, name) VALUES (1, 'testRoleA', 'testRoleA')",
+          "INSERT INTO mjga.user_role_map (id, user_id, role_id) VALUES (1, 1, 1)"})
   void userRoleMap_deleteByUserId() {
     userRoleMapRepository.deleteByUserId(1L);
     assertThat(userRoleMapRepository.fetchByUserId(1L).isEmpty()).isTrue();
@@ -41,8 +44,12 @@ public class UserRolePermissionDALTest extends AbstractDataAccessLayerTest {
 
   @Test
   @Sql(
-      statements =
-          "INSERT INTO mjga.role_permission_map (id, role_id, permission_id) VALUES (1, 1, 1)")
+      statements ={
+              "INSERT INTO mjga.user (id, username, password) VALUES (1, 'testUserA','5EUX1AIlV09n2o')",
+              "INSERT INTO mjga.role (id, code, name) VALUES (1, 'testRoleA', 'testRoleA')",
+              "INSERT INTO mjga.permission (id, code, name) VALUES (1, 'testPermissionA', 'testPermissionA')",
+          "INSERT INTO mjga.role_permission_map (id, role_id, permission_id) VALUES (1, 1, 1)",
+      })
   void rolePermissionMap_deleteByRoleId() {
     rolePermissionMapRepository.deleteByRoleId(1L);
     assertThat(rolePermissionMapRepository.fetchByRoleId(1L).isEmpty()).isTrue();
@@ -52,18 +59,18 @@ public class UserRolePermissionDALTest extends AbstractDataAccessLayerTest {
   @Sql(
       statements = {
         "INSERT INTO mjga.user (id, username, password) VALUES (1, 'testUserA','5EUX1AIlV09n2o')",
+        "INSERT INTO mjga.user (id, username,password) VALUES (2, 'testUserB','NTjRCeUq2EqCy')",
         "INSERT INTO mjga.role (id, code, name) VALUES (1, 'testRoleA', 'testRoleA')",
+        "INSERT INTO mjga.role (id, code, name) VALUES (2, 'testRoleB', 'testRoleB')",
+        "INSERT INTO mjga.permission (id, code, name) VALUES (1, 'testPermissionA',"
+            + " 'testPermissionA')",
+        "INSERT INTO mjga.permission (id, code, name) VALUES (2, 'testPermissionB',"
+            + " 'testPermissionB')",
         "INSERT INTO mjga.user_role_map (id, user_id, role_id) VALUES (1, 1, 1)",
         "INSERT INTO mjga.role_permission_map (id, role_id, permission_id) VALUES (1, 1, 1)",
         "INSERT INTO mjga.role_permission_map (id, role_id, permission_id) VALUES (2, 1, 2)",
-        "INSERT INTO mjga.permission (id, code, name) VALUES (1, 'testPermissionA',"
-            + " 'testPermissionA')",
-        "INSERT INTO mjga.user (id, username,password) VALUES (2, 'testUserB','NTjRCeUq2EqCy')",
         "INSERT INTO mjga.user_role_map (id, user_id, role_id) VALUES (2, 2, 2)",
-        "INSERT INTO mjga.role (id, code, name) VALUES (2, 'testRoleB', 'testRoleB')",
         "INSERT INTO mjga.role_permission_map (id, role_id, permission_id) VALUES (3, 2, 2)",
-        "INSERT INTO mjga.permission (id, code, name) VALUES (2, 'testPermissionB',"
-            + " 'testPermissionB')",
       })
   void user_fetchUniqueUserWithRolePermissionBy() {
     Result<Record> records = userRepository.fetchUniqueUserWithRolePermissionBy(1L);
@@ -151,14 +158,14 @@ public class UserRolePermissionDALTest extends AbstractDataAccessLayerTest {
   @Sql(
       statements = {
         "INSERT INTO mjga.role (id, code, name) VALUES (1, 'testRoleA', 'testRoleA')",
-        "INSERT INTO mjga.role_permission_map (id, role_id, permission_id) VALUES (1, 1, 1)",
-        "INSERT INTO mjga.role_permission_map (id, role_id, permission_id) VALUES (2, 1, 2)",
+        "INSERT INTO mjga.role (id, code, name) VALUES (2, 'testRoleB', 'testRoleB')",
         "INSERT INTO mjga.permission (id, code, name) VALUES (1, 'testPermissionA',"
             + " 'testPermissionA')",
-        "INSERT INTO mjga.role (id, code, name) VALUES (2, 'testRoleB', 'testRoleB')",
-        "INSERT INTO mjga.role_permission_map (id, role_id, permission_id) VALUES (3, 2, 2)",
         "INSERT INTO mjga.permission (id, code, name) VALUES (2, 'testPermissionB',"
             + " 'testPermissionB')",
+        "INSERT INTO mjga.role_permission_map (id, role_id, permission_id) VALUES (1, 1, 1)",
+        "INSERT INTO mjga.role_permission_map (id, role_id, permission_id) VALUES (2, 1, 2)",
+        "INSERT INTO mjga.role_permission_map (id, role_id, permission_id) VALUES (3, 2, 2)",
       })
   void role_fetchUniqueRoleWithPermission() {
     Result<Record> records = roleRepository.fetchUniqueRoleWithPermission(1L);
