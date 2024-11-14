@@ -33,10 +33,12 @@ public class UserRolePermissionDALTest extends AbstractDataAccessLayerTest {
   @Autowired private PermissionRepository permissionRepository;
 
   @Test
-  @Sql(statements = {
-          "INSERT INTO mjga.user (id, username, password) VALUES (1, 'testUserA','5EUX1AIlV09n2o')",
-          "INSERT INTO mjga.role (id, code, name) VALUES (1, 'testRoleA', 'testRoleA')",
-          "INSERT INTO mjga.user_role_map (id, user_id, role_id) VALUES (1, 1, 1)"})
+  @Sql(
+      statements = {
+        "INSERT INTO mjga.user (id, username, password) VALUES (1, 'testUserA','5EUX1AIlV09n2o')",
+        "INSERT INTO mjga.role (id, code, name) VALUES (1, 'testRoleA', 'testRoleA')",
+        "INSERT INTO mjga.user_role_map (id, user_id, role_id) VALUES (1, 1, 1)"
+      })
   void userRoleMap_deleteByUserId() {
     userRoleMapRepository.deleteByUserId(1L);
     assertThat(userRoleMapRepository.fetchByUserId(1L).isEmpty()).isTrue();
@@ -44,11 +46,12 @@ public class UserRolePermissionDALTest extends AbstractDataAccessLayerTest {
 
   @Test
   @Sql(
-      statements ={
-              "INSERT INTO mjga.user (id, username, password) VALUES (1, 'testUserA','5EUX1AIlV09n2o')",
-              "INSERT INTO mjga.role (id, code, name) VALUES (1, 'testRoleA', 'testRoleA')",
-              "INSERT INTO mjga.permission (id, code, name) VALUES (1, 'testPermissionA', 'testPermissionA')",
-          "INSERT INTO mjga.role_permission_map (id, role_id, permission_id) VALUES (1, 1, 1)",
+      statements = {
+        "INSERT INTO mjga.user (id, username, password) VALUES (1, 'testUserA','5EUX1AIlV09n2o')",
+        "INSERT INTO mjga.role (id, code, name) VALUES (1, 'testRoleA', 'testRoleA')",
+        "INSERT INTO mjga.permission (id, code, name) VALUES (1, 'testPermissionA',"
+            + " 'testPermissionA')",
+        "INSERT INTO mjga.role_permission_map (id, role_id, permission_id) VALUES (1, 1, 1)",
       })
   void rolePermissionMap_deleteByRoleId() {
     rolePermissionMapRepository.deleteByRoleId(1L);
