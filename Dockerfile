@@ -1,6 +1,6 @@
 FROM eclipse-temurin:17-jdk-alpine AS RUNNER
 ENV GRADLE_USER_HOME=/cache
-ENV WORKDIR=/usr/src/app/mjga
+ENV WORKDIR=/usr/src/app
 WORKDIR $WORKDIR
 RUN mkdir -p /var/log
 COPY . .

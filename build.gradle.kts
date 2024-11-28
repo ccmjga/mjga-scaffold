@@ -1,3 +1,5 @@
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
 val jooqVersion by extra("3.19.13")
 val testcontainersVersion by extra("1.20.1")
 
@@ -25,7 +27,9 @@ sourceSets {
     }
 }
 
-group = "com.mjga"
+group = "com.zl.mjga"
+version = "1.0.0"
+description = "make java great again!"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 configurations {
@@ -68,6 +72,10 @@ dependencies {
     jooqCodegen("org.jooq:jooq-codegen:$jooqVersion")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.projectlombok:lombok")
+}
+
+tasks.withType<BootJar> {
+    archiveFileName.set("app.jar")
 }
 
 tasks.withType<Test> {
