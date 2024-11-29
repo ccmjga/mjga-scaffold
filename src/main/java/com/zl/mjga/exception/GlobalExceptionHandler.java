@@ -2,9 +2,11 @@ package com.zl.mjga.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
+import org.springframework.lang.Nullable;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.firewall.RequestRejectedException;
 import org.springframework.web.ErrorResponseException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
@@ -23,15 +25,46 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             ex.getCause());
     return handleExceptionInternal(
         errorResponseException,
-        null,
+        errorResponseException.getBody(),
+        errorResponseException.getHeaders(),
+        errorResponseException.getStatusCode(),
+        request);
+  }
+
+  @SuppressWarnings("NullableProblems")
+  @Override
+  @Nullable public ResponseEntity<Object> handleMethodArgumentNotValid(
+      MethodArgumentNotValidException ex,
+      HttpHeaders headers,
+      HttpStatusCode status,
+      WebRequest request) {
+    log.error("MethodArgumentNotValidException Handled  ===> ", ex);
+    ErrorResponseException errorResponseException =
+        new ErrorResponseException(
+            status, ProblemDetail.forStatusAndDetail(status, ex.getMessage()), ex.getCause());
+    return handleExceptionInternal(
+        errorResponseException,
+        errorResponseException.getBody(),
         errorResponseException.getHeaders(),
         errorResponseException.getStatusCode(),
         request);
   }
 
   @ExceptionHandler(value = {RequestRejectedException.class})
-  public ResponseEntity<Object> handleRequestRejectedException(RequestRejectedException ex) {
-    throw ex;
+  public ResponseEntity<Object> handleRequestRejectedException(
+      RequestRejectedException ex, WebRequest request) {
+    log.error("RequestRejectedException Handled  ===> ", ex);
+    ErrorResponseException errorResponseException =
+        new ErrorResponseException(
+            HttpStatus.BAD_REQUEST,
+            ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage()),
+            ex.getCause());
+    return handleExceptionInternal(
+        errorResponseException,
+        errorResponseException.getBody(),
+        errorResponseException.getHeaders(),
+        errorResponseException.getStatusCode(),
+        request);
   }
 
   @ExceptionHandler(value = {AccessDeniedException.class})
@@ -49,7 +82,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             ex.getCause());
     return handleExceptionInternal(
         errorResponseException,
-        null,
+        errorResponseException.getBody(),
         errorResponseException.getHeaders(),
         errorResponseException.getStatusCode(),
         request);
