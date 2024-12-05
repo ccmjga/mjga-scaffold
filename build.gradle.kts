@@ -97,7 +97,7 @@ jacoco {
 
 pmd {
     isConsoleOutput = true
-    toolVersion = "7.5.0"
+    toolVersion = "7.8.0"
     rulesMinimumPriority.set(5)
     ruleSetFiles = files("pmd-rules.xml")
 }

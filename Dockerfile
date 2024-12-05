@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jdk-alpine AS RUNNER
+FROM bellsoft/liberica-openjdk-alpine:17 AS RUNNER
 ENV GRADLE_USER_HOME=/cache
 ENV WORKDIR=/usr/src/app
 WORKDIR $WORKDIR
