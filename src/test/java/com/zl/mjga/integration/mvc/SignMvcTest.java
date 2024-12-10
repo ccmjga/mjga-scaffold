@@ -45,11 +45,11 @@ class SignMvcTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
                     """
-                {
-                  "username": "test_04cb017e1fe6",
-                  "password": "test_567472858b8c"
-                }
-                 """)
+                    {
+                      "username": "test_04cb017e1fe6",
+                      "password": "test_567472858b8c"
+                    }
+                    """)
                 .with(csrf()))
         .andExpect(status().isOk());
   }
@@ -70,10 +70,10 @@ class SignMvcTest {
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .content(
                     """
-                   {
-                     "username": "test_04cb017e1fe6",
-                     "password": "test_567472858b8c"
-                   }
+                    {
+                      "username": "test_04cb017e1fe6",
+                      "password": "test_567472858b8c"
+                    }
                     """)
                 .with(csrf()))
         .andExpect(status().isBadRequest());
@@ -85,10 +85,10 @@ class SignMvcTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
                     """
-                       {
-                         "username": "test_04cb017e1fe6"
-                       }
-                        """)
+                    {
+                      "username": "test_04cb017e1fe6"
+                    }
+                    """)
                 .with(csrf()))
         .andExpect(status().isBadRequest());
   }
@@ -102,11 +102,11 @@ class SignMvcTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
                     """
-                      {
-                        "username": "test_04cb017e1fe6",
-                        "password": "test_567472858b8c"
-                      }
-                       """)
+                    {
+                      "username": "test_04cb017e1fe6",
+                      "password": "test_567472858b8c"
+                    }
+                    """)
                 .with(csrf()))
         .andExpect(status().isCreated());
   }
@@ -120,11 +120,11 @@ class SignMvcTest {
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .content(
                     """
-                     {
-                       "username": "test_04cb017e1fe6",
-                       "password": "test_567472858b8c"
-                     }
-                      """)
+                    {
+                      "username": "test_04cb017e1fe6",
+                      "password": "test_567472858b8c"
+                    }
+                    """)
                 .with(csrf()))
         .andExpect(status().isBadRequest());
 
@@ -134,9 +134,9 @@ class SignMvcTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
                     """
-                   {
-                     "username": "test_04cb017e1fe6"
-                   }
+                    {
+                      "username": "test_04cb017e1fe6"
+                    }
                     """)
                 .with(csrf()))
         .andExpect(status().isBadRequest());

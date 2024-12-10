@@ -56,7 +56,7 @@ public class AuthenticationAndAuthorityTest {
                       "username": "test_04cb017e1fe6",
                       "password": "test_567472858b8c"
                     }
-                     """)
+                    """)
                 .with(csrf()))
         .andExpect(status().isOk());
   }
@@ -82,9 +82,10 @@ public class AuthenticationAndAuthorityTest {
             post("/urp/role/1/bind-permission")
                 .with(csrf())
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("""
-                        [1]
-                         """))
+                .content(
+                    """
+                    [1]
+                    """))
         .andExpect(status().isForbidden());
   }
 
@@ -107,9 +108,10 @@ public class AuthenticationAndAuthorityTest {
             post("/urp/role/1/bind-permission")
                 .with(csrf())
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("""
-                        [1]
-                         """))
+                .content(
+                    """
+                    [1]
+                    """))
         .andExpect(status().isOk());
   }
 }

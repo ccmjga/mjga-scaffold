@@ -1,8 +1,8 @@
 package com.zl.mjga.repository;
 
-import static org.jooq.generated.tables.Permission.PERMISSION;
-import static org.jooq.generated.tables.Role.ROLE;
-import static org.jooq.generated.tables.RolePermissionMap.ROLE_PERMISSION_MAP;
+import static org.jooq.generated.mjga.tables.Permission.PERMISSION;
+import static org.jooq.generated.mjga.tables.Role.ROLE;
+import static org.jooq.generated.mjga.tables.RolePermissionMap.ROLE_PERMISSION_MAP;
 import static org.jooq.impl.DSL.asterisk;
 import static org.jooq.impl.DSL.noCondition;
 
@@ -14,8 +14,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.jooq.Configuration;
 import org.jooq.Record;
 import org.jooq.Result;
-import org.jooq.generated.tables.daos.RoleDao;
-import org.jooq.generated.tables.pojos.Role;
+import org.jooq.generated.mjga.tables.daos.RoleDao;
+import org.jooq.generated.mjga.tables.pojos.Role;
 import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

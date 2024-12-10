@@ -1,9 +1,9 @@
 package com.zl.mjga.integration.persistence;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.jooq.generated.tables.Permission.PERMISSION;
-import static org.jooq.generated.tables.Role.ROLE;
-import static org.jooq.generated.tables.User.USER;
+import static org.jooq.generated.mjga.tables.Permission.PERMISSION;
+import static org.jooq.generated.mjga.tables.Role.ROLE;
+import static org.jooq.generated.mjga.tables.User.USER;
 
 import com.zl.mjga.dto.PageRequestDto;
 import com.zl.mjga.dto.urp.PermissionQueryDto;
@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.jooq.Record;
 import org.jooq.Result;
-import org.jooq.generated.tables.pojos.Permission;
-import org.jooq.generated.tables.pojos.Role;
+import org.jooq.generated.mjga.tables.pojos.Permission;
+import org.jooq.generated.mjga.tables.pojos.Role;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.jdbc.Sql;

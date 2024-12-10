@@ -3,7 +3,7 @@ package com.zl.mjga.integration.e2e;
 import com.zl.mjga.repository.UserRepository;
 import com.zl.mjga.repository.UserRoleMapRepository;
 import java.time.Duration;
-import org.jooq.generated.tables.pojos.User;
+import org.jooq.generated.mjga.tables.pojos.User;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -52,7 +52,8 @@ public class SignE2ETest {
         .post()
         .uri("/auth/sign-up")
         .contentType(MediaType.APPLICATION_JSON)
-        .bodyValue("""
+        .bodyValue(
+            """
 {
   "username": "test_5fab32c22a3e",
   "password": "test_eab28b939ba1"
@@ -73,7 +74,8 @@ public class SignE2ETest {
         .post()
         .uri("/auth/sign-in")
         .contentType(MediaType.APPLICATION_JSON)
-        .bodyValue("""
+        .bodyValue(
+            """
 {
   "username": "test_5fab32c22a3e",
   "password": "test_eab28b939ba1"

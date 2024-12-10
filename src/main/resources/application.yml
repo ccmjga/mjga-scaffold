@@ -7,7 +7,8 @@ logging:
   level:
     org:
       springframework:
-        security: DEBUG
+        security: debug
+      flywaydb: debug
 
 cors:
   allowedOrigins: ${ALLOWED_ORIGINS}
@@ -18,7 +19,9 @@ spring:
     url: jdbc:postgresql://${DATABASE_HOST_PORT}/${DATABASE_DB}
     username: ${DATABASE_USER}
     password: ${DATABASE_PASSWORD}
-
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
 springdoc:
   swagger-ui:
     path: /swagger-ui.html

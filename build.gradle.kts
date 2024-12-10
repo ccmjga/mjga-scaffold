@@ -2,6 +2,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 val jooqVersion by extra("3.19.13")
 val testcontainersVersion by extra("1.20.1")
+val flywayVersion by extra("11.0.1")
 
 plugins {
     java
@@ -57,6 +58,8 @@ dependencies {
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
     implementation("org.jooq:jooq-meta:$jooqVersion")
     implementation("com.auth0:java-jwt:4.4.0")
+    implementation("org.flywaydb:flyway-core:$flywayVersion")
+    implementation("org.flywaydb:flyway-database-postgresql:$flywayVersion")
     implementation("com.github.ben-manes.caffeine:caffeine:3.1.8")
     testImplementation("org.testcontainers:junit-jupiter:$testcontainersVersion")
     testImplementation("org.testcontainers:postgresql:$testcontainersVersion")
@@ -70,6 +73,7 @@ dependencies {
     testImplementation("org.springframework.security:spring-security-test")
     jooqCodegen("org.postgresql:postgresql")
     jooqCodegen("org.jooq:jooq-codegen:$jooqVersion")
+    jooqCodegen("org.jooq:jooq-meta-extensions:$jooqVersion")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.projectlombok:lombok")
 }
@@ -113,11 +117,7 @@ spotless {
     }
 
     java {
-        // don't need to set target, it is inferred from java
-
-        // apply a specific flavor of google-java-format
-        googleJavaFormat("1.17.0").reflowLongStrings()
-        // fix formatting of type annotations
+        googleJavaFormat("1.25.1").reflowLongStrings()
         formatAnnotations()
     }
 
@@ -129,19 +129,37 @@ spotless {
 
 jooq {
     configuration {
-        jdbc {
-            driver = "org.postgresql.Driver"
-            url = "jdbc:postgresql://${providers.gradleProperty("database.hostPort").get()}/${
-                providers.gradleProperty("database.name").get()
-            }"
-            user = providers.gradleProperty("database.user").get()
-            password = providers.gradleProperty("database.password").get()
-        }
         generator {
             database {
                 includes = ".*"
                 excludes = "qrtz_.*"
-                inputSchema = "mjga"
+                name = "org.jooq.meta.extensions.ddl.DDLDatabase"
+                properties {
+                    property {
+                        key = "scripts"
+                        value = "src/main/resources/db/migration/*.sql"
+                    }
+                    property {
+                        key = "sort"
+                        value = "semantic"
+                    }
+                    property {
+                        key = "unqualifiedSchema"
+                        value = "none"
+                    }
+                    property {
+                        key = "defaultNameCase"
+                        value = "lower"
+                    }
+                    property {
+                        key = "logExecutedQueries"
+                        value = "true"
+                    }
+                    property {
+                        key = "logExecutionResults"
+                        value = "true"
+                    }
+                }
                 forcedTypes {
                     forcedType {
                         name = "varchar"
@@ -156,30 +174,16 @@ jooq {
                 }
             }
             generate {
-                // Generate the DAO classes
                 isDaos = true
                 isRecords = true
                 isDeprecated = false
                 isImmutablePojos = false
                 isFluentSetters = true
-                // Annotate DAOs (and other types) with spring annotations, such as @Repository and @Autowired
-                // for auto-wiring the Configuration instance, e.g. from Spring Boot's jOOQ starter
                 isSpringAnnotations = true
-
-                // Generate Spring-specific DAOs containing @Transactional annotations
                 isSpringDao = true
             }
             target {
-                // The destination package of your generated classes (within the
-                // destination directory)
-                //
-                // jOOQ may append the schema name to this package if generating multiple schemas,
-                // e.g. org.jooq.your.packagename.schema1
-                // org.jooq.your.packagename.schema2
                 packageName = "org.jooq.generated"
-
-                // The destination directory of your generated classes
-//                directory = "build/generated-src/jooq"
             }
         }
     }

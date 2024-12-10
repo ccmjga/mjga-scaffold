@@ -10,7 +10,6 @@ services:
     ports:
       - ${DATABASE_EXPOSE_PORT}:5432
     volumes:
-      - ${DATABASE_INIT}:/docker-entrypoint-initdb.d
       - ${DATABASE_STORE}:/var/lib/postgresql/data
 #      - ${DATABASE_SSL}:/etc/ssl/certs
     restart: always

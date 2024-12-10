@@ -1,7 +1,7 @@
 package com.zl.mjga.integration.persistence;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.jooq.generated.tables.User.USER;
+import static org.jooq.generated.mjga.tables.User.USER;
 
 import com.zl.mjga.dto.PageRequestDto;
 import com.zl.mjga.dto.urp.UserQueryDto;

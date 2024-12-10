@@ -120,7 +120,8 @@ class UserRolePermissionMvcTest {
         .perform(
             MockMvcRequestBuilders.post(String.format("/urp/user/%s/bind-role", stubUserId))
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("""
+                .content(
+                    """
                        [1,2]
                     """)
                 .with(csrf()))
@@ -139,7 +140,8 @@ class UserRolePermissionMvcTest {
         .perform(
             MockMvcRequestBuilders.post(String.format("/urp/role/%s/bind-permission", stubRoleId))
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("""
+                .content(
+                    """
                        [1,2]
                     """)
                 .with(csrf()))

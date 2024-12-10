@@ -1,15 +1,15 @@
 package com.zl.mjga.integration.persistence;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.jooq.generated.Tables.USER;
+import static org.jooq.generated.mjga.tables.User.USER;
 import static org.jooq.impl.DSL.asterisk;
 
 import java.util.List;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Result;
-import org.jooq.generated.tables.pojos.User;
-import org.jooq.generated.tables.records.UserRecord;
+import org.jooq.generated.mjga.tables.pojos.User;
+import org.jooq.generated.mjga.tables.records.UserRecord;
 import org.jooq.impl.DSL;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

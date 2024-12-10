@@ -1,8 +1,8 @@
 package com.zl.mjga.service;
 
-import static org.jooq.generated.tables.Permission.PERMISSION;
-import static org.jooq.generated.tables.Role.ROLE;
-import static org.jooq.generated.tables.User.USER;
+import static org.jooq.generated.mjga.tables.Permission.PERMISSION;
+import static org.jooq.generated.mjga.tables.Role.ROLE;
+import static org.jooq.generated.mjga.tables.User.USER;
 
 import com.zl.mjga.dto.PageRequestDto;
 import com.zl.mjga.dto.PageResponseDto;
@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.jooq.Record;
 import org.jooq.Result;
-import org.jooq.generated.tables.pojos.*;
+import org.jooq.generated.mjga.tables.pojos.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

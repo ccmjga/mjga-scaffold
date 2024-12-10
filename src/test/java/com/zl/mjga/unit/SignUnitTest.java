@@ -12,7 +12,7 @@ import com.zl.mjga.repository.UserRepository;
 import com.zl.mjga.service.SignService;
 import com.zl.mjga.service.UserRolePermissionService;
 import java.util.List;
-import org.jooq.generated.tables.pojos.User;
+import org.jooq.generated.mjga.tables.pojos.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
