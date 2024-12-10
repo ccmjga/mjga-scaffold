@@ -1,4 +1,4 @@
-# Make Java Great Again
+# Make Java Great Again!
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 ![logo.png](asset/logo.png)
@@ -8,43 +8,47 @@
 - [English](README_EN.md)
 - [中文](README_CN.md)
 
-[MJGA](https://www.mjga.cc) is a modern Java Web scaffolding designed with cloud-native concepts in mind. It offers the
-following features:
+### Why is Mjga Unique?
+
+[Mjga](https://www.mjga.cc) is a newly designed, cloud-native-based modern Java Web scaffolding framework. It features:
 
 - Containerized applications
-- Modular components
-- Highly regarded unit tests
+- Plug-and-play components
+- Widely acclaimed unit testing
+- Custom metadata
 
-## Technology Stack 🥝
+### 🥝 Template Selection
 
-![option.png](asset/option_en.png)
+![option_cn.png](asset/option_en.png)
 
-### Containerization and Cloud-Native 🍋
+### 🍅 Component Configuration
+
+![stack_cn.png](asset/stack_en.png)
+
+### 🍹 Custom Metadata
+
+![meta_cn.png](asset/meta_en.png)
+
+#### Containerization and Cloud-Native
 
 1. Manage the entire lifecycle and configuration of the application via `docker-compose.yml`.
 2. Customize all configurations through the `.env` file.
 3. Deliver the entire application and its ecosystem components via `docker-compose.yml`.
 
-### Out-of-the-Box 🍌
+#### Out-of-the-Box
 
-1. Integrates common basic business functions such as authentication, permission management, and cache abstraction.
-2. Code Check&Format, CI/CD Plugin, Docker Integration are all ready to use out-of-the-box.
-3. Comprehensive, design-driven, and environment-isolated unit tests.
+1. Integrates common basic business functionalities such as authentication, permission management, and cache abstraction.
+2. Code Check & Format, CI/CD Plugin, Docker Integration are all ready to use out of the box.
+3. Comprehensive, design-driven, and environment-isolated unit testing.
 
-### Modernization 🍒
+#### Modernization
 
-1. Modern: Technology choices follow the trends of the open-source community.
+1. Modern: Technology choices align with the latest trends in the open-source community.
 2. Configurable: Supports component selection on the web.
 3. Best Practices: Every variable, function, module, and component is designed with best practices in mind.
-4. Focus on Boundaries: Stays within its functional boundaries, not aiming to be a "Not All In One" solution.
+4. Focused Boundaries: Stays within its functional boundaries, avoiding an "All In One" approach.
 
-## Component Selection 🍇
-
-More components are under development...
-
-![stack.png](asset/stack_en.png)
-
-## Quick Start 🍉
+### Quick Start
 
 **Confirm Environment Variables and Execution Permissions**
 
@@ -69,19 +73,16 @@ docker compose up -d web
 ```shell
 # confirm .env and gradle.properties make sure process can use it
 vim ${projectRoot}/.env
-vim ${projectRoot}/gradle.properties
 docker compose up -d database
 ./gradlew jooqCodegen
 ${projectRoot}/gradlew bootRun
 ```
 
-## Common Tools 🥜
+### Common Tools
 
 **Compile the Project and Generate Table Mapping Objects and Data Access Layer Based on Database Schema**
 
 ```shell
-# confirm .env and make sure process can use it
-vim ${projectRoot}/.env
 # generate schema mapping codes
 ./gradlew jooqCodegen
 # output ->
@@ -91,7 +92,6 @@ vim ${projectRoot}/.env
 #       ├── daos # Data Access Layer
 #       ├── pojos # mapping dto
 #       └── records # jooq query record
-
 ```
 
 **Global Code Formatting**
@@ -103,29 +103,26 @@ vim ${projectRoot}/.env
 **Global Code Inspection**
 
 ```shell
-# confirm .env and make sure process can use it
-vim ${projectRoot}/.env
 ./gradlew pmdMain
 ```
 
 **Unit Testing**
 
 ```shell
-# confirm .env and make sure process can use it
-vim ${projectRoot}/.env
 # will automatically generate jacocoTestReport
 ./gradlew test
 ```
 
-[More documentation...](https://www.mjga.cc/doc/db-first)
+[更多文档请点击...](https://www.mjga.cc/doc/db-first)
 
-## Test Report 🍓
+
+## 🍓 Test Report
 
 ![cover](https://www.mjga.cc/report/cover.png)
 
 ![summary](https://www.mjga.cc/report/summary.png)
 
-## Miscellaneous 🍟
+## 🍟 Miscellaneous
 
 1. This repository is primarily for code display and issue collection. The code may lag behind the version available for
    download from the product's official website.
@@ -134,7 +131,7 @@ vim ${projectRoot}/.env
 4. More new video tutorials are being recorded, please stay tuned.
 5. Promote Mjga to your colleagues and friends, and let Java be great again.
 
-## User Community
+## 🔮 User Community
 
 [![Static Badge](https://img.shields.io/badge/blog-black?style=flat&logo=dev.to&logoSize=auto)](https://dev.to/ccmjga)
 [![Static Badge](https://img.shields.io/badge/homepage-white?style=flat&logo=homepage&logoColor=%23FF0074)](https://www.mjga.cc)
