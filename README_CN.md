@@ -7,7 +7,7 @@
 - [English](README_EN.md)
 - [中文](README_CN.md)
 
-### 为何 Mjga 与众不同？
+## 为何 Mjga 与众不同？
 
 [Mjga](https://www.mjga.cc) 是一款全新设计的，基于云原生理念的打造的现代 Java Web 脚手架，它具备以下特点：
 

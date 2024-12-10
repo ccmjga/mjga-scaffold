@@ -8,7 +8,7 @@
 - [English](README_EN.md)
 - [中文](README_CN.md)
 
-### Why is Mjga Unique?
+## Why is Mjga Unique?
 
 [Mjga](https://www.mjga.cc) is a newly designed, cloud-native-based modern Java Web scaffolding framework. It features:
 
