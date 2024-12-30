@@ -1,8 +1,7 @@
-# Make Java Great Again！
+# 🔥 Make Java Great Again！
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 ![logo.png](asset/logo.png)
-🏆🎖️🥇🥈🥉🏅
 
 - [English](README_EN.md)
 - [中文](README_CN.md)
@@ -70,9 +69,9 @@ docker compose up -d web
 **(可选)在本机启动**
 ```shell
 # confirm .env and gradle.properties make sure process can use it
+./gradlew jooqCodegen
 vim ${projectRoot}/.env
 docker compose up -d database
-./gradlew jooqCodegen
 ${projectRoot}/gradlew bootRun
 ```
 
@@ -123,7 +122,10 @@ ${projectRoot}/gradlew bootRun
 5. 将 Mjga 推广给你身边的同事和朋友，让 Java 再次伟大。
 
 ## 🔮 用户社区
-[![Static Badge](https://img.shields.io/badge/HomePage-white?style=social&logo=homepage&label=mjga&logoColor=%23FF0074)](https://www.mjga.cc)
-[![Static Badge](https://img.shields.io/badge/Blog-red?style=social&logo=Bytedance&logoColor=%233C8CFF&label=%E6%8E%98%E9%87%91%E7%A8%80%E5%9C%9F)](https://juejin.cn/post/7410333135119253543)
-[![Static Badge](https://img.shields.io/badge/-red?style=social&logo=Tencent%20QQ&logoColor=%23FF0056&label=QQ-910248188)](https://qm.qq.com/q/8ojXz6ZOkE)
-[![Static Badge](https://img.shields.io/badge/-white?style=social&logo=bilibili&label=bilibili)](https://www.bilibili.com/video/BV1Erpje8ERF/)
+产品主页：[![Static Badge](https://img.shields.io/badge/HomePage-white?style=social&logo=homepage&label=mjga&logoColor=%23FF0074)](https://www.mjga.cc)
+
+QQ群：[![Static Badge](https://img.shields.io/badge/-red?style=social&logo=Tencent%20QQ&logoColor=%23FF0056&label=QQ-910248188)](https://qm.qq.com/q/8ojXz6ZOkE)
+
+文本教程：[![Static Badge](https://img.shields.io/badge/Blog-red?style=social&logo=Bytedance&logoColor=%233C8CFF&label=%E6%8E%98%E9%87%91%E7%A8%80%E5%9C%9F)](https://juejin.cn/post/7410333135119253543)
+
+视频教程：[![Static Badge](https://img.shields.io/badge/-white?style=social&logo=bilibili&label=bilibili)](https://www.bilibili.com/video/BV1Erpje8ERF/)

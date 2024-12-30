@@ -1,56 +1,55 @@
-# Make Java Great Again!
+# 🔥 Make Java Great Again！
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 ![logo.png](asset/logo.png)
 
-🏆🎖️🥇🥈🥉🏅
-
 - [English](README_EN.md)
 - [中文](README_CN.md)
 
-## Why is Mjga Unique?
+## 为何 Mjga 与众不同？
 
-[Mjga](https://www.mjga.cc) is a newly designed, cloud-native-based modern Java Web scaffolding framework. It features:
+[Mjga](https://www.mjga.cc) 是一款全新设计的，基于云原生理念的打造的现代 Java Web 脚手架，它具备以下特点：
 
-- Containerized applications
-- Plug-and-play components
-- Widely acclaimed unit testing
-- Custom metadata
+- 容器化的应用
+- 可装卸的组件
+- 有口皆碑的单元测试
+- 自定义元信息
 
-### 🥝 Template Selection
+### 🥝 选择模板
 
-![option_cn.png](asset/option_en.png)
+![option_cn.png](asset/option_cn.png)
 
-### 🍅 Component Configuration
+### 🍅 组件选配
 
-![stack_cn.png](asset/stack_en.png)
+![stack_cn.png](asset/stack_cn.png)
 
-### 🍹 Custom Metadata
+### 🍹 自定义元信息
 
-![meta_cn.png](asset/meta_en.png)
+![meta_cn.png](asset/meta_cn.png)
 
-#### Containerization and Cloud-Native
+#### 容器化与云原生
 
-1. Manage the entire lifecycle and configuration of the application via `docker-compose.yml`.
-2. Customize all configurations through the `.env` file.
-3. Deliver the entire application and its ecosystem components via `docker-compose.yml`.
+1. 通过 `docker-compose.yml` 管理应用程序的整个生命周期与配置。
+2. 通过 `.env` 文件自定义所有配置。
+3. 通过 `docker-compose.yml` 交付整个应用程序和配套的生态组件。
 
-#### Out-of-the-Box
+#### 开箱即用
 
-1. Integrates common basic business functionalities such as authentication, permission management, and cache abstraction.
-2. Code Check & Format, CI/CD Plugin, Docker Integration are all ready to use out of the box.
-3. Comprehensive, design-driven, and environment-isolated unit testing.
+1. 集成了常用的基础业务功能，如身份验证、权限管理和缓存抽象。
+2. Code Check&Format、CI/CD Plugin 、Docker Integration 全部开箱即用。
+3. 完善的、从设计出发的、隔离了运行环境的单元测试。
 
-#### Modernization
+#### 现代化
 
-1. Modern: Technology choices align with the latest trends in the open-source community.
-2. Configurable: Supports component selection on the web.
-3. Best Practices: Every variable, function, module, and component is designed with best practices in mind.
-4. Focused Boundaries: Stays within its functional boundaries, avoiding an "All In One" approach.
+1. 现代化：技术选型紧跟开源社区风向。
+2. 可配置化：支持在网页上选配组件。
+3. 最佳实践：每个变量和函数、每个模块和组件都考虑最佳实践。
+4. 专注边界：将守好自己的功能边界，不做 All In One。
 
-### Quick Start
 
-**Confirm Environment Variables and Execution Permissions**
+### 快速开始
+
+**确认环境变量与执行权限**
 
 ```shell
 # confirm .env and make sure process can use it
@@ -58,30 +57,27 @@ vim ${projectRoot}/.env
 # confirm gradlew executable (unix-like OS)
 chmod 755 ${projectRoot}/gradlew
 ```
-
-**[Install Docker and Start Containers](https://docs.docker.com/engine/install/)**
+**[安装 Docker 并启动容器](https://docs.docker.com/engine/install/)**
 
 ```shell
 cd ${projectRoot}
 docker compose up -d database
 docker compose build web
 docker compose up -d web
-```
+````
 
-**(Optional) Start Locally**
-
+**(可选)在本机启动**
 ```shell
 # confirm .env and gradle.properties make sure process can use it
+./gradlew jooqCodegen
 vim ${projectRoot}/.env
 docker compose up -d database
-./gradlew jooqCodegen
 ${projectRoot}/gradlew bootRun
 ```
 
-### Common Tools
+### 常用工具
 
-**Compile the Project and Generate Table Mapping Objects and Data Access Layer Based on Database Schema**
-
+**编译项目，并根据数据库 Schema 生成表的映射对象与 Data Access Layer**
 ```shell
 # generate schema mapping codes
 ./gradlew jooqCodegen
@@ -92,22 +88,19 @@ ${projectRoot}/gradlew bootRun
 #       ├── daos # Data Access Layer
 #       ├── pojos # mapping dto
 #       └── records # jooq query record
+
 ```
 
-**Global Code Formatting**
-
+**全局代码格式化**
 ```shell
 ./gradlew spotlessApply
 ```
-
-**Global Code Inspection**
-
+**全局代码检查**
 ```shell
 ./gradlew pmdMain
 ```
 
-**Unit Testing**
-
+**单元测试**
 ```shell
 # will automatically generate jacocoTestReport
 ./gradlew test
@@ -115,25 +108,24 @@ ${projectRoot}/gradlew bootRun
 
 [更多文档请点击...](https://www.mjga.cc/doc/db-first)
 
-
-## 🍓 Test Report
+## 🍓 测试报告
 
 ![cover](https://www.mjga.cc/report/cover.png)
 
 ![summary](https://www.mjga.cc/report/summary.png)
 
-## 🍟 Miscellaneous
+## 🍟 其他
+1. 本仓库主要为代码展示和问题收集使用。代码可能会落后从产品官网下载的版本。
+2. 关于产品的意见、讨论、bug 请提交到 issue 中，我会认真处理。
+3. 也欢迎其他社区提出你的任何想法，我会积极参与回复。
+4. 更多的全新视频教程正在录制中，请耐心等待。
+5. 将 Mjga 推广给你身边的同事和朋友，让 Java 再次伟大。
 
-1. This repository is primarily for code display and issue collection. The code may lag behind the version available for
-   download from the product's official website.
-2. Please submit any feedback, discussions, or bugs to the issue tracker, and I will handle them seriously.
-3. I also welcome any ideas from other communities and will actively participate in the replies.
-4. More new video tutorials are being recorded, please stay tuned.
-5. Promote Mjga to your colleagues and friends, and let Java be great again.
+## 🔮 用户社区
+产品主页：[![Static Badge](https://img.shields.io/badge/HomePage-white?style=social&logo=homepage&label=mjga&logoColor=%23FF0074)](https://www.mjga.cc)
 
-## 🔮 User Community
+QQ群：[![Static Badge](https://img.shields.io/badge/-red?style=social&logo=Tencent%20QQ&logoColor=%23FF0056&label=QQ-910248188)](https://qm.qq.com/q/8ojXz6ZOkE)
 
-[![Static Badge](https://img.shields.io/badge/blog-black?style=flat&logo=dev.to&logoSize=auto)](https://dev.to/ccmjga)
-[![Static Badge](https://img.shields.io/badge/homepage-white?style=flat&logo=homepage&logoColor=%23FF0074)](https://www.mjga.cc)
-[![Static Badge](https://img.shields.io/badge/twitter-blue?style=flat&logo=x)](https://x.com/Mjga212318)
-[![Static Badge](https://img.shields.io/badge/discord-white?style=flat&logo=discord)](https://discord.com/invite/3XhyjEPn)
+文本教程：[![Static Badge](https://img.shields.io/badge/Blog-red?style=social&logo=Bytedance&logoColor=%233C8CFF&label=%E6%8E%98%E9%87%91%E7%A8%80%E5%9C%9F)](https://juejin.cn/post/7410333135119253543)
+
+视频教程：[![Static Badge](https://img.shields.io/badge/-white?style=social&logo=bilibili&label=bilibili)](https://www.bilibili.com/video/BV1Erpje8ERF/)
