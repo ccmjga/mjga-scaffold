@@ -1,17 +1,17 @@
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
-val jooqVersion by extra("3.19.13")
-val testcontainersVersion by extra("1.20.1")
-val flywayVersion by extra("11.0.1")
+val jooqVersion by extra("3.19.16")
+val testcontainersVersion by extra("1.20.4")
+val flywayVersion by extra("11.1.0")
 
 plugins {
     java
     jacoco
-    id("org.springframework.boot") version "3.3.5"
-    id("io.spring.dependency-management") version "1.1.6"
-    id("org.springdoc.openapi-gradle-plugin") version "1.8.0"
+    id("org.springframework.boot") version "3.3.7"
+    id("io.spring.dependency-management") version "1.1.7"
+    id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
     id("pmd")
-    id("org.jooq.jooq-codegen-gradle") version "3.19.13"
+    id("org.jooq.jooq-codegen-gradle") version "3.19.16"
     id("com.diffplug.spotless") version "6.25.0"
 }
 
@@ -101,7 +101,7 @@ jacoco {
 
 pmd {
     isConsoleOutput = true
-    toolVersion = "7.8.0"
+    toolVersion = "7.9.0"
     rulesMinimumPriority.set(5)
     ruleSetFiles = files("pmd-rules.xml")
 }
@@ -117,7 +117,7 @@ spotless {
     }
 
     java {
-        googleJavaFormat("1.25.1").reflowLongStrings()
+        googleJavaFormat("1.25.2").reflowLongStrings()
         formatAnnotations()
     }
 
