@@ -3,7 +3,12 @@
 - [中文](README.md)
 - [English](README_EN.md)
 
+## 🤔 更多其他工程范式？
+### Model First
 以模型、领域和模块为一等公民，围绕革命性的现代 ORM 构建基于 Docker 的 RESTful、无状态、云原生的领域驱动应用。
+
+### [Database First](https://github.com/ccmjga/mjga-scaffold)
+以数据库为一等公民，围绕类型安全的、可复用的、支持 Debug 的 SQL 来构建基于 Docker 的 RESTful、无状态、云原生的三层架构应用。
 
 ### 🥇 以模型和领域为中心的架构设计
 ![stack_modelfirstfirst_cn.png](asset/architect_modelfirst.png)
@@ -84,7 +89,6 @@ ${projectRoot}/gradlew bootRun
 2. 关于产品的意见、讨论、bug 请提交到 issue 中，我会认真处理。
 3. 也欢迎其他社区提出你的任何想法，我会积极参与回复。
 4. 更多的全新视频教程正在录制中，请耐心等待。
-5. 将 Mjga 推广给你身边的同事和朋友，让 Java 再次伟大。
 
 ## 🔮 用户社区
 产品主页：[![Static Badge](https://img.shields.io/badge/HomePage-white?style=social&logo=homepage&label=mjga&logoColor=%23FF0074)](https://www.mjga.cc)

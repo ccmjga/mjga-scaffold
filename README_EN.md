@@ -3,21 +3,25 @@
 - [中文](README.md)
 - [English](README_EN.md)
 
+## 🤔 More other engineering paradigms?
+### Model First
 Build RESTful, stateless, cloud-native, Docker-based, domain-driven applications with models, domains, and modules as first-class citizens around the revolutionary modern ORM.
 
+### [Database First](https://github.com/ccmjga/mjga-scaffold)
+Build RESTful, stateless, cloud-native, three-tier Docker-based architectural applications around type-safe, reusable, Debug-enabled SQL with databases as first-class citizens.
 ### 🥇 Model and domain-centered architecture design
-![stack_modelfirstfirst_cn.png](asset/architect_modelfirst.png)
+![stack_modelfirstfirst.png](asset/architect_modelfirst.png)
 
 ### 😉 Interface files defined using Typescript
-![stack_modelfirstfirst_cn.png](asset/modelfirst_ts.png)
+![stack_modelfirstfirst_en.png](asset/modelfirst_ts.png)
 
 ### 🍅 Optional field-specific components
 
-![stack_cn.png](asset/option_modelfirst_cn.png)
+![stack_en.png](asset/option_modelfirst_en.png)
 
 ### 🍹 Customizing meta information
 
-![meta_cn.png](asset/meta_modelfirst_cn.png)
+![meta_enpng](asset/meta_modelfirst_en.png)
 
 
 ### Quick Start
@@ -86,7 +90,6 @@ ${projectRoot}/gradlew bootRun
 2. Please submit any feedback, discussions, or bugs to the issue tracker, and I will handle them seriously.
 3. I also welcome any ideas from other communities and will actively participate in the replies.
 4. More new video tutorials are being recorded, please stay tuned.
-5. Promote Mjga to your colleagues and friends, and let Java be great again.
 
 ## 🔮 User Community
 
