@@ -9,10 +9,24 @@ Build RESTful, stateless, cloud-native, Docker-based, domain-driven applications
 
 ### [Database First](https://github.com/ccmjga/mjga-scaffold)
 Build RESTful, stateless, cloud-native, three-tier Docker-based architectural applications around type-safe, reusable, Debug-enabled SQL with databases as first-class citizens.
-### 🥇 Model and domain-centered architecture design
+
+## Why Mjga is different
+
+[Mjga](https://www.mjga.cc) It is a completely redesigned, modern Java Web scaffolding built on a cloud-native philosophy with the following features:
+
+- Containerized Applications
+- Mountable Components
+- Reputable unit testing
+- Customizable meta-information
+
+### 🥝 Select a template
+![stack_modelfirst_en.png](asset/stack_modelfirst_en.png)
+
+
+### 🍇 Model and domain-centered architecture design
 ![stack_modelfirstfirst.png](asset/architect_modelfirst.png)
 
-### 😉 Interface files defined using Typescript
+### 🍉 Interface files defined using Typescript
 ![stack_modelfirstfirst_en.png](asset/modelfirst_ts.png)
 
 ### 🍅 Optional field-specific components
