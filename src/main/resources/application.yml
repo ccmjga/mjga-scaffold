@@ -22,7 +22,7 @@ spring:
   flyway:
     enabled: true
     locations: classpath:db/migration
-    default-schema: public
+    default-schema: ${DATABASE_DEFAULT_SCHEMA}
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
