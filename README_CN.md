@@ -1,5 +1,3 @@
-# 🔥 Make Java Great Again！
-
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 ![logo.png](asset/logo.png)
 
@@ -7,13 +5,13 @@
 - [中文](README_CN.md)
 
 ## 选择您喜爱的工程范式
-### [Database First](https://github.com/ccmjga/mjga-scaffold)
+### Database First
 以数据库为一等公民，围绕类型安全的、可复用的、支持 Debug 的 SQL 来构建基于 Docker 的 RESTful、无状态、云原生的三层架构应用。
 
-### [Model First](https://github.com/ccmjga/mjga-scaffold)
+### [Model First](https://github.com/ccmjga/mjga-scaffold/tree/model-first)
 以模型、领域和模块为一等公民，围绕革命性的现代 ORM 构建基于 Docker 的 RESTful、无状态、云原生的领域驱动应用。
 
-## 为何 Mjga 与众不同？
+## 为何 Mjga 与众不同
 
 [Mjga](https://www.mjga.cc) 是一款全新设计的，基于云原生理念的打造的现代 Java Web 脚手架，它具备以下特点：
 
@@ -25,7 +23,6 @@
 ### 🥝 选择模板
 
 ![stack_dbfirst_cn.png](asset/stack_dbfirst_cn.png)
-![stack_modelfirstfirst_cn.png](asset/stack_modelfirst_cn.png)
 
 ### 🍅 组件选配
 
@@ -125,7 +122,6 @@ ${projectRoot}/gradlew bootRun
 2. 关于产品的意见、讨论、bug 请提交到 issue 中，我会认真处理。
 3. 也欢迎其他社区提出你的任何想法，我会积极参与回复。
 4. 更多的全新视频教程正在录制中，请耐心等待。
-5. 将 Mjga 推广给你身边的同事和朋友，让 Java 再次伟大。
 
 ## 🔮 用户社区
 产品主页：[![Static Badge](https://img.shields.io/badge/HomePage-white?style=social&logo=homepage&label=mjga&logoColor=%23FF0074)](https://www.mjga.cc)

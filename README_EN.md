@@ -1,21 +1,17 @@
-# Make Java Great Again!
-
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 ![logo.png](asset/logo.png)
-
-🏆🎖️🥇🥈🥉🏅
 
 - [English](README_EN.md)
 - [中文](README_CN.md)
 
 ## Choose Your Preferred Engineering Paradigm
-### [Database First]()
+### Database First
 Treat the database as a first-class citizen, building a Docker-based, RESTful, stateless, cloud-native three-tier architecture application centered around type-safe, reusable, and debug-friendly SQL.
 
-### [Model First]()
+### [Model First](https://github.com/ccmjga/mjga-scaffold/tree/model-first)
 Treat models, domains, and modules as first-class citizens, constructing a Docker-based, RESTful, stateless, cloud-native domain-driven application around a revolutionary modern ORM.
 
-## Why is Mjga Unique?
+## Why is Mjga Unique
 
 [Mjga](https://www.mjga.cc) is a newly designed, cloud-native-based modern Java Web scaffolding framework. It features:
 
@@ -26,15 +22,15 @@ Treat models, domains, and modules as first-class citizens, constructing a Docke
 
 ### 🥝 Template Selection
 
-![option_cn.png](asset/option_en.png)
+![stack_dbfirst_en.png](asset/stack_dbfirst_en.png)
 
 ### 🍅 Component Configuration
 
-![stack_cn.png](asset/stack_en.png)
+![stack_en.png](asset/stack_en.png)
 
 ### 🍹 Custom Metadata
 
-![meta_cn.png](asset/meta_en.png)
+![meta_en.png](asset/meta_en.png)
 
 #### Containerization and Cloud-Native
 
@@ -120,14 +116,12 @@ ${projectRoot}/gradlew bootRun
 ./gradlew test
 ```
 
-[更多文档请点击...](https://www.mjga.cc/doc/db-first)
+[更多文档请点击...](https://www.mjga.cc/doc/dbfirst)
 
 
 ## 🍓 Test Report
 
-![cover](https://www.mjga.cc/report/cover.png)
-
-![summary](https://www.mjga.cc/report/summary.png)
+![summary](https://www.mjga.cc/dbfirst/test-cover.png)
 
 ## 🍟 Miscellaneous
 
