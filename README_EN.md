@@ -1,4 +1,4 @@
-# 🔥Model First
+# 🔥 Model First
 
 - [中文](README.md)
 - [English](README_EN.md)
