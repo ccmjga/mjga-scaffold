@@ -8,6 +8,13 @@
 - [English](README_EN.md)
 - [中文](README_CN.md)
 
+## Choose Your Preferred Engineering Paradigm
+### [Database First]()
+Treat the database as a first-class citizen, building a Docker-based, RESTful, stateless, cloud-native three-tier architecture application centered around type-safe, reusable, and debug-friendly SQL.
+
+### [Model First]()
+Treat models, domains, and modules as first-class citizens, constructing a Docker-based, RESTful, stateless, cloud-native domain-driven application around a revolutionary modern ORM.
+
 ## Why is Mjga Unique?
 
 [Mjga](https://www.mjga.cc) is a newly designed, cloud-native-based modern Java Web scaffolding framework. It features:

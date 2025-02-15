@@ -1,7 +1,3 @@
-# 选择你倾向的模板
-- [Database First]()
-- [Model First]()
-
 # 🔥 Make Java Great Again！
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
@@ -9,6 +5,13 @@
 
 - [English](README_EN.md)
 - [中文](README_CN.md)
+
+## 选择您喜爱的工程范式
+### [Database First]()
+以数据库为一等公民，围绕类型安全的、可复用的、支持 Debug 的 SQL 来构建基于 Docker 的 RESTful、无状态、云原生的三层架构应用。
+
+### [Model First]()
+以模型、领域和模块为一等公民，围绕革命性的现代 ORM 构建基于 Docker 的 RESTful、无状态、云原生的领域驱动应用。
 
 ## 为何 Mjga 与众不同？
 
@@ -21,11 +24,12 @@
 
 ### 🥝 选择模板
 
-![option_cn.png](asset/option_cn.png)
+![stack_dbfirst_cn.png](asset/stack_dbfirst_cn.png)
+![stack_modelfirstfirst_cn.png](asset/stack_modelfirst_cn.png)
 
 ### 🍅 组件选配
 
-![stack_cn.png](asset/stack_cn.png)
+![stack_cn.png](asset/option_modelfirst_cn.png)
 
 ### 🍹 自定义元信息
 
@@ -114,9 +118,7 @@ ${projectRoot}/gradlew bootRun
 
 ## 🍓 测试报告
 
-![cover](https://www.mjga.cc/report/cover.png)
-
-![summary](https://www.mjga.cc/report/summary.png)
+![cover](https://www.mjga.cc/dbfirst/test-cover.png)
 
 ## 🍟 其他
 1. 本仓库主要为代码展示和问题收集使用。代码可能会落后从产品官网下载的版本。
