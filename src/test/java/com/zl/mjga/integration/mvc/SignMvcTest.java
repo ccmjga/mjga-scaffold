@@ -5,8 +5,8 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.zl.mjga.config.security.CookieJwt;
 import com.zl.mjga.config.security.HttpFireWallConfig;
+import com.zl.mjga.config.security.Jwt;
 import com.zl.mjga.controller.SignController;
 import com.zl.mjga.dto.sign.SignInDto;
 import com.zl.mjga.service.SignService;
@@ -25,7 +25,7 @@ class SignMvcTest {
 
   @MockBean private SignService signService;
 
-  @MockBean private CookieJwt cookieJwt;
+  @MockBean private Jwt jwt;
 
   @Autowired private MockMvc mockMvc;
 

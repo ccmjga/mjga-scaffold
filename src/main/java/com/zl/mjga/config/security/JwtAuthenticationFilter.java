@@ -17,9 +17,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @Slf4j
 @Setter
 @RequiredArgsConstructor
-public class CookieJwtAuthenticationFilter extends OncePerRequestFilter {
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-  private final CookieJwt cookieJwt;
+  private final Jwt jwt;
 
   private final UserDetailsServiceImpl userDetailsService;
 
@@ -27,18 +27,16 @@ public class CookieJwtAuthenticationFilter extends OncePerRequestFilter {
   protected void doFilterInternal(
       HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
       throws ServletException, IOException {
-    String token = cookieJwt.extractJwt(request);
-    if (StringUtils.isNotEmpty(token) && cookieJwt.verifyToken(token)) {
+    String token = jwt.extract(request);
+    if (StringUtils.isNotEmpty(token) && jwt.verify(token)) {
       try {
-        UserDetails userDetails =
-            userDetailsService.loadUserByUsername(cookieJwt.getSubject(token));
-        CookieJwtAuthenticationToken authenticated =
-            CookieJwtAuthenticationToken.authenticated(
-                userDetails, token, userDetails.getAuthorities());
+        UserDetails userDetails = userDetailsService.loadUserByUsername(jwt.getSubject(token));
+        JwtAuthenticationToken authenticated =
+            JwtAuthenticationToken.authenticated(userDetails, token, userDetails.getAuthorities());
         authenticated.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         SecurityContextHolder.getContext().setAuthentication(authenticated);
       } catch (Exception e) {
-        log.error("jwt with invalid user id {}", cookieJwt.getSubject(token), e);
+        log.error("jwt with invalid user id {}", jwt.getSubject(token), e);
       }
     }
     filterChain.doFilter(request, response);

@@ -18,7 +18,6 @@ import com.zl.mjga.service.UserRolePermissionService;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Result;
@@ -136,12 +135,10 @@ class UserRolePermissionUnitTest {
     mockUserRolePermissionDto2.setUsername(stubUserName2);
     mockUserRolePermissionDto2.setPassword(stubUserPassword2);
 
-    doReturn(Optional.of(mockUserRolePermissionDto1))
+    doReturn(mockUserRolePermissionDto1)
         .when(userRolePermissionService)
         .queryUniqueUserWithRolePermission(stubUserId1);
-    //    when(rbacService.queryUniqueUserWithDetail(stubUserId1))
-    //        .thenReturn(Optional.of(mockUserRolePermissionDto1));
-    doReturn(Optional.of(mockUserRolePermissionDto2))
+    doReturn(mockUserRolePermissionDto2)
         .when(userRolePermissionService)
         .queryUniqueUserWithRolePermission(stubUserId2);
     when(userRepository.pageFetchBy(any(PageRequestDto.class), any(UserQueryDto.class)))
@@ -220,16 +217,15 @@ class UserRolePermissionUnitTest {
 
     when(userRepository.fetchUniqueUserDtoWithNestedRolePermissionBy(stubUserId))
         .thenReturn(mockResult);
-    Optional<UserRolePermissionDto> userRolePermissionDto =
+    UserRolePermissionDto userRolePermissionDto =
         userRolePermissionService.queryUniqueUserWithRolePermission(stubUserId);
-    assertThat(userRolePermissionDto.isPresent()).isTrue();
-    UserRolePermissionDto result = userRolePermissionDto.get();
-    assertThat(result.getRoles().size()).isEqualTo(1L);
-    assertThat(result.getRoles().get(0).getPermissions().size()).isEqualTo(2L);
-    assertThat(result.getUsername()).isEqualTo(stubUserName);
-    assertThat(result.getRoles().get(0).getPermissions().get(0).getName())
+    assertThat(userRolePermissionDto).isNotNull();
+    assertThat(userRolePermissionDto.getRoles().size()).isEqualTo(1L);
+    assertThat(userRolePermissionDto.getRoles().get(0).getPermissions().size()).isEqualTo(2L);
+    assertThat(userRolePermissionDto.getUsername()).isEqualTo(stubUserName);
+    assertThat(userRolePermissionDto.getRoles().get(0).getPermissions().get(0).getName())
         .isEqualTo(stubPermissionName);
-    assertThat(result.getRoles().get(0).getPermissions().get(0).getCode())
+    assertThat(userRolePermissionDto.getRoles().get(0).getPermissions().get(0).getCode())
         .isEqualTo(stubPermissionCode);
   }
 
@@ -238,9 +234,9 @@ class UserRolePermissionUnitTest {
     UserRolePermissionDto mockResult = null;
     when(userRepository.fetchUniqueUserDtoWithNestedRolePermissionBy(anyLong()))
         .thenReturn(mockResult);
-    Optional<UserRolePermissionDto> userRolePermissionDtoOptional =
+    UserRolePermissionDto userRolePermissionDto =
         userRolePermissionService.queryUniqueUserWithRolePermission(1L);
-    assertThat(userRolePermissionDtoOptional.isEmpty()).isTrue();
+    assertThat(userRolePermissionDto).isNull();
   }
 
   @Test
@@ -285,12 +281,8 @@ class UserRolePermissionUnitTest {
     mockRoleDto2.setId(2L);
     mockRoleDto2.setName("AfRcdGk0zc15Lz2F");
     mockRoleDto2.setCode("AfRcdGk0zc15Lz2F");
-    doReturn(Optional.of(mockRoleDto1))
-        .when(userRolePermissionService)
-        .queryUniqueRoleWithPermission(1L);
-    doReturn(Optional.of(mockRoleDto2))
-        .when(userRolePermissionService)
-        .queryUniqueRoleWithPermission(2L);
+    doReturn(mockRoleDto1).when(userRolePermissionService).queryUniqueRoleWithPermission(1L);
+    doReturn(mockRoleDto2).when(userRolePermissionService).queryUniqueRoleWithPermission(2L);
 
     // action & assert
     RoleQueryDto roleQueryDto = new RoleQueryDto();

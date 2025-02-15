@@ -1,18 +1,19 @@
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
-val jooqVersion by extra("3.19.16")
+val jooqVersion by extra("3.19.18")
 val testcontainersVersion by extra("1.20.4")
 val flywayVersion by extra("11.1.0")
 
 plugins {
     java
+    `java-library`
     jacoco
-    id("org.springframework.boot") version "3.3.7"
+    id("org.springframework.boot") version "3.3.8"
     id("io.spring.dependency-management") version "1.1.7"
     id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
     id("pmd")
     id("org.jooq.jooq-codegen-gradle") version "3.19.16"
-    id("com.diffplug.spotless") version "6.25.0"
+    id("com.diffplug.spotless") version "7.0.2"
 }
 
 sourceSets {
@@ -76,6 +77,7 @@ dependencies {
     jooqCodegen("org.jooq:jooq-meta-extensions:$jooqVersion")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.projectlombok:lombok")
+    api("org.jspecify:jspecify:1.0.0")
 }
 
 tasks.withType<BootJar> {
@@ -100,6 +102,7 @@ jacoco {
 }
 
 pmd {
+    sourceSets = listOf(java.sourceSets.findByName("main"))
     isConsoleOutput = true
     toolVersion = "7.9.0"
     rulesMinimumPriority.set(5)
@@ -112,7 +115,7 @@ spotless {
         target("*.gradle.kts", "*.md", ".gitignore")
         // define the steps to apply to those files
         trimTrailingWhitespace()
-        indentWithSpaces() // or spaces. Takes an integer argument if you don't like 4
+        leadingTabsToSpaces()
         endWithNewline()
     }
 

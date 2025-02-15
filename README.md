@@ -1,3 +1,7 @@
+# 选择你倾向的模板
+- [Database First]()
+- [Model First]()
+
 # 🔥 Make Java Great Again！
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)

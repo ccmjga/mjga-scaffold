@@ -6,8 +6,8 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.zl.mjga.config.security.CookieJwt;
 import com.zl.mjga.config.security.HttpFireWallConfig;
+import com.zl.mjga.config.security.Jwt;
 import com.zl.mjga.config.security.UserDetailsServiceImpl;
 import com.zl.mjga.config.security.WebSecurityConfig;
 import com.zl.mjga.controller.SignController;
@@ -37,7 +37,7 @@ public class AuthenticationAndAuthorityTest {
 
   @MockBean private SignService signService;
 
-  @MockBean private CookieJwt cookieJwt;
+  @MockBean private Jwt jwt;
 
   @MockBean private UserDetailsServiceImpl userDetailsService;
 
@@ -71,9 +71,9 @@ public class AuthenticationAndAuthorityTest {
     // Arrange
     User stubUserNoPermission =
         new User("test_04cb017e1fe6", "test_567472858b8c", Collections.emptyList());
-    when(cookieJwt.extractJwt(any(HttpServletRequest.class))).thenReturn(("u9T05Tg3ULCgRn8ja2"));
-    when(cookieJwt.getSubject(any(String.class))).thenReturn(("4J2HX9r5JcXg0BT"));
-    when(cookieJwt.verifyToken(any(String.class))).thenReturn(Boolean.TRUE);
+    when(jwt.extract(any(HttpServletRequest.class))).thenReturn(("u9T05Tg3ULCgRn8ja2"));
+    when(jwt.getSubject(any(String.class))).thenReturn(("4J2HX9r5JcXg0BT"));
+    when(jwt.verify(any(String.class))).thenReturn(Boolean.TRUE);
     when(userDetailsService.loadUserByUsername(any(String.class))).thenReturn(stubUserNoPermission);
 
     // Act and Assert
@@ -97,9 +97,9 @@ public class AuthenticationAndAuthorityTest {
             "test_04cb017e1fe6",
             "test_567472858b8c",
             List.of(new SimpleGrantedAuthority(EPermission.WRITE_USER_ROLE_PERMISSION.toString())));
-    when(cookieJwt.extractJwt(any(HttpServletRequest.class))).thenReturn(("u9T05Tg3ULCgRn8ja2"));
-    when(cookieJwt.getSubject(any(String.class))).thenReturn(("4J2HX9r5JcXg0BT"));
-    when(cookieJwt.verifyToken(any(String.class))).thenReturn(Boolean.TRUE);
+    when(jwt.extract(any(HttpServletRequest.class))).thenReturn(("u9T05Tg3ULCgRn8ja2"));
+    when(jwt.getSubject(any(String.class))).thenReturn(("4J2HX9r5JcXg0BT"));
+    when(jwt.verify(any(String.class))).thenReturn(Boolean.TRUE);
     when(userDetailsService.loadUserByUsername(any(String.class))).thenReturn(stubUserNoPermission);
 
     // Act and Assert

@@ -1,6 +1,6 @@
 package com.zl.mjga.controller;
 
-import com.zl.mjga.config.security.CookieJwt;
+import com.zl.mjga.config.security.Jwt;
 import com.zl.mjga.dto.sign.SignInDto;
 import com.zl.mjga.dto.sign.SignUpDto;
 import com.zl.mjga.service.SignService;
@@ -18,7 +18,7 @@ public class SignController {
 
   private final SignService signService;
 
-  private final CookieJwt cookieJwt;
+  private final Jwt jwt;
 
   @ResponseStatus(HttpStatus.OK)
   @PostMapping("/sign-in")
@@ -26,7 +26,7 @@ public class SignController {
       HttpServletRequest request,
       HttpServletResponse response,
       @RequestBody @Valid SignInDto signInDto) {
-    cookieJwt.createJwtCookie(request, response, String.valueOf(signService.signIn(signInDto)));
+    jwt.makeToken(request, response, String.valueOf(signService.signIn(signInDto)));
   }
 
   @ResponseStatus(HttpStatus.CREATED)
@@ -38,6 +38,6 @@ public class SignController {
   @ResponseStatus(HttpStatus.OK)
   @PostMapping("/sign-out")
   void signOut(HttpServletRequest request, HttpServletResponse response) {
-    cookieJwt.removeJwtCookie(request, response);
+    jwt.removeToken(request, response);
   }
 }

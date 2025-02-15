@@ -18,6 +18,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.jooq.Record;
 import org.jooq.Result;
 import org.jooq.generated.mjga.tables.pojos.*;
+import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,20 +41,14 @@ public class UserRolePermissionService {
     }
     List<UserRolePermissionDto> userRolePermissionDtoList =
         userRecords.stream()
-            .map((record) -> queryUniqueUserWithRolePermission(record.getValue(USER.ID)).get())
+            .map((record) -> queryUniqueUserWithRolePermission(record.getValue(USER.ID)))
             .toList();
     return new PageResponseDto<>(
         userRecords.get(0).getValue("total_user", Integer.class), userRolePermissionDtoList);
   }
 
-  public Optional<UserRolePermissionDto> queryUniqueUserWithRolePermission(Long userId) {
-    UserRolePermissionDto records =
-        userRepository.fetchUniqueUserDtoWithNestedRolePermissionBy(userId);
-    if (records == null) {
-      return Optional.empty();
-    } else {
-      return Optional.of(records);
-    }
+  public @Nullable UserRolePermissionDto queryUniqueUserWithRolePermission(Long userId) {
+    return userRepository.fetchUniqueUserDtoWithNestedRolePermissionBy(userId);
   }
 
   public PageResponseDto<List<RoleDto>> pageQueryRole(
@@ -75,20 +70,20 @@ public class UserRolePermissionService {
     }
     List<RoleDto> roleDtoList =
         roleRecords.stream()
-            .map(record -> queryUniqueRoleWithPermission(record.getValue(ROLE.ID)).get())
+            .map(record -> queryUniqueRoleWithPermission(record.getValue(ROLE.ID)))
             .toList();
     return new PageResponseDto<>(
         roleRecords.get(0).getValue("total_role", Integer.class), roleDtoList);
   }
 
-  public Optional<RoleDto> queryUniqueRoleWithPermission(Long roleId) {
+  public @Nullable RoleDto queryUniqueRoleWithPermission(Long roleId) {
     Result<Record> roleWithPermissionRecords = roleRepository.fetchUniqueRoleWithPermission(roleId);
     if (roleWithPermissionRecords.isEmpty()) {
-      return Optional.empty();
+      return null;
     }
     RoleDto roleDto = createRbacDtoRolePart(roleWithPermissionRecords);
     setCurrentRolePermission(roleDto, roleWithPermissionRecords);
-    return Optional.of(roleDto);
+    return roleDto;
   }
 
   public PageResponseDto<List<PermissionDto>> pageQueryPermission(

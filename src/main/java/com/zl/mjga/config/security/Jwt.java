@@ -12,15 +12,15 @@ import java.time.ZoneId;
 import java.util.Date;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.web.util.WebUtils;
 
 @Slf4j
 @Component
 @Getter
-public class CookieJwt {
+public class Jwt {
 
   private final String secret;
 
@@ -30,7 +30,7 @@ public class CookieJwt {
 
   private final JWTVerifier verifier;
 
-  public CookieJwt(
+  public Jwt(
       @Value("${jwt.secret}") String secret,
       @Value("${jwt.expiration-min}") int expirationMin,
       @Value("${jwt.cookie-name}") String cookieName) {
@@ -44,7 +44,7 @@ public class CookieJwt {
     return JWT.decode(token).getSubject();
   }
 
-  public Boolean verifyToken(String token) {
+  public Boolean verify(String token) {
     try {
       verifier.verify(token);
       return Boolean.TRUE;
@@ -53,7 +53,16 @@ public class CookieJwt {
     }
   }
 
-  public String createJwt(String userIdentify) {
+  public String extract(HttpServletRequest request) {
+    Cookie cookie = WebUtils.getCookie(request, cookieName);
+    if (cookie != null) {
+      return cookie.getValue();
+    } else {
+      return null;
+    }
+  }
+
+  public String create(String userIdentify) {
     return JWT.create()
         .withSubject(String.valueOf(userIdentify))
         .withIssuedAt(new Date())
@@ -66,15 +75,10 @@ public class CookieJwt {
         .sign(Algorithm.HMAC256(secret));
   }
 
-  public void createJwtCookie(
-      HttpServletRequest request, HttpServletResponse response, String userIdentify) {
-    response.addCookie(buildJwtCookiePojo(request, userIdentify));
-  }
-
-  public Cookie buildJwtCookiePojo(HttpServletRequest request, String userIdentify) {
+  private Cookie buildJwtCookiePojo(HttpServletRequest request, String userIdentify) {
     String contextPath = request.getContextPath();
-    String cookiePath = StringUtils.hasText(contextPath) ? contextPath : "/";
-    Cookie cookie = new Cookie(cookieName, createJwt(userIdentify));
+    String cookiePath = StringUtils.isNotEmpty(contextPath) ? contextPath : "/";
+    Cookie cookie = new Cookie(cookieName, create(userIdentify));
     cookie.setPath(cookiePath);
     cookie.setMaxAge(expirationMin * 60);
     cookie.setSecure(request.isSecure());
@@ -82,16 +86,12 @@ public class CookieJwt {
     return cookie;
   }
 
-  public String extractJwt(HttpServletRequest request) {
-    Cookie cookie = WebUtils.getCookie(request, cookieName);
-    if (cookie != null) {
-      return cookie.getValue();
-    } else {
-      return null;
-    }
+  public void makeToken(
+      HttpServletRequest request, HttpServletResponse response, String userIdentify) {
+    response.addCookie(buildJwtCookiePojo(request, userIdentify));
   }
 
-  public void removeJwtCookie(HttpServletRequest request, HttpServletResponse response) {
+  public void removeToken(HttpServletRequest request, HttpServletResponse response) {
     Cookie cookie = WebUtils.getCookie(request, cookieName);
     if (cookie != null) {
       cookie.setMaxAge(0);

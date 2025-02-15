@@ -2,7 +2,6 @@ package com.zl.mjga.config.security;
 
 import com.zl.mjga.dto.urp.UserRolePermissionDto;
 import com.zl.mjga.service.UserRolePermissionService;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,11 +19,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
   @Override
   public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
-    Optional<UserRolePermissionDto> queryOptional =
-        userRolePermissionService.queryUniqueUserWithRolePermission(Long.valueOf(id));
     UserRolePermissionDto userRolePermissionDto =
-        queryOptional.orElseThrow(
-            () -> new UsernameNotFoundException(String.format("uid %s user not found", id)));
+        userRolePermissionService.queryUniqueUserWithRolePermission(Long.valueOf(id));
+    if (userRolePermissionDto == null) {
+      throw new UsernameNotFoundException(String.format("uid %s user not found", id));
+    }
     return new User(
         userRolePermissionDto.getUsername(),
         userRolePermissionDto.getPassword(),

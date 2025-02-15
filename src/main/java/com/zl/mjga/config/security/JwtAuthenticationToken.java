@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Setter
 @Getter
 @ToString
-public class CookieJwtAuthenticationToken extends AbstractAuthenticationToken {
+public class JwtAuthenticationToken extends AbstractAuthenticationToken {
 
   @Serial private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
 
@@ -21,14 +21,14 @@ public class CookieJwtAuthenticationToken extends AbstractAuthenticationToken {
 
   private String credentials;
 
-  public CookieJwtAuthenticationToken(Object principal, String credentials) {
+  public JwtAuthenticationToken(Object principal, String credentials) {
     super(null);
     this.principal = principal;
     this.credentials = credentials;
     super.setAuthenticated(false);
   }
 
-  public CookieJwtAuthenticationToken(
+  public JwtAuthenticationToken(
       Object principal, String credentials, Collection<? extends GrantedAuthority> authorities) {
     super(authorities);
     this.principal = principal;
@@ -36,13 +36,13 @@ public class CookieJwtAuthenticationToken extends AbstractAuthenticationToken {
     super.setAuthenticated(true);
   }
 
-  public static CookieJwtAuthenticationToken unauthenticated(String userIdentify, String token) {
-    return new CookieJwtAuthenticationToken(userIdentify, token);
+  public static JwtAuthenticationToken unauthenticated(String userIdentify, String token) {
+    return new JwtAuthenticationToken(userIdentify, token);
   }
 
-  public static CookieJwtAuthenticationToken authenticated(
+  public static JwtAuthenticationToken authenticated(
       UserDetails principal, String token, Collection<? extends GrantedAuthority> authorities) {
-    return new CookieJwtAuthenticationToken(principal, token, authorities);
+    return new JwtAuthenticationToken(principal, token, authorities);
   }
 
   @Override
