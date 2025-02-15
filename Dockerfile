@@ -7,7 +7,6 @@ COPY . .
 RUN chmod a+x ./gradlew
 RUN --mount=type=bind,target=.,rw \
     --mount=type=cache,target=$GRADLE_USER_HOME \
-    ./gradlew -i jooqCodegen &&  \
     ./gradlew -i bootJar --stacktrace && \
     mv $WORKDIR/build/libs/app.jar /app.jar
 EXPOSE 8080

@@ -1,0 +1,12 @@
+export com.zl.mjga.user.domain.model.Role
+    -> package com.zl.mjga.user
+import jakarta.validation.constraints.NotEmpty
+
+input RolePermissionShortInput {
+    id
+    @NotEmpty
+    code
+    @NotEmpty
+    name
+    dynamic id(permissions)? as permissionIds
+}

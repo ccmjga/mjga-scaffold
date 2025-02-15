@@ -1,8 +1,9 @@
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
-val jooqVersion by extra("3.19.18")
 val testcontainersVersion by extra("1.20.4")
 val flywayVersion by extra("11.1.0")
+val jimmerVersion by extra("0.9.50")
+var springModulith by extra("1.3.2")
 
 plugins {
     java
@@ -12,21 +13,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.7"
     id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
     id("pmd")
-    id("org.jooq.jooq-codegen-gradle") version "3.19.16"
     id("com.diffplug.spotless") version "7.0.2"
-}
-
-sourceSets {
-    main {
-        java {
-            srcDir("build/generated-sources/jooq")
-        }
-    }
-    test {
-        java {
-            srcDir("build/generated-sources/jooq")
-        }
-    }
 }
 
 group = "com.zl.mjga"
@@ -46,22 +33,24 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-starter-jooq")
     implementation("org.springframework.boot:spring-boot-starter-mail")
     implementation("org.springframework.boot:spring-boot-starter-cache")
-    implementation("org.springframework.boot:spring-boot-starter-quartz")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-aop")
     implementation("org.apache.commons:commons-lang3:3.17.0")
     implementation("org.apache.commons:commons-collections4:4.4")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
-    implementation("org.jooq:jooq-meta:$jooqVersion")
+    implementation("org.springframework.modulith:spring-modulith-bom:$springModulith")
+    implementation("org.springframework.modulith:spring-modulith-api:$springModulith")
+    implementation("org.springframework.modulith:spring-modulith-starter-core:$springModulith")
+    testImplementation("org.springframework.modulith:spring-modulith-starter-test:$springModulith")
     implementation("com.auth0:java-jwt:4.4.0")
     implementation("org.flywaydb:flyway-core:$flywayVersion")
     implementation("org.flywaydb:flyway-database-postgresql:$flywayVersion")
     implementation("com.github.ben-manes.caffeine:caffeine:3.1.8")
+    implementation("org.babyfish.jimmer:jimmer-spring-boot-starter:$jimmerVersion")
+    annotationProcessor("org.babyfish.jimmer:jimmer-apt:$jimmerVersion")
     testImplementation("org.testcontainers:junit-jupiter:$testcontainersVersion")
     testImplementation("org.testcontainers:postgresql:$testcontainersVersion")
     testImplementation("org.testcontainers:testcontainers-bom:$testcontainersVersion")
@@ -69,12 +58,8 @@ dependencies {
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-testcontainers")
-    testImplementation("org.springframework.boot:spring-boot-starter-webflux")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
-    jooqCodegen("org.postgresql:postgresql")
-    jooqCodegen("org.jooq:jooq-codegen:$jooqVersion")
-    jooqCodegen("org.jooq:jooq-meta-extensions:$jooqVersion")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.projectlombok:lombok")
     api("org.jspecify:jspecify:1.0.0")
@@ -127,67 +112,5 @@ spotless {
     kotlinGradle {
         target("*.gradle.kts") // default target for kotlinGradle
         ktlint() // or ktfmt() or prettier()
-    }
-}
-
-jooq {
-    configuration {
-        generator {
-            database {
-                includes = ".*"
-                excludes = "qrtz_.*"
-                name = "org.jooq.meta.extensions.ddl.DDLDatabase"
-                properties {
-                    property {
-                        key = "scripts"
-                        value = "src/main/resources/db/migration/*.sql"
-                    }
-                    property {
-                        key = "sort"
-                        value = "semantic"
-                    }
-                    property {
-                        key = "unqualifiedSchema"
-                        value = "none"
-                    }
-                    property {
-                        key = "defaultNameCase"
-                        value = "lower"
-                    }
-                    property {
-                        key = "logExecutedQueries"
-                        value = "true"
-                    }
-                    property {
-                        key = "logExecutionResults"
-                        value = "true"
-                    }
-                }
-                forcedTypes {
-                    forcedType {
-                        name = "varchar"
-                        includeExpression = ".*"
-                        includeTypes = "JSONB?"
-                    }
-                    forcedType {
-                        name = "varchar"
-                        includeExpression = ".*"
-                        includeTypes = "INET"
-                    }
-                }
-            }
-            generate {
-                isDaos = true
-                isRecords = true
-                isDeprecated = false
-                isImmutablePojos = false
-                isFluentSetters = true
-                isSpringAnnotations = true
-                isSpringDao = true
-            }
-            target {
-                packageName = "org.jooq.generated"
-            }
-        }
     }
 }

@@ -1,0 +1,18 @@
+export com.zl.mjga.user.domain.model.User
+    -> package com.zl.mjga.user
+
+UserRolePermissionView {
+    #allScalars(this)
+    roles {
+        #allScalars(this)
+        permissions {
+             #allScalars(this)
+        }
+    }
+}
+
+input UserRoleShortInput {
+    username
+    password
+    id(roles)? as rolesId
+}

@@ -1,63 +1,26 @@
-# Make Java Great Again!
+# Model First
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-![logo.png](asset/logo.png)
-
-🏆🎖️🥇🥈🥉🏅
-
+- [中文](README.md)
 - [English](README_EN.md)
-- [中文](README_CN.md)
 
-## Choose Your Preferred Engineering Paradigm
-### [Database First]()
-Treat the database as a first-class citizen, building a Docker-based, RESTful, stateless, cloud-native three-tier architecture application centered around type-safe, reusable, and debug-friendly SQL.
+Build RESTful, stateless, cloud-native, Docker-based, domain-driven applications with models, domains, and modules as first-class citizens around the revolutionary modern ORM.
 
-### [Model First]()
-Treat models, domains, and modules as first-class citizens, constructing a Docker-based, RESTful, stateless, cloud-native domain-driven application around a revolutionary modern ORM.
+### 🥇 Model and domain-centered architecture design
+![stack_modelfirstfirst_cn.png](asset/architect_modelfirst.png)
 
-## Why is Mjga Unique?
+### 😉 Interface files defined using Typescript
+![stack_modelfirstfirst_cn.png](asset/modelfirst_ts.png)
 
-[Mjga](https://www.mjga.cc) is a newly designed, cloud-native-based modern Java Web scaffolding framework. It features:
+### 🍅 Optional field-specific components
 
-- Containerized applications
-- Plug-and-play components
-- Widely acclaimed unit testing
-- Custom metadata
+![stack_cn.png](asset/option_modelfirst_cn.png)
 
-### 🥝 Template Selection
+### 🍹 Customizing meta information
 
-![option_cn.png](asset/option_en.png)
+![meta_cn.png](asset/meta_modelfirst_cn.png)
 
-### 🍅 Component Configuration
-
-![stack_cn.png](asset/stack_en.png)
-
-### 🍹 Custom Metadata
-
-![meta_cn.png](asset/meta_en.png)
-
-#### Containerization and Cloud-Native
-
-1. Manage the entire lifecycle and configuration of the application via `docker-compose.yml`.
-2. Customize all configurations through the `.env` file.
-3. Deliver the entire application and its ecosystem components via `docker-compose.yml`.
-
-#### Out-of-the-Box
-
-1. Integrates common basic business functionalities such as authentication, permission management, and cache abstraction.
-2. Code Check & Format, CI/CD Plugin, Docker Integration are all ready to use out of the box.
-3. Comprehensive, design-driven, and environment-isolated unit testing.
-
-#### Modernization
-
-1. Modern: Technology choices align with the latest trends in the open-source community.
-2. Configurable: Supports component selection on the web.
-3. Best Practices: Every variable, function, module, and component is designed with best practices in mind.
-4. Focused Boundaries: Stays within its functional boundaries, avoiding an "All In One" approach.
 
 ### Quick Start
-
-**Confirm Environment Variables and Execution Permissions**
 
 ```shell
 # confirm .env and make sure process can use it
@@ -65,69 +28,56 @@ vim ${projectRoot}/.env
 # confirm gradlew executable (unix-like OS)
 chmod 755 ${projectRoot}/gradlew
 ```
-
-**[Install Docker and Start Containers](https://docs.docker.com/engine/install/)**
+**[Install Docker and start the container](https://docs.docker.com/engine/install/)**
 
 ```shell
 cd ${projectRoot}
 docker compose up -d database
 docker compose build web
 docker compose up -d web
-```
+````
 
-**(Optional) Start Locally**
-
+**(Optional) Starting locally**
 ```shell
-# confirm .env and gradle.properties make sure process can use it
-vim ${projectRoot}/.env
+# confirm .env and make sure process can use it
 docker compose up -d database
-./gradlew jooqCodegen
 ${projectRoot}/gradlew bootRun
 ```
 
 ### Common Tools
 
-**Compile the Project and Generate Table Mapping Objects and Data Access Layer Based on Database Schema**
-
+**Compile the project to generate Model derivatives and custom Dto's.**
 ```shell
 # generate schema mapping codes
-./gradlew jooqCodegen
+./gradlew build
 # output ->
-# projectRootDir/build/generated-sources
-# └── org.jooq.generated
-#    └── tables # table mapping
-#       ├── daos # Data Access Layer
-#       ├── pojos # mapping dto
-#       └── records # jooq query record
+# projectRootDir/build/generated/sources/annotationProcessor/java/main
+# └── your.package 
+#    ├── model -> model artifact
+#    └── dto -> dto artifact
+
 ```
 
-**Global Code Formatting**
-
+**Global code formatting**
 ```shell
 ./gradlew spotlessApply
 ```
-
-**Global Code Inspection**
-
+**Global code checking**
 ```shell
 ./gradlew pmdMain
 ```
 
-**Unit Testing**
-
+**Unit test**
 ```shell
 # will automatically generate jacocoTestReport
 ./gradlew test
 ```
 
-[更多文档请点击...](https://www.mjga.cc/doc/db-first)
-
+[For more documents, please click...](https://www.mjga.cc/doc/modelfirst)
 
 ## 🍓 Test Report
 
-![cover](https://www.mjga.cc/report/cover.png)
-
-![summary](https://www.mjga.cc/report/summary.png)
+![cover](https://www.mjga.cc/modelfirst/test-cover.png)
 
 ## 🍟 Miscellaneous
 

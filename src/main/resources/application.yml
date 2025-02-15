@@ -8,6 +8,7 @@ logging:
     org:
       springframework:
         security: debug
+        modulith: debug
       flywaydb: debug
 
 cors:
@@ -23,10 +24,19 @@ spring:
     enabled: true
     locations: classpath:db/migration
     default-schema: ${DATABASE_DEFAULT_SCHEMA}
-springdoc:
-  swagger-ui:
-    path: /swagger-ui.html
 jwt:
   secret: ${JWT_SECRET:secret}
   expiration-min: ${JWT_EXPIRATION_MIN:100}
   cookie-name: ${JWT_COOKIE_NAME:jwt}
+jimmer:
+  client:
+    openapi:
+      path: /swagger-ui.yml
+      ui-path: /swagger-ui.html
+    ts:
+      path: /browser.zip
+  dialect: org.babyfish.jimmer.sql.dialect.PostgresDialect
+  show-sql: true
+  pretty-sql: true
+  database-validation:
+    mode: error

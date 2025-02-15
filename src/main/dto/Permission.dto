@@ -1,0 +1,12 @@
+export com.zl.mjga.user.domain.model.Permission
+    -> package com.zl.mjga.user
+import jakarta.validation.constraints.NotEmpty
+
+
+input PermissionInput {
+    id
+    @NotEmpty
+    code
+    @NotEmpty
+    name
+}
