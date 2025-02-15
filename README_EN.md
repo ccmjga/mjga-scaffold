@@ -1,9 +1,9 @@
-# Model First
+# 🔥Model First
 
 - [中文](README.md)
 - [English](README_EN.md)
 
-## 🤔 More other engineering paradigms?
+## More other engineering paradigms?
 ### Model First
 Build RESTful, stateless, cloud-native, Docker-based, domain-driven applications with models, domains, and modules as first-class citizens around the revolutionary modern ORM.
 

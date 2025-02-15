@@ -1,9 +1,9 @@
-# Model First
+# 🔥Model First
 
 - [中文](README.md)
 - [English](README_EN.md)
 
-## 🤔 更多其他工程范式？
+## 更多其他工程范式？
 ### Model First
 以模型、领域和模块为一等公民，围绕革命性的现代 ORM 构建基于 Docker 的 RESTful、无状态、云原生的领域驱动应用。
 
