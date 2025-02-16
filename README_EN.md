@@ -15,7 +15,7 @@
 
 # 🔥 Model First
 
-[Mjga](https://www.mjga.cc) It is a completely redesigned, modern Java Web scaffolding built on a cloud-native philosophy with the following features:
+[Mjga](https://www.mjga.cc) is a completely redesigned, modern Java Web scaffolding built on a cloud-native philosophy with the following features:
 
 - Containerized applications
 - Components that can be loaded and unloaded
