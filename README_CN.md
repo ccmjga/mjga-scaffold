@@ -4,7 +4,7 @@
 - [English](README_EN.md)
 - [中文](README_CN.md)
 
-**请选择您喜爱的工程范式**
+**选择您喜爱的工程范式**
 - [Database First](https://github.com/ccmjga/mjga-scaffold/)
 
 >以数据库为一等公民，围绕类型安全的、可复用的、支持 Debug 的 SQL 来构建基于 Docker 的 RESTful、无状态、云原生的三层架构应用。

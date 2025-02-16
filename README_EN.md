@@ -15,12 +15,12 @@
 
 # Database First
 
-[Mjga](https://www.mjga.cc) is a newly designed, cloud-native-based modern Java Web scaffolding framework. It features:
+[Mjga](https://www.mjga.cc) is a completely redesigned, modern Java Web scaffolding built on a cloud-native philosophy with the following features:
 
 - Containerized applications
-- Plug-and-play components
-- Widely acclaimed unit testing
-- Custom metadata
+- Components that can be loaded and unloaded
+- Reputable unit testing
+- Customizable meta-information
 
 ### 🥝 Template Selection
 
