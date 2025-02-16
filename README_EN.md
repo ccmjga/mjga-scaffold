@@ -4,14 +4,16 @@
 - [English](README_EN.md)
 - [中文](README_CN.md)
 
-## Choose Your Preferred Engineering Paradigm
-### Database First
-Treat the database as a first-class citizen, building a Docker-based, RESTful, stateless, cloud-native three-tier architecture application centered around type-safe, reusable, and debug-friendly SQL.
+**Please select your favorite engineering paradigm**
+- [Database First](https://github.com/ccmjga/mjga-scaffold/)
 
-### [Model First](https://github.com/ccmjga/mjga-scaffold/tree/model-first)
-Treat models, domains, and modules as first-class citizens, constructing a Docker-based, RESTful, stateless, cloud-native domain-driven application around a revolutionary modern ORM.
+>Build RESTful, stateless, cloud-native, three-tier Docker-based architectural applications around type-safe, reusable, Debug-enabled SQL with databases as first-class citizens.
 
-## Why is Mjga Unique
+- [Model First](https://github.com/ccmjga/mjga-scaffold/tree/model-first)
+
+>Build RESTful, stateless, cloud-native, Docker-based, domain-driven applications with models, domains, and modules as first-class citizens around the revolutionary modern ORM.
+
+# Database First
 
 [Mjga](https://www.mjga.cc) is a newly designed, cloud-native-based modern Java Web scaffolding framework. It features:
 
