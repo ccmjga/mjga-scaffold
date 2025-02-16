@@ -1,21 +1,24 @@
-# 🔥 Model First
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+![logo.png](asset/logo.png)
 
 - [中文](README.md)
 - [English](README_EN.md)
 
-## More other engineering paradigms?
-### Model First
-Build RESTful, stateless, cloud-native, Docker-based, domain-driven applications with models, domains, and modules as first-class citizens around the revolutionary modern ORM.
+**Please select your favorite engineering paradigm**
+- [Database First](https://github.com/ccmjga/mjga-scaffold/)
 
-### [Database First](https://github.com/ccmjga/mjga-scaffold)
-Build RESTful, stateless, cloud-native, three-tier Docker-based architectural applications around type-safe, reusable, Debug-enabled SQL with databases as first-class citizens.
+>Build RESTful, stateless, cloud-native, three-tier Docker-based architectural applications around type-safe, reusable, Debug-enabled SQL with databases as first-class citizens.
 
-## Why Mjga is different
+- [Model First](https://github.com/ccmjga/mjga-scaffold/tree/model-first)
+
+>Build RESTful, stateless, cloud-native, Docker-based, domain-driven applications with models, domains, and modules as first-class citizens around the revolutionary modern ORM.
+
+# 🔥 Model First
 
 [Mjga](https://www.mjga.cc) It is a completely redesigned, modern Java Web scaffolding built on a cloud-native philosophy with the following features:
 
-- Containerized Applications
-- Mountable Components
+- Containerized applications
+- Components that can be loaded and unloaded
 - Reputable unit testing
 - Customizable meta-information
 

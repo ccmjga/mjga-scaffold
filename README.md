@@ -1,16 +1,19 @@
-# 🔥 Model First
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+![logo.png](asset/logo.png)
 
 - [中文](README.md)
 - [English](README_EN.md)
 
-## 更多其他工程范式？
-### Model First
-以模型、领域和模块为一等公民，围绕革命性的现代 ORM 构建基于 Docker 的 RESTful、无状态、云原生的领域驱动应用。
+**请选择您喜爱的工程范式**
+- [Database First](https://github.com/ccmjga/mjga-scaffold/)
 
-### [Database First](https://github.com/ccmjga/mjga-scaffold)
-以数据库为一等公民，围绕类型安全的、可复用的、支持 Debug 的 SQL 来构建基于 Docker 的 RESTful、无状态、云原生的三层架构应用。
+>以数据库为一等公民，围绕类型安全的、可复用的、支持 Debug 的 SQL 来构建基于 Docker 的 RESTful、无状态、云原生的三层架构应用。
 
-## 为何 Mjga 与众不同
+- [Model First](https://github.com/ccmjga/mjga-scaffold/tree/model-first)
+
+>以模型、领域和模块为一等公民，围绕革命性的现代 ORM 构建基于 Docker 的 RESTful、无状态、云原生的领域驱动应用。
+
+# 🔥 Model First
 
 [Mjga](https://www.mjga.cc) 是一款全新设计的，基于云原生理念的打造的现代 Java Web 脚手架，它具备以下特点：
 
