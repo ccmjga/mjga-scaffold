@@ -2,7 +2,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 val testcontainersVersion by extra("1.20.4")
 val flywayVersion by extra("11.1.0")
-val jimmerVersion by extra("0.9.50")
+val jimmerVersion by extra("0.9.59")
 var springModulith by extra("1.3.2")
 
 plugins {
@@ -11,7 +11,6 @@ plugins {
     jacoco
     id("org.springframework.boot") version "3.3.8"
     id("io.spring.dependency-management") version "1.1.7"
-    id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
     id("pmd")
     id("com.diffplug.spotless") version "7.0.2"
 }
