@@ -14,6 +14,7 @@ cors:
   allowedOrigins: ${ALLOWED_ORIGINS}
   allowedMethods: ${ALLOWED_METHODS}
   allowedHeaders: ${ALLOWED_HEADERS}
+  allowedExposeHeaders: ${ALLOWED_EXPOSE_HEADERS}
 spring:
   datasource:
     url: jdbc:postgresql://${DATABASE_HOST_PORT}/${DATABASE_DB}

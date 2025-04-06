@@ -37,7 +37,7 @@ public class SignService {
 
   @Transactional(rollbackFor = Throwable.class)
   public void signUp(SignUpDto signUpDto) {
-    if (isUsernameDuplicate(signUpDto.getUsername())) {
+    if (userRolePermissionService.isUsernameDuplicate(signUpDto.getUsername())) {
       throw new BusinessException(
           String.format("username %s already exist", signUpDto.getUsername()));
     }
@@ -47,9 +47,5 @@ public class SignService {
     userRepository.insert(user);
     User insertUser = userRepository.fetchOneByUsername(signUpDto.getUsername());
     userRolePermissionService.bindRoleModuleToUser(insertUser.getId(), List.of(ERole.GENERAL));
-  }
-
-  public boolean isUsernameDuplicate(String username) {
-    return userRepository.fetchOneByUsername(username) != null;
   }
 }

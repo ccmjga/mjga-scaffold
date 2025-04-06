@@ -76,7 +76,7 @@ public class SignUnitTest {
     stubUser.setId(1L);
     stubUser.setUsername("testUserName");
     stubUser.setPassword("B0pjKYnIK67hz4");
-    when(userRepository.fetchOneByUsername("testUserName")).thenReturn(stubUser);
+    when(userRolePermissionService.isUsernameDuplicate(signUpDto.getUsername())).thenReturn(true);
     assertThatThrownBy(() -> signService.signUp(signUpDto)).isInstanceOf(BusinessException.class);
   }
 
@@ -92,7 +92,7 @@ public class SignUnitTest {
     insertUser.setId(1L);
     insertUser.setUsername("newUser");
     insertUser.setPassword("encodedB0pjKYnIK67hz4");
-    when(signService.isUsernameDuplicate(signUpDto.getUsername())).thenReturn(false);
+    when(userRolePermissionService.isUsernameDuplicate(signUpDto.getUsername())).thenReturn(false);
     when(userRepository.fetchOneByUsername("newUser")).thenReturn(insertUser);
     when(passwordEncoder.encode("B0pjKYnIK67hz4")).thenReturn("encodedB0pjKYnIK67hz4");
     signService.signUp(signUpDto);

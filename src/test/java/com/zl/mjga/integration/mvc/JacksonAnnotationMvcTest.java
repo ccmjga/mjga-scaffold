@@ -11,6 +11,9 @@ import com.zl.mjga.dto.PageRequestDto;
 import com.zl.mjga.dto.PageResponseDto;
 import com.zl.mjga.dto.urp.UserQueryDto;
 import com.zl.mjga.dto.urp.UserRolePermissionDto;
+import com.zl.mjga.repository.PermissionRepository;
+import com.zl.mjga.repository.RoleRepository;
+import com.zl.mjga.repository.UserRepository;
 import com.zl.mjga.service.UserRolePermissionService;
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -29,6 +32,9 @@ public class JacksonAnnotationMvcTest {
 
   @MockBean private UserRolePermissionService userRolePermissionService;
   @Autowired private MockMvc mockMvc;
+  @MockBean private UserRepository userRepository;
+  @MockBean private RoleRepository roleRepository;
+  @MockBean private PermissionRepository permissionRepository;
 
   @Test
   @WithMockUser
@@ -45,7 +51,7 @@ public class JacksonAnnotationMvcTest {
         .thenReturn(new PageResponseDto<>(1, List.of(stubUserRolePermissionDto)));
     mockMvc
         .perform(
-            get(String.format("/urp/user?page=0&size=5&username=%s", stubUsername))
+            get(String.format("/urp/users?page=0&size=5&username=%s", stubUsername))
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.data[0].username").value(stubUsername))
@@ -65,7 +71,7 @@ public class JacksonAnnotationMvcTest {
         .thenReturn(new PageResponseDto<>(1, List.of(stubUserRolePermissionDto)));
     mockMvc
         .perform(
-            get(String.format("/urp/user?page=0&size=5&username=%s", "7bF3mcNVTj6P6v2"))
+            get(String.format("/urp/users?page=0&size=5&username=%s", "7bF3mcNVTj6P6v2"))
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.data[0].createTime").value("2023-12-02 01:01:01"));

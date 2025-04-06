@@ -1,18 +1,18 @@
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 val jooqVersion by extra("3.19.18")
-val testcontainersVersion by extra("1.20.4")
-val flywayVersion by extra("11.1.0")
+val testcontainersVersion by extra("1.20.6")
+val flywayVersion by extra("11.4.0")
 
 plugins {
     java
     `java-library`
     jacoco
-    id("org.springframework.boot") version "3.3.8"
+    id("org.springframework.boot") version "3.3.9"
     id("io.spring.dependency-management") version "1.1.7"
     id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
     id("pmd")
-    id("org.jooq.jooq-codegen-gradle") version "3.19.16"
+    id("org.jooq.jooq-codegen-gradle") version "3.19.18"
     id("com.diffplug.spotless") version "7.0.2"
 }
 
@@ -61,7 +61,7 @@ dependencies {
     implementation("com.auth0:java-jwt:4.4.0")
     implementation("org.flywaydb:flyway-core:$flywayVersion")
     implementation("org.flywaydb:flyway-database-postgresql:$flywayVersion")
-    implementation("com.github.ben-manes.caffeine:caffeine:3.1.8")
+    implementation("com.github.ben-manes.caffeine:caffeine:3.2.0")
     testImplementation("org.testcontainers:junit-jupiter:$testcontainersVersion")
     testImplementation("org.testcontainers:postgresql:$testcontainersVersion")
     testImplementation("org.testcontainers:testcontainers-bom:$testcontainersVersion")
