@@ -22,6 +22,11 @@
 - 有口皆碑的单元测试
 - 自定义元信息
 
+## 📔 单元测试架构和设计讲解
+
+《重构方法论与单元测试的艺术》
+https://www.bilibili.com/cheese/play/ss198449120
+
 ### 🥝 选择模板
 ![stack_modelfirst_cn.png](asset/stack_modelfirst_cn.png)
 ### 🍇 以模型和领域为中心的架构设计
@@ -71,7 +76,7 @@ ${projectRoot}/gradlew bootRun
 ./gradlew build
 # output ->
 # projectRootDir/build/generated/sources/annotationProcessor/java/main
-# └── your.package 
+# └── your.package
 #    ├── model -> model artifact
 #    └── dto -> dto artifact
 

@@ -20,7 +20,7 @@ public class SignController {
 
   @ResponseStatus(HttpStatus.OK)
   @PostMapping("/sign-in")
-  void signIn(
+  public void signIn(
       HttpServletRequest request,
       HttpServletResponse response,
       @RequestBody @Valid SignInVm signInVm) {
@@ -29,13 +29,13 @@ public class SignController {
 
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping("/sign-up")
-  void signUp(@RequestBody @Valid SignUpVm signUpVm) {
+  public void signUp(@RequestBody @Valid SignUpVm signUpVm) {
     signAppService.signUp(signUpVm);
   }
 
   @ResponseStatus(HttpStatus.OK)
   @PostMapping("/sign-out")
-  void signOut(HttpServletRequest request, HttpServletResponse response) {
+  public void signOut(HttpServletRequest request, HttpServletResponse response) {
     jwt.removeToken(request, response);
   }
 }

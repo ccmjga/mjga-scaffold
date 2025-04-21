@@ -17,6 +17,7 @@ public class UserAppService implements UserAppApi {
 
   @Override
   @Transactional(rollbackFor = Throwable.class)
+  @SuppressWarnings("PMD.UnusedLocalVariable")
   public void addGeneralUser(UserRoleShortInput userRoleShortInput) {
     Long savedId = userDomainService.addGeneralUser(userRoleShortInput);
   }

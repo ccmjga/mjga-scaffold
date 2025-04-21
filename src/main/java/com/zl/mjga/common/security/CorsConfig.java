@@ -1,6 +1,6 @@
 package com.zl.mjga.common.security;
 
-import java.util.List;
+import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +22,9 @@ public class CorsConfig implements WebMvcConfigurer {
   @Value("${cors.allowedHeaders}")
   private String allowedHeaders;
 
+  @Value("${cors.allowedExposeHeaders}")
+  private String allowedExposeHeaders;
+
   @Override
   public void addCorsMappings(CorsRegistry registry) {
     registry.addMapping("/**");
@@ -30,9 +33,10 @@ public class CorsConfig implements WebMvcConfigurer {
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.setAllowedOrigins(List.of(allowedOrigins));
-    configuration.setAllowedMethods(List.of(allowedMethods));
-    configuration.setAllowedHeaders(List.of(allowedHeaders));
+    configuration.setAllowedOrigins(Arrays.asList(allowedOrigins.split(",")));
+    configuration.setAllowedMethods(Arrays.asList(allowedMethods.split(",")));
+    configuration.setAllowedHeaders(Arrays.asList(allowedHeaders.split(",")));
+    configuration.setExposedHeaders(Arrays.asList(allowedExposeHeaders.split(",")));
     configuration.setAllowCredentials(true);
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", configuration);

@@ -1,5 +1,7 @@
 export com.zl.mjga.user.domain.model.User
     -> package com.zl.mjga.user
+import jakarta.validation.constraints.NotEmpty
+import jakarta.validation.constraints.NotNull
 
 UserRolePermissionView {
     #allScalars(this)
@@ -9,6 +11,16 @@ UserRolePermissionView {
              #allScalars(this)
         }
     }
+}
+
+input UpdateUserInput {
+    id
+    @NotEmpty
+    username
+    @NotEmpty
+    password
+    @NotNull
+    enable
 }
 
 input UserRoleShortInput {

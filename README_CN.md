@@ -72,7 +72,7 @@ ${projectRoot}/gradlew bootRun
 ./gradlew build
 # output ->
 # projectRootDir/build/generated/sources/annotationProcessor/java/main
-# └── your.package 
+# └── your.package
 #    ├── model -> model artifact
 #    └── dto -> dto artifact
 

@@ -19,7 +19,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 public class AbstractSpringModularTest {
 
   public static PostgreSQLContainer<?> postgres =
-      new PostgreSQLContainer<>("postgres:17.2-alpine").withDatabaseName("mjga");
+      new PostgreSQLContainer<>("postgres:17.3-alpine").withDatabaseName("mjga");
 
   @DynamicPropertySource
   static void postgresProperties(DynamicPropertyRegistry registry) {

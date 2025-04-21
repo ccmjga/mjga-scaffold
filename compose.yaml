@@ -1,6 +1,6 @@
 services:
   database:
-    image: 'postgres:17.2'
+    image: 'postgres:17.3'
     container_name: database
     hostname: database
     environment:
@@ -30,6 +30,7 @@ services:
       ALLOWED_ORIGINS: ${ALLOWED_ORIGINS}
       ALLOWED_METHODS: ${ALLOWED_METHODS}
       ALLOWED_HEADERS: ${ALLOWED_HEADERS}
+      ALLOWED_EXPOSE_HEADERS: ${ALLOWED_EXPOSE_HEADERS}
     depends_on:
       - database
     ports:

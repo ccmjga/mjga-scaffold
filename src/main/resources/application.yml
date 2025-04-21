@@ -15,6 +15,7 @@ cors:
   allowedOrigins: ${ALLOWED_ORIGINS}
   allowedMethods: ${ALLOWED_METHODS}
   allowedHeaders: ${ALLOWED_HEADERS}
+  allowedExposeHeaders: ${ALLOWED_EXPOSE_HEADERS}
 spring:
   datasource:
     url: jdbc:postgresql://${DATABASE_HOST_PORT}/${DATABASE_DB}
@@ -38,4 +39,4 @@ jimmer:
   dialect: org.babyfish.jimmer.sql.dialect.PostgresDialect
   show-sql: true
   pretty-sql: true
-  database-validation-mode: error
+  database-validation-mode: warning

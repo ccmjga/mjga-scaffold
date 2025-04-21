@@ -1,15 +1,15 @@
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
-val testcontainersVersion by extra("1.20.4")
-val flywayVersion by extra("11.1.0")
-val jimmerVersion by extra("0.9.59")
-var springModulith by extra("1.3.2")
+val testcontainersVersion by extra("1.20.6")
+val flywayVersion by extra("11.7.2")
+val jimmerVersion by extra("0.9.75")
+var springModulith by extra("1.3.4")
 
 plugins {
     java
     `java-library`
     jacoco
-    id("org.springframework.boot") version "3.3.8"
+    id("org.springframework.boot") version "3.3.9"
     id("io.spring.dependency-management") version "1.1.7"
     id("pmd")
     id("com.diffplug.spotless") version "7.0.2"
@@ -47,7 +47,7 @@ dependencies {
     implementation("com.auth0:java-jwt:4.4.0")
     implementation("org.flywaydb:flyway-core:$flywayVersion")
     implementation("org.flywaydb:flyway-database-postgresql:$flywayVersion")
-    implementation("com.github.ben-manes.caffeine:caffeine:3.1.8")
+    implementation("com.github.ben-manes.caffeine:caffeine:3.2.0")
     implementation("org.babyfish.jimmer:jimmer-spring-boot-starter:$jimmerVersion")
     annotationProcessor("org.babyfish.jimmer:jimmer-apt:$jimmerVersion")
     testImplementation("org.testcontainers:junit-jupiter:$testcontainersVersion")
@@ -104,7 +104,7 @@ spotless {
     }
 
     java {
-        googleJavaFormat("1.25.2").reflowLongStrings()
+        googleJavaFormat("1.26.0").reflowLongStrings()
         formatAnnotations()
     }
 

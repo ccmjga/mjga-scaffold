@@ -13,7 +13,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.babyfish.jimmer.sql.JSqlClient;
 import org.babyfish.jimmer.sql.ast.mutation.SimpleSaveResult;
+import org.babyfish.jimmer.sql.fetcher.Fetcher;
 import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,6 +28,12 @@ public class UserDomainService implements UserDomainApi {
   private final RoleRepository roleRepository;
 
   private final JSqlClient sqlClient;
+
+  @Override
+  public User queryUniqueUserRolePermissionBy(
+      @Nullable Fetcher<User> fetcher, @NotNull UserQueryDto userQueryDto) {
+    return userAggregateRepository.fetchUniqueUserBy(fetcher, userQueryDto);
+  }
 
   @Override
   public UserRolePermissionView queryUniqueUserRolePermissionBy(

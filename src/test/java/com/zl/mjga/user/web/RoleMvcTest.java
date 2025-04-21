@@ -72,7 +72,7 @@ public class RoleMvcTest {
             post("/roles/upsert")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(
-                    """
+"""
                     {
                       "code": "code_b15da84c8f1d",
                       "name": "name_b15da84c8f1d",

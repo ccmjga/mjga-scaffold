@@ -81,6 +81,50 @@ public class UserDomainServiceTest {
   }
 
   @Test
+  public void queryUniqueUserRolePermissionBy_withSpecifyShapeFetch_shouldReturnEntity() {
+    UserFetcher fetcher =
+        Fetchers.USER_FETCHER
+            .allScalarFields()
+            .roles(
+                Fetchers.ROLE_FETCHER
+                    .allScalarFields()
+                    .permissions(Fetchers.PERMISSION_FETCHER.allScalarFields()));
+    User mockUser =
+        UserDraft.$.produce(
+            draft -> {
+              draft.setId(1L);
+              draft.setUsername("username");
+              draft.setPassword("password");
+              draft.setCreateTime(OffsetDateTime.now().toLocalDateTime());
+              draft.setEnable(true);
+              Role role =
+                  RoleDraft.$.produce(
+                      roleDraft -> {
+                        roleDraft.setId(10L);
+                        roleDraft.setCode("code");
+                        roleDraft.setName("name");
+                        roleDraft.setPermissions(
+                            List.of(
+                                PermissionDraft.$.produce(
+                                    permission -> {
+                                      permission.setId(100L);
+                                      permission.setCode("code");
+                                      permission.setName("name");
+                                    })));
+                      });
+              draft.setRoles(List.of(role));
+            });
+    UserQueryDto mockUserQueryDto = new UserQueryDto(1L, "");
+    when(userAggregateRepository.fetchUniqueUserBy(fetcher, mockUserQueryDto)).thenReturn(mockUser);
+    User user = userDomainService.queryUniqueUserRolePermissionBy(fetcher, mockUserQueryDto);
+    Assertions.assertThat(user).isNotNull();
+    Assertions.assertThat(user.id()).isEqualTo(1L);
+    Assertions.assertThat(user.roles().size()).isEqualTo(1);
+    Assertions.assertThat(user.roles().get(0).id()).isEqualTo(10L);
+    Assertions.assertThat(user.roles().get(0).permissions().get(0).id()).isEqualTo(100L);
+  }
+
+  @Test
   public void addGeneralUser_withValidUserShortInput_shouldSuccessAndReturnUserId() {
     UserRoleShortInput mockInput =
         new UserRoleShortInput.Builder().username("username").password("password").build();
