@@ -22,10 +22,7 @@ import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Result;
 import org.jooq.SQLDialect;
-import org.jooq.generated.mjga.tables.pojos.Permission;
-import org.jooq.generated.mjga.tables.pojos.Role;
-import org.jooq.generated.mjga.tables.pojos.RolePermissionMap;
-import org.jooq.generated.mjga.tables.pojos.UserRoleMap;
+import org.jooq.generated.mjga.tables.pojos.*;
 import org.jooq.impl.DSL;
 import org.jooq.tools.jdbc.MockConnection;
 import org.jooq.tools.jdbc.MockDataProvider;
@@ -39,6 +36,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.BeanUtils;
 
 @ExtendWith(MockitoExtension.class)
 class UserRolePermissionUnitTest {
@@ -243,11 +241,9 @@ class UserRolePermissionUnitTest {
   void pageQueryRole_givenUserId_shouldReturnRelevantRolePermissionDto() {
     // arrange
     UserRoleMap stubUserRoleMap = new UserRoleMap();
-    stubUserRoleMap.setId(1L);
     stubUserRoleMap.setUserId(1L);
     stubUserRoleMap.setRoleId(1L);
     UserRoleMap stubUserRoleMap2 = new UserRoleMap();
-    stubUserRoleMap2.setId(2L);
     stubUserRoleMap2.setUserId(1L);
     stubUserRoleMap2.setRoleId(2L);
     when(userRoleMapRepository.fetchByUserId(any(Long.class)))
@@ -321,11 +317,9 @@ class UserRolePermissionUnitTest {
   @Test
   void pageQueryPermission_givenRoleId_shouldReturnPermissionDto() {
     RolePermissionMap stubRolePermissionMap = new RolePermissionMap();
-    stubRolePermissionMap.setId(1L);
     stubRolePermissionMap.setRoleId(1L);
     stubRolePermissionMap.setPermissionId(1L);
     RolePermissionMap stubRolePermissionMap2 = new RolePermissionMap();
-    stubRolePermissionMap2.setId(2L);
     stubRolePermissionMap2.setRoleId(1L);
     stubRolePermissionMap2.setPermissionId(2L);
 
@@ -476,5 +470,138 @@ class UserRolePermissionUnitTest {
     userRolePermissionService.bindPermissionToRole(stubRoleId, new ArrayList<>());
     verify(rolePermissionMapRepository, times(1)).deleteByRoleId(anyLong());
     verify(rolePermissionMapRepository, times(0)).insert(Mockito.eq(new ArrayList<>()));
+  }
+
+  @Test
+  void upsertUser_whenGivenUserDtoWithOutId_shouldCreatUser() {
+    UserUpsertDto userUpsertDto = new UserUpsertDto();
+    userUpsertDto.setUsername("username");
+    userUpsertDto.setPassword("password");
+    userUpsertDto.setEnable(true);
+    User mockUser = new User();
+    BeanUtils.copyProperties(userUpsertDto, mockUser);
+    when(userRolePermissionService.isUsernameDuplicate(userUpsertDto.getUsername()))
+        .thenReturn(false);
+    userRolePermissionService.upsertUser(userUpsertDto);
+    verify(userRepository, times(1)).insert(mockUser);
+  }
+
+  @Test
+  void upsertUser_whenGivenUserDtoWithId_shouldUpdateUser() {
+    UserUpsertDto userUpsertDto = new UserUpsertDto();
+    userUpsertDto.setId(1L);
+    userUpsertDto.setUsername("username");
+    userUpsertDto.setPassword("password");
+    userUpsertDto.setEnable(true);
+    User mockUser = new User();
+    BeanUtils.copyProperties(userUpsertDto, mockUser);
+    userRolePermissionService.upsertUser(userUpsertDto);
+    verify(userRepository, times(1)).update(mockUser);
+  }
+
+  @Test
+  void upsertUser_whenGivenUserDtoWithDuplicateUsername_shouldRunError() {
+    UserUpsertDto userUpsertDto = new UserUpsertDto();
+    userUpsertDto.setUsername("username");
+    userUpsertDto.setPassword("password");
+    userUpsertDto.setEnable(true);
+    when(userRolePermissionService.isUsernameDuplicate(userUpsertDto.getUsername()))
+        .thenReturn(true);
+    assertThatThrownBy(() -> userRolePermissionService.upsertUser(userUpsertDto))
+        .isInstanceOf(BusinessException.class);
+  }
+
+  @Test
+  void upsertRole_whenGivenRoleDtoWithOutId_shouldCreateRole() {
+    RoleUpsertDto roleUpsertDto = new RoleUpsertDto();
+    roleUpsertDto.setCode("ROLE_ADMIN");
+    roleUpsertDto.setName("Admin Role");
+
+    Role mockRole = new Role();
+    BeanUtils.copyProperties(roleUpsertDto, mockRole);
+
+    when(userRolePermissionService.isRoleDuplicate(
+            roleUpsertDto.getCode(), roleUpsertDto.getName()))
+        .thenReturn(false);
+
+    userRolePermissionService.upsertRole(roleUpsertDto);
+
+    verify(roleRepository, times(1)).insert(mockRole);
+  }
+
+  @Test
+  void upsertRole_whenGivenRoleDtoWithId_shouldUpdateRole() {
+    RoleUpsertDto roleUpsertDto = new RoleUpsertDto();
+    roleUpsertDto.setId(1L);
+    roleUpsertDto.setCode("ROLE_ADMIN");
+    roleUpsertDto.setName("Admin Role");
+
+    Role mockRole = new Role();
+    BeanUtils.copyProperties(roleUpsertDto, mockRole);
+
+    userRolePermissionService.upsertRole(roleUpsertDto);
+
+    verify(roleRepository, times(1)).update(mockRole);
+  }
+
+  @Test
+  void upsertRole_whenGivenRoleDtoWithDuplicateCodeOrName_shouldRunError() {
+    RoleUpsertDto roleUpsertDto = new RoleUpsertDto();
+    roleUpsertDto.setCode("ROLE_ADMIN");
+    roleUpsertDto.setName("Admin Role");
+
+    when(userRolePermissionService.isRoleDuplicate(
+            roleUpsertDto.getCode(), roleUpsertDto.getName()))
+        .thenReturn(true);
+
+    assertThatThrownBy(() -> userRolePermissionService.upsertRole(roleUpsertDto))
+        .isInstanceOf(BusinessException.class);
+  }
+
+  @Test
+  void upsertPermission_whenGivenPermissionDtoWithOutId_shouldCreatePermission() {
+    PermissionUpsertDto permissionUpsertDto = new PermissionUpsertDto();
+    permissionUpsertDto.setCode("PERM_READ");
+    permissionUpsertDto.setName("Read Permission");
+
+    Permission mockPermission = new Permission();
+    BeanUtils.copyProperties(permissionUpsertDto, mockPermission);
+
+    when(userRolePermissionService.isPermissionDuplicate(
+            permissionUpsertDto.getCode(), permissionUpsertDto.getName()))
+        .thenReturn(false);
+
+    userRolePermissionService.upsertPermission(permissionUpsertDto);
+
+    verify(permissionRepository, times(1)).insert(mockPermission);
+  }
+
+  @Test
+  void upsertPermission_whenGivenPermissionDtoWithId_shouldUpdatePermission() {
+    PermissionUpsertDto permissionUpsertDto = new PermissionUpsertDto();
+    permissionUpsertDto.setId(1L);
+    permissionUpsertDto.setCode("PERM_READ");
+    permissionUpsertDto.setName("Read Permission");
+
+    Permission mockPermission = new Permission();
+    BeanUtils.copyProperties(permissionUpsertDto, mockPermission);
+
+    userRolePermissionService.upsertPermission(permissionUpsertDto);
+
+    verify(permissionRepository, times(1)).update(mockPermission);
+  }
+
+  @Test
+  void upsertPermission_whenGivenPermissionDtoWithDuplicateCodeOrName_shouldRunError() {
+    PermissionUpsertDto permissionUpsertDto = new PermissionUpsertDto();
+    permissionUpsertDto.setCode("PERM_READ");
+    permissionUpsertDto.setName("Read Permission");
+
+    when(userRolePermissionService.isPermissionDuplicate(
+            permissionUpsertDto.getCode(), permissionUpsertDto.getName()))
+        .thenReturn(true);
+
+    assertThatThrownBy(() -> userRolePermissionService.upsertPermission(permissionUpsertDto))
+        .isInstanceOf(BusinessException.class);
   }
 }

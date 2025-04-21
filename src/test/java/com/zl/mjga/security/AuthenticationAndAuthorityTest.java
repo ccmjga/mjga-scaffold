@@ -14,6 +14,8 @@ import com.zl.mjga.controller.SignController;
 import com.zl.mjga.controller.UserRolePermissionController;
 import com.zl.mjga.dto.sign.SignInDto;
 import com.zl.mjga.model.urp.EPermission;
+import com.zl.mjga.repository.RoleRepository;
+import com.zl.mjga.repository.UserRepository;
 import com.zl.mjga.service.SignService;
 import com.zl.mjga.service.UserRolePermissionService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -42,6 +44,9 @@ public class AuthenticationAndAuthorityTest {
   @MockBean private UserDetailsServiceImpl userDetailsService;
 
   @MockBean private UserRolePermissionService userRolePermissionService;
+
+  @MockBean private UserRepository userRepository;
+  @MockBean private RoleRepository roleRepository;
 
   @Test
   public void givenRequestOnPublicService_shouldSucceedWith200() throws Exception {
@@ -79,7 +84,7 @@ public class AuthenticationAndAuthorityTest {
     // Act and Assert
     mockMvc
         .perform(
-            post("/urp/role/1/bind-permission")
+            post("/urp/roles/1/bind-permission")
                 .with(csrf())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
@@ -105,7 +110,7 @@ public class AuthenticationAndAuthorityTest {
     // Act and Assert
     mockMvc
         .perform(
-            post("/urp/role/1/bind-permission")
+            post("/urp/roles/1/bind-permission")
                 .with(csrf())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(

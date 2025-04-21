@@ -19,6 +19,7 @@ import org.jooq.Record;
 import org.jooq.Result;
 import org.jooq.generated.mjga.tables.pojos.*;
 import org.jspecify.annotations.Nullable;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,6 +33,48 @@ public class UserRolePermissionService {
   private final UserRoleMapRepository userRoleMapRepository;
   private final PermissionRepository permissionRepository;
   private final RolePermissionMapRepository rolePermissionMapRepository;
+
+  public void upsertUser(UserUpsertDto userUpsertDto) {
+    User user = new User();
+    BeanUtils.copyProperties(userUpsertDto, user);
+    if (user.getId() == null) {
+      if (isUsernameDuplicate(user.getUsername())) {
+        throw new BusinessException(
+            String.format("username %s already exist", userUpsertDto.getUsername()));
+      }
+      userRepository.insert(user);
+    } else {
+      userRepository.update(user);
+    }
+  }
+
+  public void upsertRole(RoleUpsertDto roleUpsertDto) {
+    Role role = new Role();
+    BeanUtils.copyProperties(roleUpsertDto, role);
+    if (role.getId() == null) {
+      if (isRoleDuplicate(roleUpsertDto.getCode(), roleUpsertDto.getName())) {
+        throw new BusinessException(
+            String.format("role %s already exist", roleUpsertDto.getName()));
+      }
+      roleRepository.insert(role);
+    } else {
+      roleRepository.update(role);
+    }
+  }
+
+  public void upsertPermission(PermissionUpsertDto permissionUpsertDto) {
+    Permission permission = new Permission();
+    BeanUtils.copyProperties(permissionUpsertDto, permission);
+    if (permission.getId() == null) {
+      if (isPermissionDuplicate(permissionUpsertDto.getCode(), permissionUpsertDto.getName())) {
+        throw new BusinessException(
+            String.format("permission %s already exist", permissionUpsertDto.getName()));
+      }
+      permissionRepository.insert(permission);
+    } else {
+      permissionRepository.update(permission);
+    }
+  }
 
   public PageResponseDto<List<UserRolePermissionDto>> pageQueryUser(
       PageRequestDto pageRequestDto, UserQueryDto userQueryDto) {
@@ -193,5 +236,19 @@ public class UserRolePermissionService {
     roleDto.setCode(roleResult.get(0).getValue(ROLE.CODE));
     roleDto.setName(roleResult.get(0).getValue(ROLE.NAME));
     return roleDto;
+  }
+
+  public boolean isRoleDuplicate(String roleCode, String name) {
+    return roleRepository.fetchOneByCode(roleCode) != null
+        || roleRepository.fetchOneByName(name) != null;
+  }
+
+  public boolean isUsernameDuplicate(String username) {
+    return userRepository.fetchOneByUsername(username) != null;
+  }
+
+  public boolean isPermissionDuplicate(String code, String name) {
+    return permissionRepository.fetchOneByCode(code) != null
+        || permissionRepository.fetchOneByName(name) != null;
   }
 }
