@@ -149,7 +149,7 @@ public class UserRolePermissionService {
     }
     List<PermissionDto> permissionDtoList =
         permissionRecords.into(Permission.class).stream()
-            .map(pojo -> new PermissionDto(pojo.getId(), pojo.getName(), pojo.getCode()))
+            .map(pojo -> new PermissionDto(pojo.getId(), pojo.getCode(), pojo.getName()))
             .toList();
     return new PageResponseDto<>(
         permissionRecords.get(0).getValue("total_permission", Integer.class), permissionDtoList);
