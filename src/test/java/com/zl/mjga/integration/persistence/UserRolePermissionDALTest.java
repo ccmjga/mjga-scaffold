@@ -9,6 +9,7 @@ import com.zl.mjga.dto.PageRequestDto;
 import com.zl.mjga.dto.urp.PermissionQueryDto;
 import com.zl.mjga.dto.urp.RoleQueryDto;
 import com.zl.mjga.dto.urp.UserQueryDto;
+import com.zl.mjga.dto.urp.UserRolePermissionDto;
 import com.zl.mjga.repository.*;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -75,8 +76,8 @@ public class UserRolePermissionDALTest extends AbstractDataAccessLayerTest {
         "INSERT INTO mjga.user_role_map (user_id, role_id) VALUES (2, 2)",
         "INSERT INTO mjga.role_permission_map (role_id, permission_id) VALUES (2, 2)",
       })
-  void user_fetchUniqueUserWithRolePermissionBy() {
-    Result<Record> records = userRepository.fetchUniqueUserWithRolePermissionBy(1L);
+  void getUserFlatBy() {
+    Result<Record> records = userRepository.getUserFlatBy(1L);
     assertThat(records.size()).isEqualTo(2);
     assertThat(records.get(0).get(USER.USERNAME)).isEqualTo("testUserA");
     assertThat(records.get(1).get(USER.USERNAME)).isEqualTo("testUserA");
@@ -91,12 +92,45 @@ public class UserRolePermissionDALTest extends AbstractDataAccessLayerTest {
   @Test
   @Sql(
       statements = {
+        "INSERT INTO mjga.user (id, username, password) VALUES (1, 'testUserA','5EUX1AIlV09n2o')",
+        "INSERT INTO mjga.user (id, username,password) VALUES (2, 'testUserB','NTjRCeUq2EqCy')",
+        "INSERT INTO mjga.role (id, code, name) VALUES (1, 'testRoleA', 'testRoleA')",
+        "INSERT INTO mjga.role (id, code, name) VALUES (2, 'testRoleB', 'testRoleB')",
+        "INSERT INTO mjga.permission (id, code, name) VALUES (1, 'testPermissionA',"
+            + " 'testPermissionA')",
+        "INSERT INTO mjga.permission (id, code, name) VALUES (2, 'testPermissionB',"
+            + " 'testPermissionB')",
+        "INSERT INTO mjga.user_role_map (user_id, role_id) VALUES (1, 1)",
+        "INSERT INTO mjga.role_permission_map (role_id, permission_id) VALUES (1, 1)",
+        "INSERT INTO mjga.role_permission_map (role_id, permission_id) VALUES (1, 2)",
+        "INSERT INTO mjga.user_role_map (user_id, role_id) VALUES (2, 2)",
+        "INSERT INTO mjga.role_permission_map (role_id, permission_id) VALUES (2, 2)",
+      })
+  void pageFetchUserAggBy() {
+    PageRequestDto pageRequestDto = new PageRequestDto();
+    pageRequestDto.setPage(0);
+    pageRequestDto.setSize(10);
+    Result<Record> records = userRepository.pageFetchUserAggBy(pageRequestDto, new UserQueryDto());
+    assertThat(records.size()).isEqualTo(2);
+    assertThat(records.get(0).get(USER.USERNAME)).isEqualTo("testUserA");
+    assertThat(records.get(1).get(USER.USERNAME)).isEqualTo("testUserB");
+    assertThat(records.get(0).get("roles", List.class).size()).isEqualTo(2);
+    List<UserRolePermissionDto> result = records.into(UserRolePermissionDto.class);
+    assertThat(result.get(0).getRoles().get(0).getName()).isEqualTo("testRoleA");
+    assertThat(result.get(0).getRoles().get(1).getName()).isEqualTo("testRoleB");
+    assertThat(result.get(0).getRoles().get(0).getPermissions().get(0).getName())
+        .isEqualTo("testPermissionA");
+  }
+
+  @Test
+  @Sql(
+      statements = {
         "INSERT INTO mjga.user (id, username, password) VALUES (1, 'testA','5EUX1AIlV09n2o')",
         "INSERT INTO mjga.user (id, username,password) VALUES (2, 'testB','NTjRCeUq2EqCy')",
       })
   void user_pageFetchBy() {
     UserQueryDto rbacQueryDto = new UserQueryDto("test");
-    Result<Record> records = userRepository.pageFetchBy(PageRequestDto.of(0, 10), rbacQueryDto);
+    Result<Record> records = userRepository.pageFetchUserBy(PageRequestDto.of(0, 10), rbacQueryDto);
     assertThat(records.size()).isEqualTo(2);
 
     assertThat(records.get(0).get(USER.ID)).isEqualTo(1);
@@ -138,21 +172,22 @@ public class UserRolePermissionDALTest extends AbstractDataAccessLayerTest {
   void role_pageFetchBy() {
     RoleQueryDto roleQueryDto = new RoleQueryDto();
     roleQueryDto.setRoleName("testRole");
-    Result<Record> records = roleRepository.pageFetchBy(PageRequestDto.of(0, 10), roleQueryDto);
+    Result<Record> records =
+        roleRepository.pageFetchRolesBy(PageRequestDto.of(0, 10), roleQueryDto);
     assertThat(records.get(0).getValue("total_role")).isEqualTo(2);
     assertThat(records.get(0).getValue(ROLE.NAME)).isEqualTo("testRoleA");
     assertThat(records.get(1).getValue(ROLE.NAME)).isEqualTo("testRoleB");
 
     roleQueryDto = new RoleQueryDto();
     roleQueryDto.setRoleCode("testRoleA");
-    records = roleRepository.pageFetchBy(PageRequestDto.of(0, 10), roleQueryDto);
+    records = roleRepository.pageFetchRolesBy(PageRequestDto.of(0, 10), roleQueryDto);
     assertThat(records.get(0).getValue("total_role")).isEqualTo(1);
     assertThat(records.get(0).getValue(ROLE.NAME)).isEqualTo("testRoleA");
 
     roleQueryDto = new RoleQueryDto();
     roleQueryDto.setRoleName("test");
     roleQueryDto.setRoleCode("testRoleA");
-    records = roleRepository.pageFetchBy(PageRequestDto.of(0, 10), roleQueryDto);
+    records = roleRepository.pageFetchRolesBy(PageRequestDto.of(0, 10), roleQueryDto);
     assertThat(records.get(0).getValue("total_role")).isEqualTo(1);
     assertThat(records.get(0).getValue(ROLE.NAME)).isEqualTo("testRoleA");
   }
@@ -171,7 +206,7 @@ public class UserRolePermissionDALTest extends AbstractDataAccessLayerTest {
         "INSERT INTO mjga.role_permission_map (role_id, permission_id) VALUES (2, 2)",
       })
   void role_fetchUniqueRoleWithPermission() {
-    Result<Record> records = roleRepository.fetchUniqueRoleWithPermission(1L);
+    Result<Record> records = roleRepository.getRoleAggBy(1L);
     assertThat(records.size()).isEqualTo(2L);
     assertThat(records.get(0).getValue(ROLE.NAME)).isEqualTo("testRoleA");
     assertThat(records.get(1).getValue(ROLE.NAME)).isEqualTo("testRoleA");
@@ -208,7 +243,7 @@ public class UserRolePermissionDALTest extends AbstractDataAccessLayerTest {
     permissionQueryDto.setPermissionIdList(List.of(1L));
 
     Result<Record> records =
-        permissionRepository.pageFetchBy(PageRequestDto.of(0, 10), permissionQueryDto);
+        permissionRepository.pageFetchPermissionBy(PageRequestDto.of(0, 10), permissionQueryDto);
     assertThat(records.get(0).getValue("total_permission")).isEqualTo(1);
     assertThat(records.get(0).getValue(PERMISSION.NAME)).isEqualTo("testPermissionA");
   }

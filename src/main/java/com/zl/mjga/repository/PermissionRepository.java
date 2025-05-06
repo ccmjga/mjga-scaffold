@@ -26,7 +26,7 @@ public class PermissionRepository extends PermissionDao {
     super(configuration);
   }
 
-  public Result<Record> pageFetchBy(
+  public Result<Record> pageFetchPermissionBy(
       PageRequestDto pageRequestDto, PermissionQueryDto permissionQueryDto) {
     return ctx()
         .select(asterisk(), DSL.count().over().as("total_permission"))

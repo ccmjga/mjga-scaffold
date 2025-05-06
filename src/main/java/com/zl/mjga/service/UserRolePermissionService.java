@@ -1,9 +1,5 @@
 package com.zl.mjga.service;
 
-import static org.jooq.generated.mjga.tables.Permission.PERMISSION;
-import static org.jooq.generated.mjga.tables.Role.ROLE;
-import static org.jooq.generated.mjga.tables.User.USER;
-
 import com.zl.mjga.dto.PageRequestDto;
 import com.zl.mjga.dto.PageResponseDto;
 import com.zl.mjga.dto.urp.*;
@@ -37,122 +33,56 @@ public class UserRolePermissionService {
   public void upsertUser(UserUpsertDto userUpsertDto) {
     User user = new User();
     BeanUtils.copyProperties(userUpsertDto, user);
-    if (user.getId() == null) {
-      if (isUsernameDuplicate(user.getUsername())) {
-        throw new BusinessException(
-            String.format("username %s already exist", userUpsertDto.getUsername()));
-      }
-      userRepository.insert(user);
-    } else {
-      userRepository.update(user);
-    }
+    userRepository.merge(user);
   }
 
   public void upsertRole(RoleUpsertDto roleUpsertDto) {
     Role role = new Role();
     BeanUtils.copyProperties(roleUpsertDto, role);
-    if (role.getId() == null) {
-      if (isRoleDuplicate(roleUpsertDto.getCode(), roleUpsertDto.getName())) {
-        throw new BusinessException(
-            String.format("role %s already exist", roleUpsertDto.getName()));
-      }
-      roleRepository.insert(role);
-    } else {
-      roleRepository.update(role);
-    }
+    roleRepository.merge(role);
   }
 
   public void upsertPermission(PermissionUpsertDto permissionUpsertDto) {
     Permission permission = new Permission();
     BeanUtils.copyProperties(permissionUpsertDto, permission);
-    if (permission.getId() == null) {
-      if (isPermissionDuplicate(permissionUpsertDto.getCode(), permissionUpsertDto.getName())) {
-        throw new BusinessException(
-            String.format("permission %s already exist", permissionUpsertDto.getName()));
-      }
-      permissionRepository.insert(permission);
-    } else {
-      permissionRepository.update(permission);
-    }
+    permissionRepository.merge(permission);
   }
 
-  public PageResponseDto<List<UserRolePermissionDto>> pageQueryUser(
+  public PageResponseDto<List<UserRolePermissionDto>> pageQueryUserAgg(
       PageRequestDto pageRequestDto, UserQueryDto userQueryDto) {
-    Result<Record> userRecords = userRepository.pageFetchBy(pageRequestDto, userQueryDto);
+    Result<Record> userRecords = userRepository.pageFetchUserAggBy(pageRequestDto, userQueryDto);
     if (userRecords.isEmpty()) {
       return PageResponseDto.empty();
     }
-    List<UserRolePermissionDto> userRolePermissionDtoList =
-        userRecords.stream()
-            .map((record) -> queryUniqueUserWithRolePermission(record.getValue(USER.ID)))
-            .toList();
+    List<UserRolePermissionDto> nestedUserAgg = userRecords.into(UserRolePermissionDto.class);
     return new PageResponseDto<>(
-        userRecords.get(0).getValue("total_user", Integer.class), userRolePermissionDtoList);
+        userRecords.get(0).getValue("total_user", Integer.class), nestedUserAgg);
   }
 
   public @Nullable UserRolePermissionDto queryUniqueUserWithRolePermission(Long userId) {
-    return userRepository.fetchUniqueUserDtoWithNestedRolePermissionBy(userId);
+    return userRepository.getUserAggDtoBy(userId);
   }
 
-  public PageResponseDto<List<RoleDto>> pageQueryRole(
+  public PageResponseDto<List<RoleDto>> pageQueryRoleAgg(
       PageRequestDto pageRequestDto, RoleQueryDto roleQueryDto) {
-    if (roleQueryDto.getUserId() != null) {
-      List<Long> roleIdList =
-          userRoleMapRepository.fetchByUserId(roleQueryDto.getUserId()).stream()
-              .map(UserRoleMap::getRoleId)
-              .toList();
-      if (roleIdList.isEmpty()) {
-        return PageResponseDto.empty();
-      } else {
-        roleQueryDto.setRoleIdList(roleIdList);
-      }
-    }
-    Result<Record> roleRecords = roleRepository.pageFetchBy(pageRequestDto, roleQueryDto);
+    Result<Record> roleRecords = roleRepository.pageFetchRoleAggBy(pageRequestDto, roleQueryDto);
     if (roleRecords.isEmpty()) {
       return PageResponseDto.empty();
     }
-    List<RoleDto> roleDtoList =
-        roleRecords.stream()
-            .map(record -> queryUniqueRoleWithPermission(record.getValue(ROLE.ID)))
-            .toList();
-    return new PageResponseDto<>(
-        roleRecords.get(0).getValue("total_role", Integer.class), roleDtoList);
-  }
-
-  public @Nullable RoleDto queryUniqueRoleWithPermission(Long roleId) {
-    Result<Record> roleWithPermissionRecords = roleRepository.fetchUniqueRoleWithPermission(roleId);
-    if (roleWithPermissionRecords.isEmpty()) {
-      return null;
-    }
-    RoleDto roleDto = createRbacDtoRolePart(roleWithPermissionRecords);
-    setCurrentRolePermission(roleDto, roleWithPermissionRecords);
-    return roleDto;
+    List<RoleDto> roleAgg = roleRecords.into(RoleDto.class);
+    return new PageResponseDto<>(roleRecords.get(0).getValue("total_role", Integer.class), roleAgg);
   }
 
   public PageResponseDto<List<PermissionDto>> pageQueryPermission(
       PageRequestDto pageRequestDto, PermissionQueryDto permissionQueryDto) {
-    if (permissionQueryDto.getRoleId() != null) {
-      List<Long> permissionIdList =
-          rolePermissionMapRepository.fetchByRoleId(permissionQueryDto.getRoleId()).stream()
-              .map(RolePermissionMap::getPermissionId)
-              .toList();
-      if (permissionIdList.isEmpty()) {
-        return PageResponseDto.empty();
-      } else {
-        permissionQueryDto.setPermissionIdList(permissionIdList);
-      }
-    }
     Result<Record> permissionRecords =
-        permissionRepository.pageFetchBy(pageRequestDto, permissionQueryDto);
+        permissionRepository.pageFetchPermissionBy(pageRequestDto, permissionQueryDto);
     if (permissionRecords.isEmpty()) {
       return PageResponseDto.empty();
     }
-    List<PermissionDto> permissionDtoList =
-        permissionRecords.into(Permission.class).stream()
-            .map(pojo -> new PermissionDto(pojo.getId(), pojo.getName(), pojo.getCode()))
-            .toList();
+    List<PermissionDto> permissions = permissionRecords.into(PermissionDto.class);
     return new PageResponseDto<>(
-        permissionRecords.get(0).getValue("total_permission", Integer.class), permissionDtoList);
+        permissionRecords.get(0).getValue("total_permission", Integer.class), permissions);
   }
 
   @Transactional(rollbackFor = Throwable.class)
@@ -210,32 +140,6 @@ public class UserRolePermissionService {
             .stream()
             .map(Role::getId)
             .toList());
-  }
-
-  private void setCurrentRolePermission(RoleDto roleDto, List<Record> roleResult) {
-    if (roleResult.get(0).getValue(PERMISSION.ID) != null) {
-      roleResult.forEach(
-          (record) -> {
-            PermissionDto permissionDto = createRbacDtoPermissionPart(record);
-            roleDto.getPermissions().add(permissionDto);
-          });
-    }
-  }
-
-  private PermissionDto createRbacDtoPermissionPart(Record record) {
-    PermissionDto permissionDto = new PermissionDto();
-    permissionDto.setId(record.getValue(PERMISSION.ID));
-    permissionDto.setCode(record.getValue(PERMISSION.CODE));
-    permissionDto.setName(record.getValue(PERMISSION.NAME));
-    return permissionDto;
-  }
-
-  private RoleDto createRbacDtoRolePart(List<Record> roleResult) {
-    RoleDto roleDto = new RoleDto();
-    roleDto.setId(roleResult.get(0).getValue(ROLE.ID));
-    roleDto.setCode(roleResult.get(0).getValue(ROLE.CODE));
-    roleDto.setName(roleResult.get(0).getValue(ROLE.NAME));
-    return roleDto;
   }
 
   public boolean isRoleDuplicate(String roleCode, String name) {

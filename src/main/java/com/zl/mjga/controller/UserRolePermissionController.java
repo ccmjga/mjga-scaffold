@@ -79,7 +79,7 @@ public class UserRolePermissionController {
   @ResponseStatus(HttpStatus.OK)
   PageResponseDto<List<UserRolePermissionDto>> queryUsers(
       @ModelAttribute PageRequestDto pageRequestDto, @ModelAttribute UserQueryDto userQueryDto) {
-    return userRolePermissionService.pageQueryUser(pageRequestDto, userQueryDto);
+    return userRolePermissionService.pageQueryUserAgg(pageRequestDto, userQueryDto);
   }
 
   @PreAuthorize("hasAuthority(T(com.zl.mjga.model.urp.EPermission).READ_USER_ROLE_PERMISSION)")
@@ -87,7 +87,7 @@ public class UserRolePermissionController {
   @ResponseStatus(HttpStatus.OK)
   PageResponseDto<List<RoleDto>> queryRoles(
       @ModelAttribute PageRequestDto pageRequestDto, @ModelAttribute RoleQueryDto roleQueryDto) {
-    return userRolePermissionService.pageQueryRole(pageRequestDto, roleQueryDto);
+    return userRolePermissionService.pageQueryRoleAgg(pageRequestDto, roleQueryDto);
   }
 
   @PreAuthorize("hasAuthority(T(com.zl.mjga.model.urp.EPermission).READ_USER_ROLE_PERMISSION)")

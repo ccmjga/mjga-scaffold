@@ -18,11 +18,10 @@ import com.zl.mjga.service.UserRolePermissionService;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import org.jooq.DSLContext;
+import org.jooq.*;
 import org.jooq.Record;
-import org.jooq.Result;
-import org.jooq.SQLDialect;
 import org.jooq.generated.mjga.tables.pojos.*;
+import org.jooq.generated.mjga.tables.pojos.Role;
 import org.jooq.impl.DSL;
 import org.jooq.tools.jdbc.MockConnection;
 import org.jooq.tools.jdbc.MockDataProvider;
@@ -36,7 +35,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.BeanUtils;
 
 @ExtendWith(MockitoExtension.class)
 class UserRolePermissionUnitTest {
@@ -66,11 +64,13 @@ class UserRolePermissionUnitTest {
   }
 
   @Test
-  void pageQueryUser_selected2UserShouldReturnUserRolePermissionAndTotal() {
+  void pageQueryUserAgg_whenSelected2UserAgg_ShouldReturn2UserNestedDto() {
     // arrange
     Long stubUserId1 = 1L;
-    String stubUserName1 = "yEJVEJBC2j9PGi";
-    String stubUserPassword1 = "c21W03p1201jCz";
+    Long stubPermissionId = 1L;
+
+    String stubPermissionName = "BNOz058K9EWE";
+    String stubPermissionCode = "BNOz058K9EWE";
 
     Long stubUserId2 = 2L;
     String stubUserName2 = "1jpziB82YUs3Jbh";
@@ -80,9 +80,23 @@ class UserRolePermissionUnitTest {
     String stubRoleName = "54X3UYRzx0wiy9";
     String stubRoleCode = "mzxN6WQA3AErI";
 
-    Long stubPermissionId = 1L;
-    String stubPermissionName = "BNOz058K9EWE";
-    String stubPermissionCode = "BNOz058K9EWE";
+    Record mockPermissionRecord =
+        dslContext
+            .newRecord(PERMISSION.ID, PERMISSION.CODE, PERMISSION.NAME)
+            .values(stubPermissionId, stubPermissionCode, stubPermissionName);
+    Result<Record> mockPermissionResult =
+        dslContext.newResult(List.of(PERMISSION.ID, PERMISSION.CODE, PERMISSION.NAME));
+    mockPermissionResult.add(mockPermissionRecord);
+
+    Record mockRoleRecord =
+        dslContext
+            .newRecord(ROLE.ID, ROLE.CODE, ROLE.NAME, DSL.field("permissions", Result.class))
+            .values(stubRoleId, stubRoleCode, stubRoleName, mockPermissionResult);
+
+    Result<Record> mockRoleResult =
+        dslContext.newResult(
+            List.of(ROLE.ID, ROLE.CODE, ROLE.NAME, DSL.field("permissions", Result.class)));
+    mockRoleResult.add(mockRoleRecord);
 
     Result<Record> mockResult =
         dslContext.newResult(
@@ -92,6 +106,7 @@ class UserRolePermissionUnitTest {
                 USER.PASSWORD,
                 USER.ENABLE,
                 USER.CREATE_TIME,
+                DSL.field("roles", Result.class),
                 DSL.field("total_user", Integer.class)));
     mockResult.add(
         dslContext
@@ -101,8 +116,9 @@ class UserRolePermissionUnitTest {
                 USER.PASSWORD,
                 USER.ENABLE,
                 USER.CREATE_TIME,
+                DSL.field("roles", Result.class),
                 DSL.field("total_user", Integer.class))
-            .values(stubUserId1, stubUserName2, stubUserPassword2, true, null, 2));
+            .values(stubUserId1, stubUserName2, stubUserPassword2, true, null, mockRoleResult, 2));
     mockResult.add(
         dslContext
             .newRecord(
@@ -111,48 +127,22 @@ class UserRolePermissionUnitTest {
                 USER.PASSWORD,
                 USER.ENABLE,
                 USER.CREATE_TIME,
+                DSL.field("roles", Result.class),
                 DSL.field("total_user", Integer.class))
-            .values(stubUserId2, stubUserName2, stubUserPassword2, true, null, 2));
-    UserRolePermissionDto mockUserRolePermissionDto1 = new UserRolePermissionDto();
-    RoleDto mockRoleDto = new RoleDto();
-    mockRoleDto.setId(stubRoleId);
-    mockRoleDto.setCode(stubRoleCode);
-    mockRoleDto.setName(stubRoleName);
-    PermissionDto permissionDto = new PermissionDto();
-    permissionDto.setId(stubPermissionId);
-    permissionDto.setCode(stubPermissionCode);
-    permissionDto.setName(stubPermissionName);
-    mockRoleDto.getPermissions().add(permissionDto);
-    mockUserRolePermissionDto1.setId(stubUserId1);
-    mockUserRolePermissionDto1.setUsername(stubUserName1);
-    mockUserRolePermissionDto1.setPassword(stubUserPassword1);
-    mockUserRolePermissionDto1.getRoles().add(mockRoleDto);
-
-    UserRolePermissionDto mockUserRolePermissionDto2 = new UserRolePermissionDto();
-    mockUserRolePermissionDto2.setId(stubUserId2);
-    mockUserRolePermissionDto2.setUsername(stubUserName2);
-    mockUserRolePermissionDto2.setPassword(stubUserPassword2);
-
-    doReturn(mockUserRolePermissionDto1)
-        .when(userRolePermissionService)
-        .queryUniqueUserWithRolePermission(stubUserId1);
-    doReturn(mockUserRolePermissionDto2)
-        .when(userRolePermissionService)
-        .queryUniqueUserWithRolePermission(stubUserId2);
-    when(userRepository.pageFetchBy(any(PageRequestDto.class), any(UserQueryDto.class)))
+            .values(stubUserId2, stubUserName2, stubUserPassword2, true, null, mockRoleResult, 2));
+    when(userRepository.pageFetchUserAggBy(any(PageRequestDto.class), any(UserQueryDto.class)))
         .thenReturn(mockResult);
 
     // action
     PageResponseDto<List<UserRolePermissionDto>> result =
-        userRolePermissionService.pageQueryUser(
+        userRolePermissionService.pageQueryUserAgg(
             PageRequestDto.of(0, 10), new UserQueryDto(stubUserName2));
-
     // assert
     List<UserRolePermissionDto> userRolePermissionDtoList = result.getData();
     assertThat(result.getTotal()).isEqualTo(2L);
     assertThat(userRolePermissionDtoList.size()).isEqualTo(2L);
     assertThat(userRolePermissionDtoList.get(0).getRoles().size()).isEqualTo(1L);
-    assertThat(userRolePermissionDtoList.get(1).getRoles().size()).isEqualTo(0L);
+    assertThat(userRolePermissionDtoList.get(1).getRoles().size()).isEqualTo(1L);
     assertThat(userRolePermissionDtoList.get(1).getUsername()).isEqualTo(stubUserName2);
     assertThat(userRolePermissionDtoList.get(0).getRoles().get(0).getName())
         .isEqualTo(stubRoleName);
@@ -171,10 +161,10 @@ class UserRolePermissionUnitTest {
                 USER.ENABLE,
                 USER.CREATE_TIME,
                 DSL.field("total_user", Integer.class)));
-    when(userRepository.pageFetchBy(any(PageRequestDto.class), any(UserQueryDto.class)))
+    when(userRepository.pageFetchUserAggBy(any(PageRequestDto.class), any(UserQueryDto.class)))
         .thenReturn(mockResult);
     PageResponseDto<List<UserRolePermissionDto>> result =
-        userRolePermissionService.pageQueryUser(
+        userRolePermissionService.pageQueryUserAgg(
             PageRequestDto.of(0, 10), new UserQueryDto("agydCO1Yi99a"));
     assertThat(result.getTotal()).isEqualTo(0);
     assertThat(result.getData()).isNull();
@@ -213,8 +203,7 @@ class UserRolePermissionUnitTest {
                     new PermissionDto(
                         stubPermissionId2, stubPermissionName2, stubPermissionCode2)))));
 
-    when(userRepository.fetchUniqueUserDtoWithNestedRolePermissionBy(stubUserId))
-        .thenReturn(mockResult);
+    when(userRepository.getUserAggDtoBy(stubUserId)).thenReturn(mockResult);
     UserRolePermissionDto userRolePermissionDto =
         userRolePermissionService.queryUniqueUserWithRolePermission(stubUserId);
     assertThat(userRolePermissionDto).isNotNull();
@@ -230,88 +219,10 @@ class UserRolePermissionUnitTest {
   @Test
   void queryUniqueUserWithRolePermission_whenUserNotFound_shouldReturnEmpty() {
     UserRolePermissionDto mockResult = null;
-    when(userRepository.fetchUniqueUserDtoWithNestedRolePermissionBy(anyLong()))
-        .thenReturn(mockResult);
+    when(userRepository.getUserAggDtoBy(anyLong())).thenReturn(mockResult);
     UserRolePermissionDto userRolePermissionDto =
         userRolePermissionService.queryUniqueUserWithRolePermission(1L);
     assertThat(userRolePermissionDto).isNull();
-  }
-
-  @Test
-  void pageQueryRole_givenUserId_shouldReturnRelevantRolePermissionDto() {
-    // arrange
-    UserRoleMap stubUserRoleMap = new UserRoleMap();
-    stubUserRoleMap.setUserId(1L);
-    stubUserRoleMap.setRoleId(1L);
-    UserRoleMap stubUserRoleMap2 = new UserRoleMap();
-    stubUserRoleMap2.setUserId(1L);
-    stubUserRoleMap2.setRoleId(2L);
-    when(userRoleMapRepository.fetchByUserId(any(Long.class)))
-        .thenReturn(List.of(stubUserRoleMap, stubUserRoleMap2));
-
-    Result<Record> mockRoleResult =
-        dslContext.newResult(
-            List.of(ROLE.ID, ROLE.NAME, ROLE.CODE, DSL.field("total_role", Integer.class)));
-    mockRoleResult.addAll(
-        List.of(
-            dslContext
-                .newRecord(ROLE.ID, ROLE.NAME, ROLE.CODE, DSL.field("total_role", Integer.class))
-                .values(1L, "G5N6Xkjg0i9UC4Vltv", "G5N6Xkjg0i9UC4Vltv", 2),
-            dslContext
-                .newRecord(ROLE.ID, ROLE.NAME, ROLE.CODE, DSL.field("total_role", Integer.class))
-                .values(2L, "JszWMfgI1HpN2hON90", "JszWMfgI1HpN2hON90", 2)));
-    when(roleRepository.pageFetchBy(any(PageRequestDto.class), any(RoleQueryDto.class)))
-        .thenReturn(mockRoleResult);
-
-    RoleDto mockRoleDto1 = new RoleDto();
-    mockRoleDto1.setId(1L);
-    mockRoleDto1.setName("ghe41YG2FSbc");
-    mockRoleDto1.setCode("ghe41YG2FSbc");
-    mockRoleDto1
-        .getPermissions()
-        .addAll(
-            List.of(
-                new PermissionDto(1L, "4QBYM93jI5c3jxuZW", "4QBYM93jI5c3jxuZW"),
-                new PermissionDto(2L, "r0he6iMMHBze", "r0he6iMMHBze")));
-    RoleDto mockRoleDto2 = new RoleDto();
-    mockRoleDto2.setId(2L);
-    mockRoleDto2.setName("AfRcdGk0zc15Lz2F");
-    mockRoleDto2.setCode("AfRcdGk0zc15Lz2F");
-    doReturn(mockRoleDto1).when(userRolePermissionService).queryUniqueRoleWithPermission(1L);
-    doReturn(mockRoleDto2).when(userRolePermissionService).queryUniqueRoleWithPermission(2L);
-
-    // action & assert
-    RoleQueryDto roleQueryDto = new RoleQueryDto();
-    roleQueryDto.setUserId(1L);
-    PageResponseDto<List<RoleDto>> pageResult =
-        userRolePermissionService.pageQueryRole(PageRequestDto.of(0, 5), roleQueryDto);
-
-    assertThat(pageResult.getTotal()).isEqualTo(2L);
-    List<RoleDto> roleResult = pageResult.getData();
-    assertThat(roleResult.size()).isEqualTo(2);
-    assertThat(roleResult.get(0).getId()).isEqualTo(1L);
-    assertThat(roleResult.get(1).getId()).isEqualTo(2L);
-    assertThat(roleResult.get(0).getPermissions().get(0).getId()).isEqualTo(1L);
-    assertThat(roleResult.get(1).getPermissions().size()).isEqualTo(0L);
-  }
-
-  @Test
-  void pageQueryRole_whenRoleNotFound_shouldReturnEmpty() {
-    Result<Record> mockRoleResult =
-        dslContext.newResult(
-            List.of(ROLE.ID, ROLE.NAME, ROLE.CODE, DSL.field("total_role", Integer.class)));
-    when(roleRepository.pageFetchBy(any(PageRequestDto.class), any(RoleQueryDto.class)))
-        .thenReturn(mockRoleResult);
-    RoleQueryDto roleQueryDto = new RoleQueryDto();
-    PageResponseDto<List<RoleDto>> pageResult =
-        userRolePermissionService.pageQueryRole(PageRequestDto.of(0, 5), roleQueryDto);
-    assertThat(pageResult.getTotal()).isEqualTo(0L);
-
-    roleQueryDto.setUserId(1L);
-    when(userRoleMapRepository.fetchByUserId(any(Long.class))).thenReturn(new ArrayList<>());
-    PageResponseDto<List<RoleDto>> pageResult2 =
-        userRolePermissionService.pageQueryRole(PageRequestDto.of(0, 5), roleQueryDto);
-    assertThat(pageResult2.getTotal()).isEqualTo(0L);
   }
 
   @Test
@@ -323,8 +234,6 @@ class UserRolePermissionUnitTest {
     stubRolePermissionMap2.setRoleId(1L);
     stubRolePermissionMap2.setPermissionId(2L);
 
-    when(rolePermissionMapRepository.fetchByRoleId(any(Long.class)))
-        .thenReturn(List.of(stubRolePermissionMap, stubRolePermissionMap2));
     Result<Record> mockRoleResult =
         dslContext.newResult(
             List.of(
@@ -348,7 +257,8 @@ class UserRolePermissionUnitTest {
                     PERMISSION.CODE,
                     DSL.field("total_permission", Integer.class))
                 .values(2L, "NHQED41jQQ4C1IgG", "NHQED41jQQ4C1IgG", 2)));
-    when(permissionRepository.pageFetchBy(any(PageRequestDto.class), any(PermissionQueryDto.class)))
+    when(permissionRepository.pageFetchPermissionBy(
+            any(PageRequestDto.class), any(PermissionQueryDto.class)))
         .thenReturn(mockRoleResult);
     PermissionQueryDto permissionQueryDto = new PermissionQueryDto();
     permissionQueryDto.setRoleId(1L);
@@ -369,7 +279,8 @@ class UserRolePermissionUnitTest {
                 PERMISSION.NAME,
                 PERMISSION.CODE,
                 DSL.field("total_permission", Integer.class)));
-    when(permissionRepository.pageFetchBy(any(PageRequestDto.class), any(PermissionQueryDto.class)))
+    when(permissionRepository.pageFetchPermissionBy(
+            any(PageRequestDto.class), any(PermissionQueryDto.class)))
         .thenReturn(mockRoleResult);
     PermissionQueryDto permissionQueryDto = new PermissionQueryDto();
     PageResponseDto<List<PermissionDto>> pageResult =
@@ -377,7 +288,6 @@ class UserRolePermissionUnitTest {
 
     assertThat(pageResult.getTotal()).isEqualTo(0L);
     permissionQueryDto.setRoleId(1L);
-    when(rolePermissionMapRepository.fetchByRoleId(any(Long.class))).thenReturn(new ArrayList<>());
     PageResponseDto<List<PermissionDto>> pageResult2 =
         userRolePermissionService.pageQueryPermission(PageRequestDto.of(0, 5), permissionQueryDto);
     assertThat(pageResult2.getTotal()).isEqualTo(0);
@@ -470,138 +380,5 @@ class UserRolePermissionUnitTest {
     userRolePermissionService.bindPermissionToRole(stubRoleId, new ArrayList<>());
     verify(rolePermissionMapRepository, times(1)).deleteByRoleId(anyLong());
     verify(rolePermissionMapRepository, times(0)).insert(Mockito.eq(new ArrayList<>()));
-  }
-
-  @Test
-  void upsertUser_whenGivenUserDtoWithOutId_shouldCreatUser() {
-    UserUpsertDto userUpsertDto = new UserUpsertDto();
-    userUpsertDto.setUsername("username");
-    userUpsertDto.setPassword("password");
-    userUpsertDto.setEnable(true);
-    User mockUser = new User();
-    BeanUtils.copyProperties(userUpsertDto, mockUser);
-    when(userRolePermissionService.isUsernameDuplicate(userUpsertDto.getUsername()))
-        .thenReturn(false);
-    userRolePermissionService.upsertUser(userUpsertDto);
-    verify(userRepository, times(1)).insert(mockUser);
-  }
-
-  @Test
-  void upsertUser_whenGivenUserDtoWithId_shouldUpdateUser() {
-    UserUpsertDto userUpsertDto = new UserUpsertDto();
-    userUpsertDto.setId(1L);
-    userUpsertDto.setUsername("username");
-    userUpsertDto.setPassword("password");
-    userUpsertDto.setEnable(true);
-    User mockUser = new User();
-    BeanUtils.copyProperties(userUpsertDto, mockUser);
-    userRolePermissionService.upsertUser(userUpsertDto);
-    verify(userRepository, times(1)).update(mockUser);
-  }
-
-  @Test
-  void upsertUser_whenGivenUserDtoWithDuplicateUsername_shouldRunError() {
-    UserUpsertDto userUpsertDto = new UserUpsertDto();
-    userUpsertDto.setUsername("username");
-    userUpsertDto.setPassword("password");
-    userUpsertDto.setEnable(true);
-    when(userRolePermissionService.isUsernameDuplicate(userUpsertDto.getUsername()))
-        .thenReturn(true);
-    assertThatThrownBy(() -> userRolePermissionService.upsertUser(userUpsertDto))
-        .isInstanceOf(BusinessException.class);
-  }
-
-  @Test
-  void upsertRole_whenGivenRoleDtoWithOutId_shouldCreateRole() {
-    RoleUpsertDto roleUpsertDto = new RoleUpsertDto();
-    roleUpsertDto.setCode("ROLE_ADMIN");
-    roleUpsertDto.setName("Admin Role");
-
-    Role mockRole = new Role();
-    BeanUtils.copyProperties(roleUpsertDto, mockRole);
-
-    when(userRolePermissionService.isRoleDuplicate(
-            roleUpsertDto.getCode(), roleUpsertDto.getName()))
-        .thenReturn(false);
-
-    userRolePermissionService.upsertRole(roleUpsertDto);
-
-    verify(roleRepository, times(1)).insert(mockRole);
-  }
-
-  @Test
-  void upsertRole_whenGivenRoleDtoWithId_shouldUpdateRole() {
-    RoleUpsertDto roleUpsertDto = new RoleUpsertDto();
-    roleUpsertDto.setId(1L);
-    roleUpsertDto.setCode("ROLE_ADMIN");
-    roleUpsertDto.setName("Admin Role");
-
-    Role mockRole = new Role();
-    BeanUtils.copyProperties(roleUpsertDto, mockRole);
-
-    userRolePermissionService.upsertRole(roleUpsertDto);
-
-    verify(roleRepository, times(1)).update(mockRole);
-  }
-
-  @Test
-  void upsertRole_whenGivenRoleDtoWithDuplicateCodeOrName_shouldRunError() {
-    RoleUpsertDto roleUpsertDto = new RoleUpsertDto();
-    roleUpsertDto.setCode("ROLE_ADMIN");
-    roleUpsertDto.setName("Admin Role");
-
-    when(userRolePermissionService.isRoleDuplicate(
-            roleUpsertDto.getCode(), roleUpsertDto.getName()))
-        .thenReturn(true);
-
-    assertThatThrownBy(() -> userRolePermissionService.upsertRole(roleUpsertDto))
-        .isInstanceOf(BusinessException.class);
-  }
-
-  @Test
-  void upsertPermission_whenGivenPermissionDtoWithOutId_shouldCreatePermission() {
-    PermissionUpsertDto permissionUpsertDto = new PermissionUpsertDto();
-    permissionUpsertDto.setCode("PERM_READ");
-    permissionUpsertDto.setName("Read Permission");
-
-    Permission mockPermission = new Permission();
-    BeanUtils.copyProperties(permissionUpsertDto, mockPermission);
-
-    when(userRolePermissionService.isPermissionDuplicate(
-            permissionUpsertDto.getCode(), permissionUpsertDto.getName()))
-        .thenReturn(false);
-
-    userRolePermissionService.upsertPermission(permissionUpsertDto);
-
-    verify(permissionRepository, times(1)).insert(mockPermission);
-  }
-
-  @Test
-  void upsertPermission_whenGivenPermissionDtoWithId_shouldUpdatePermission() {
-    PermissionUpsertDto permissionUpsertDto = new PermissionUpsertDto();
-    permissionUpsertDto.setId(1L);
-    permissionUpsertDto.setCode("PERM_READ");
-    permissionUpsertDto.setName("Read Permission");
-
-    Permission mockPermission = new Permission();
-    BeanUtils.copyProperties(permissionUpsertDto, mockPermission);
-
-    userRolePermissionService.upsertPermission(permissionUpsertDto);
-
-    verify(permissionRepository, times(1)).update(mockPermission);
-  }
-
-  @Test
-  void upsertPermission_whenGivenPermissionDtoWithDuplicateCodeOrName_shouldRunError() {
-    PermissionUpsertDto permissionUpsertDto = new PermissionUpsertDto();
-    permissionUpsertDto.setCode("PERM_READ");
-    permissionUpsertDto.setName("Read Permission");
-
-    when(userRolePermissionService.isPermissionDuplicate(
-            permissionUpsertDto.getCode(), permissionUpsertDto.getName()))
-        .thenReturn(true);
-
-    assertThatThrownBy(() -> userRolePermissionService.upsertPermission(permissionUpsertDto))
-        .isInstanceOf(BusinessException.class);
   }
 }

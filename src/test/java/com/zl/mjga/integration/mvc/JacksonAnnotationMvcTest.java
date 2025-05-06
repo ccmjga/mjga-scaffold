@@ -46,7 +46,7 @@ public class JacksonAnnotationMvcTest {
     stubUserRolePermissionDto.setId(1L);
     stubUserRolePermissionDto.setUsername(stubUsername);
     stubUserRolePermissionDto.setPassword(stubPassword);
-    when(userRolePermissionService.pageQueryUser(
+    when(userRolePermissionService.pageQueryUserAgg(
             PageRequestDto.of(0, 5), new UserQueryDto(stubUsername)))
         .thenReturn(new PageResponseDto<>(1, List.of(stubUserRolePermissionDto)));
     mockMvc
@@ -66,7 +66,7 @@ public class JacksonAnnotationMvcTest {
         OffsetDateTime.of(2023, 12, 2, 1, 1, 1, 0, OffsetDateTime.now().getOffset());
     UserRolePermissionDto stubUserRolePermissionDto = new UserRolePermissionDto();
     stubUserRolePermissionDto.setCreateTime(stubCreateDateTime);
-    when(userRolePermissionService.pageQueryUser(
+    when(userRolePermissionService.pageQueryUserAgg(
             any(PageRequestDto.class), any(UserQueryDto.class)))
         .thenReturn(new PageResponseDto<>(1, List.of(stubUserRolePermissionDto)));
     mockMvc

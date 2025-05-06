@@ -1,10 +1,7 @@
 package com.zl.mjga.repository;
 
-import static org.jooq.generated.mjga.tables.Permission.PERMISSION;
 import static org.jooq.generated.mjga.tables.Role.ROLE;
-import static org.jooq.generated.mjga.tables.RolePermissionMap.ROLE_PERMISSION_MAP;
-import static org.jooq.impl.DSL.asterisk;
-import static org.jooq.impl.DSL.noCondition;
+import static org.jooq.impl.DSL.*;
 
 import com.zl.mjga.dto.PageRequestDto;
 import com.zl.mjga.dto.urp.RoleQueryDto;
@@ -36,7 +33,35 @@ public class RoleRepository extends RoleDao {
     return ctx().selectFrom(ROLE).where(ROLE.ID.in(roleIdList)).fetchInto(Role.class);
   }
 
-  public Result<Record> pageFetchBy(PageRequestDto pageRequestDto, RoleQueryDto roleQueryDto) {
+  public Result<Record> pageFetchRoleAggBy(
+      PageRequestDto pageRequestDto, RoleQueryDto roleQueryDto) {
+    return ctx()
+        .select(
+            ROLE.asterisk(),
+            DSL.count(ROLE.ID).over().as("total_role"),
+            multiset(select(ROLE.permission().asterisk()).from(ROLE.permission())))
+        .from(ROLE)
+        .where(
+            CollectionUtils.isEmpty(roleQueryDto.getRoleIdList())
+                ? noCondition()
+                : ROLE.ID.in(roleQueryDto.getRoleIdList()))
+        .and(
+            roleQueryDto.getRoleId() == null ? noCondition() : ROLE.ID.eq(roleQueryDto.getRoleId()))
+        .and(
+            StringUtils.isEmpty(roleQueryDto.getRoleName())
+                ? noCondition()
+                : ROLE.NAME.like("%" + roleQueryDto.getRoleName() + "%"))
+        .and(
+            StringUtils.isEmpty(roleQueryDto.getRoleCode())
+                ? noCondition()
+                : ROLE.CODE.eq(roleQueryDto.getRoleCode()))
+        .orderBy(pageRequestDto.getSortFields())
+        .limit(pageRequestDto.getSize())
+        .offset(pageRequestDto.getOffset())
+        .fetch();
+  }
+
+  public Result<Record> pageFetchRolesBy(PageRequestDto pageRequestDto, RoleQueryDto roleQueryDto) {
     return ctx()
         .select(asterisk(), DSL.count(ROLE.ID).over().as("total_role"))
         .from(ROLE)
@@ -60,14 +85,11 @@ public class RoleRepository extends RoleDao {
         .fetch();
   }
 
-  public Result<Record> fetchUniqueRoleWithPermission(Long roleId) {
+  public Result<Record> getRoleAggBy(Long roleId) {
     return ctx()
-        .select(asterisk())
+        .select(ROLE.asterisk(), ROLE.permission().asterisk())
         .from(ROLE)
-        .leftJoin(ROLE_PERMISSION_MAP)
-        .on(ROLE.ID.eq(ROLE_PERMISSION_MAP.ROLE_ID))
-        .leftJoin(PERMISSION)
-        .on(ROLE_PERMISSION_MAP.PERMISSION_ID.eq(PERMISSION.ID))
+        .leftJoin(ROLE.permission())
         .where(ROLE.ID.eq(roleId))
         .orderBy(ROLE.ID)
         .fetch();

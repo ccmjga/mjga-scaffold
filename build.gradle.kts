@@ -1,6 +1,6 @@
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
-val jooqVersion by extra("3.19.18")
+val jooqVersion by extra("3.19.23")
 val testcontainersVersion by extra("1.20.6")
 val flywayVersion by extra("11.4.0")
 
@@ -12,7 +12,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.7"
     id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
     id("pmd")
-    id("org.jooq.jooq-codegen-gradle") version "3.19.18"
+    id("org.jooq.jooq-codegen-gradle") version "3.19.23"
     id("com.diffplug.spotless") version "7.0.2"
 }
 

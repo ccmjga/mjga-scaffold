@@ -43,7 +43,7 @@ public class SignE2ETest {
   void cleanUp() {
     User user = userRepository.fetchOneByUsername("test_5fab32c22a3e");
     userRoleMapRepository.deleteByUserId(user.getId());
-    userRepository.deleteByUsername("test_5fab32c22a3e");
+    userRepository.deleteUserBy("test_5fab32c22a3e");
   }
 
   @Test

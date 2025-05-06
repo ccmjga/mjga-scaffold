@@ -33,7 +33,7 @@ public class SortByDALTest extends AbstractDataAccessLayerTest {
       })
   void userPageFetchWithNoSort() {
     UserQueryDto rbacQueryDto = new UserQueryDto("test");
-    Result<Record> records = userRepository.pageFetchBy(PageRequestDto.of(0, 10), rbacQueryDto);
+    Result<Record> records = userRepository.pageFetchUserBy(PageRequestDto.of(0, 10), rbacQueryDto);
     assertThat(records.get(0).get(USER.ID)).isEqualTo(1);
     assertThat(records.get(1).get(USER.ID)).isEqualTo(2);
     assertThat(records.get(2).get(USER.ID)).isEqualTo(3);
@@ -52,7 +52,7 @@ public class SortByDALTest extends AbstractDataAccessLayerTest {
     HashMap<String, PageRequestDto.Direction> sortByIdDesc = new HashMap<>();
     sortByIdDesc.put("id", PageRequestDto.Direction.DESC);
     Result<Record> records =
-        userRepository.pageFetchBy(PageRequestDto.of(0, 10, sortByIdDesc), rbacQueryDto);
+        userRepository.pageFetchUserBy(PageRequestDto.of(0, 10, sortByIdDesc), rbacQueryDto);
     assertThat(records.get(0).get(USER.ID)).isEqualTo(4);
     assertThat(records.get(1).get(USER.ID)).isEqualTo(3);
     assertThat(records.get(2).get(USER.ID)).isEqualTo(2);
@@ -62,7 +62,7 @@ public class SortByDALTest extends AbstractDataAccessLayerTest {
     sortByPasswordAndId.put("password", PageRequestDto.Direction.DESC);
     sortByIdDesc.put("id", PageRequestDto.Direction.ASC);
     Result<Record> records2 =
-        userRepository.pageFetchBy(PageRequestDto.of(0, 10, sortByPasswordAndId), rbacQueryDto);
+        userRepository.pageFetchUserBy(PageRequestDto.of(0, 10, sortByPasswordAndId), rbacQueryDto);
     assertThat(records2.get(0).get(USER.ID)).isEqualTo(3);
     assertThat(records2.get(1).get(USER.ID)).isEqualTo(4);
     assertThat(records2.get(2).get(USER.ID)).isEqualTo(2);
