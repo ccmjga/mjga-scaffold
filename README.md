@@ -13,6 +13,11 @@
 
 >以模型、领域和模块为一等公民，围绕革命性的现代 ORM 构建基于 Docker 的 RESTful、无状态、云原生的领域驱动应用。
 
+# 帮助社区
+![qq](asset/qq.png)
+
+有问题可扫码入上面的 QQ 群
+
 # 🔥 Model First
 
 [Mjga](https://www.mjga.cc) 是一款全新设计的，基于云原生理念的打造的现代 Java Web 脚手架，它具备以下特点：
