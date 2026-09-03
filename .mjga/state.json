@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 2,
+  "mjgaVersion": "3.0.0",
+  "immutableVariant": "contractfirst-kotlin-postgresql-jimmer",
+  "rendererLineage": {
+    "id": "contract-authoring-kotlin",
+    "version": 1
+  },
+  "assets": [
+    {
+      "path": ".mjga/capabilities.json",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "d83f16f3feeb6a83aba9a1cfb7f590af8adfe889f517ab8f2189ee6b3ff4c3fe",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "build.gradle.kts",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "b56df7bcfe124998a9570fd5273e34498973aa77f60df0e330b11337eeceaa1f",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "clients/typescript/package-lock.json",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "11a8e23faaad61c9d73f0a7c8adc80ad9567aca5af03930bdc931fb5e27b83f5",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "clients/typescript/package.json",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "484c1e79e348cb17928483cf9e944b45e947fc97d43d333683ed7cb0d1df2ad8",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "clients/typescript/scripts/verify.mjs",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "b41d941433405fece508fb5ae1114785049f5a4a1fa3c5e6742306e4305d3b32",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "clients/typescript/src/index.ts",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "f3cf5290b71fb3b808299cf4ca24b981c44b527b454d231e0b122f21ead4582d",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "compose.yaml",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "4a4185094a278a0b92c41c3e75bfeebcec134ba150805b1a6c67f625b6a64172",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "contracts/events/versioned-domain-event.schema.json",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "3299458f172ececae70d21780804f2cf99559f4e8ab9230893585a0bbc87df6d",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "Dockerfile",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "11ccdee2fe7eaa87d952033b92097f1d61b19f40ec9179ba1a8bcc8a724b689d",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "gradle.lockfile",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "c7570e0a7eca3ee95816642b6ae5460636a3b9da8d902b128f78521c22d3b830",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "gradle.properties",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "eb8954d66722ff3701fbf49a23d8eb6c38fde38b0ed9b1d47da1e66605769784",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "gradle/verification-metadata.xml",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "d86d5860e03671167387e36d463de2f2aba319333afd51b6e5548ecb04c47e83",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.jar",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "7a9ce74cff467ca1bf60a4fcd9f05185acceda4d0f382434d393e17864262c5d",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.properties",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "d0bebe8133babb74ab29a31ee6616c56ef8985fc801e1fd16c61b5ed2189e907",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "gradlew",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "a5a5c199ba02189ae8c46a334223371a20599d9c298ef65e7540ede4a3f72d59",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "gradlew.bat",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "d539676c48b596afda64c963ec8f7ee56c7b3fe7e3b81d1dbe2d1a1e3dd9e9f8",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "openapi/openapi.json",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "87cf5f363b646738cf65afaa7bd08fd868c6cacb745eedad69aac7b1a39e851a",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "scripts/verify-capabilities.mjs",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "420cb8b0d2574df912b29bc97bcfbd3efc01305bffd1e76565b68d2032a045cb",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "scripts/verify-kotlin-quality.mjs",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "29cfd66e424ece571b38b0763bba1f3ba155cd80d74b4bb3800bb62d317c180c",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "settings.gradle.kts",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "6c4ab94e892bdc339662d78fd1b67f8302c9466b21b8dbde1c81d3320254721d",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/kotlin/com/zl/mjga/ApplicationService.kt",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "facec79aacdf99371a0227fc82488701bc24161440a3158b85b2110220e39915",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/kotlin/com/zl/mjga/platform/cache/CacheConfiguration.kt",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "1f3ebafeca3903b9ad6b69c937f66f574143a54f610b69903d55cc87adb0b289",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/kotlin/com/zl/mjga/platform/events/EventPublicationEndpoint.kt",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "0eec06f0d2758ab4f7052c5a45145f71713a678469f594328db85e7356af7bca",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/kotlin/com/zl/mjga/platform/events/EventPublicationOperations.kt",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "6a76a765be87084f151ab6128e72dcd444289f4a062693c2da8fc418187424c7",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/kotlin/com/zl/mjga/platform/events/EventPublicationProperties.kt",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "b054644489a7ac764def6d234e3c6f77e99cb7a7e4da2afdd13cb8c5de8698db",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/kotlin/com/zl/mjga/platform/events/EventPublicationRecovery.kt",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "2070fc6173a17429766e4a99d1da02ee1761f1e9843ebcd31501d6cb59887a15",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/kotlin/com/zl/mjga/platform/events/EventPublicationSecurityConfiguration.kt",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "4e2bcce2e6f3c3bf56fb9a5c51233a02774b73c2cc56eb4ccb83a32a7c6c5a7c",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/kotlin/com/zl/mjga/platform/events/InvocationContext.kt",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "35e88ddd61f6ed17fbdbb4671d91d1e6f17509fd2fa8169dab45397ccb6619a2",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/kotlin/com/zl/mjga/platform/events/JdbcEventPublicationOperations.kt",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "31bb7a88ba539dbb1df86e62b9f5db3a803d99f5e5fadb9e3ab23333501cc176",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/kotlin/com/zl/mjga/platform/events/VersionedDomainEvent.kt",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "8e2a12d6f143b08c6a59e0aa024a407b05aa012c74e2c2fc6e479728a5925a82",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/kotlin/com/zl/mjga/platform/events/VersionedEventJson.kt",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "c377e6dd58fd594a9a468a8c5f4e5029fbc121a8a5d8844b135046ee7d1e2da2",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/resources/application.yml",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "3ac01d40da4a0dc360727744145c0c1af0943c3110b687e73baeba96d11f7c83",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/resources/db/platform/V1__event_publication.sql",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "7f5e583a4bf957b602353fa547493e28ed5995771219e749036aabe2fdd05d33",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/test/kotlin/com/zl/mjga/platform/events/EventContractTest.kt",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "bf8a8a7acd5466681fd712555304d26e5e3587b098dfb68ef8741514b9eb7157",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/test/kotlin/com/zl/mjga/platform/events/EventPublicationEndpointTest.kt",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "1c996cbf7560361430b1ac3553f4d2219902af4cccde5bc786dc8e4e6a71cba1",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/test/kotlin/com/zl/mjga/platform/events/EventPublicationPropertiesTest.kt",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "f358cc0921929e64e579f33a1083a4f1f25bacba43cd0547245b60270d48e235",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/test/kotlin/com/zl/mjga/platform/events/EventPublicationRecoveryTest.kt",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "2a3f4c780741d5be82393728dbfde2745021c879ea02fa4e023465a85acd9a4c",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/test/kotlin/ModularityTests.kt",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "fd46e3da7ff68a93a634d79ef28a14194d243e8f3ca974118d9455600eb9dc04",
+      "lastAppliedMjgaVersion": "3.0.0"
+    }
+  ]
+}

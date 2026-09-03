@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "architecture": "contractfirst",
+  "persistence": "jimmer",
+  "capabilities": []
+}

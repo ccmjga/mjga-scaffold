@@ -1,0 +1,69 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: __MJGA_APPLICATION_NAME__
+  datasource:
+    url: jdbc:postgresql://${DATABASE_HOST_PORT:localhost:5432}/${DATABASE_DB:contract_first}
+    username: ${DATABASE_USER:contract_first}
+    password: ${DATABASE_PASSWORD:mjga-local-development-only}
+  flyway:
+    enabled: true
+    locations: classpath:db/platform
+    default-schema: ${DATABASE_DEFAULT_SCHEMA:mjga_platform}
+    create-schemas: true
+  modulith:
+    events:
+      jdbc:
+        schema: mjga_platform
+        schema-initialization:
+          enabled: false
+      completion-mode: update
+management:
+  server:
+    address: ${MANAGEMENT_SERVER_ADDRESS:127.0.0.1}
+    port: ${MANAGEMENT_SERVER_PORT:8081}
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: never
+      probes:
+        enabled: true
+  tracing:
+    sampling:
+      probability: ${OBSERVABILITY_TRACING_SAMPLING_PROBABILITY:0.1}
+    export:
+      otlp:
+        enabled: ${OTEL_TRACES_EXPORT_ENABLED:false}
+  opentelemetry:
+    tracing:
+      export:
+        otlp:
+          endpoint: ${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:http://localhost:4318/v1/traces}
+  otlp:
+    metrics:
+      export:
+        enabled: ${OTEL_METRICS_EXPORT_ENABLED:false}
+        url: ${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:http://localhost:4318/v1/metrics}
+mjga:
+  events:
+    management-enabled: false
+    management-username: ${EVENT_PUBLICATION_MANAGEMENT_USERNAME:}
+    management-password: ${EVENT_PUBLICATION_MANAGEMENT_PASSWORD:}
+    initial-delay: 30s
+    scan-interval: 30s
+    batch-size: 100
+    concurrency: 4
+    max-attempts: 10
+    minimum-age: 30s
+    completed-retention: 30d
+    audit-retention: 365d
+    management-batch-limit: 100
+jimmer:
+  language: kotlin
+  dialect: org.babyfish.jimmer.sql.dialect.PostgresDialect
+  database-validation:
+    mode: ERROR
