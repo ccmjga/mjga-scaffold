@@ -1,0 +1,24 @@
+services:
+  database:
+    image: 'postgres:18.6@sha256:4ef4dbc939d61acea57712655ddb4b4ab27419c913f94cca0cd57cb3ea3c2280'
+    environment:
+      POSTGRES_DB: ${DATABASE_DB}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - ${DATABASE_EXPOSE_PORT}:5432
+    volumes:
+      - ${DATABASE_STORE}:/var/lib/postgresql
+  web:
+    build: .
+    environment:
+      DATABASE_DB: ${DATABASE_DB}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_HOST_PORT: database:5432
+    depends_on:
+      - database
+    ports:
+      - ${WEB_EXPOSE_PORT}:8080
+volumes:
+  contract-first-postgresql:

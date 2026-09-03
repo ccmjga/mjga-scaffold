@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 2,
+  "mjgaVersion": "3.0.0",
+  "immutableVariant": "contractfirst-postgresql-jimmer",
+  "rendererLineage": {
+    "id": "contract-authoring-java",
+    "version": 1
+  },
+  "assets": [
+    {
+      "path": ".mjga/capabilities.json",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "d83f16f3feeb6a83aba9a1cfb7f590af8adfe889f517ab8f2189ee6b3ff4c3fe",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "build.gradle.kts",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "45ff260b40b49fdc1021ab33dd426930a5ede3c6a47c795de6162b07a6582451",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "clients/typescript/package-lock.json",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "11a8e23faaad61c9d73f0a7c8adc80ad9567aca5af03930bdc931fb5e27b83f5",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "clients/typescript/package.json",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "484c1e79e348cb17928483cf9e944b45e947fc97d43d333683ed7cb0d1df2ad8",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "clients/typescript/scripts/verify.mjs",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "b41d941433405fece508fb5ae1114785049f5a4a1fa3c5e6742306e4305d3b32",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "clients/typescript/src/index.ts",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "f3cf5290b71fb3b808299cf4ca24b981c44b527b454d231e0b122f21ead4582d",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "compose.yaml",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "4a4185094a278a0b92c41c3e75bfeebcec134ba150805b1a6c67f625b6a64172",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "contracts/events/versioned-domain-event.schema.json",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "3299458f172ececae70d21780804f2cf99559f4e8ab9230893585a0bbc87df6d",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "Dockerfile",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "11ccdee2fe7eaa87d952033b92097f1d61b19f40ec9179ba1a8bcc8a724b689d",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "gradle.lockfile",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "2ecdadecca04db14d8e8c158b25703b85737a458d95a8dbf69f906281b97672c",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "gradle.properties",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "6bc28c810ff2e25823ad26d9f4e95aedd4ccbd22727ebe22b6ae7230f636920e",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "gradle/verification-metadata.xml",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "e38c50e76965d326044115b6bb011923e1aace889ddb9c8b56fe7bd3466e5b16",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.jar",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "7a9ce74cff467ca1bf60a4fcd9f05185acceda4d0f382434d393e17864262c5d",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.properties",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "d0bebe8133babb74ab29a31ee6616c56ef8985fc801e1fd16c61b5ed2189e907",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "gradlew",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "a5a5c199ba02189ae8c46a334223371a20599d9c298ef65e7540ede4a3f72d59",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "gradlew.bat",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "d539676c48b596afda64c963ec8f7ee56c7b3fe7e3b81d1dbe2d1a1e3dd9e9f8",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "openapi/openapi.json",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "87cf5f363b646738cf65afaa7bd08fd868c6cacb745eedad69aac7b1a39e851a",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "scripts/verify-capabilities.mjs",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "529c374aa91409da4a658ab948f868e0c0a65a65c79dc640ac0d0cba742dd92e",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "settings.gradle.kts",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "f5c9818aa0079a366abf364992c7c8b619ae34ead0942f6d834a35533bca780c",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/java/com/zl/mjga/ApplicationService.java",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "172a1a27e6faefbcc71118a3820b58bbbfc4f890ee45f99971ced3507230a379",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/java/com/zl/mjga/platform/cache/CacheConfiguration.java",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "e444b7d1a5e39baf0fe3c1c0848686fcf6ac706ee4b3cc60bc6859da72b17670",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/java/com/zl/mjga/platform/events/EventPublicationEndpoint.java",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "e9f1ce8aa26b9658b4e9935748093dd71b735f255799960d539e5bc2bf43d2c1",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/java/com/zl/mjga/platform/events/EventPublicationOperations.java",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "0ed316a9e9885428d66ab3e44a4fbad4cbbeefed9ca514a5d4cced0267bac9c5",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/java/com/zl/mjga/platform/events/EventPublicationProperties.java",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "1557e55a20019fa355205d5ed54f176bed41dab0f6335c3347fde33a9c790c7d",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/java/com/zl/mjga/platform/events/EventPublicationRecovery.java",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "cc32bb7f15cc3917fa25973d3fd4ef8b10f09ae2b39f3f353a9d3d6719fa7807",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/java/com/zl/mjga/platform/events/EventPublicationSecurityConfiguration.java",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "255de2bede66583179607a41ef888a9d1027d0bc4225ed584d0dc79a4bc0f2ba",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/java/com/zl/mjga/platform/events/InvocationContext.java",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "55fb8c8ed47a97ae40857b0ac93f11cea9d62ccd45a31ddaecbab413629a355e",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/java/com/zl/mjga/platform/events/JdbcEventPublicationOperations.java",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "45924787ebf9882e81ab52946691f60efab9d018b369bd8a78d32824d630dd39",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/java/com/zl/mjga/platform/events/package-info.java",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "86ca107fda9a8dcf33ce50be044de4dd50b59e2cd2e782489abf17127fc93cce",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/java/com/zl/mjga/platform/events/VersionedDomainEvent.java",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "97616c0323a407a64793bfa081703fdd6ab8eff9c2651c759d25784c1ab229c4",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/java/com/zl/mjga/platform/events/VersionedEventJson.java",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "2c39a6cae2fafd8d9cb26c9021ac6b74524dcfb2544ea6f9cbcd4a80df4c726d",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/resources/application.yml",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "6fe6da37b869660cbea0ed82d4502389fbab928239e95004e18cdeb7e4babaeb",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/main/resources/db/platform/V1__event_publication.sql",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "7f5e583a4bf957b602353fa547493e28ed5995771219e749036aabe2fdd05d33",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/test/java/com/zl/mjga/platform/events/EventContractTest.java",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "42d262a6c20dc71dcae32d2ba355cd73eb45e68f2e6f37cbdeef8c67c3f0d67b",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/test/java/com/zl/mjga/platform/events/EventPublicationPropertiesTest.java",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "bd95e039fcebab06c2fe009df9135e175696915157226281ae9dc3143f89d6c1",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/test/java/com/zl/mjga/platform/events/EventPublicationRecoveryTest.java",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "0c9ba5b16e71ebe8c43aa2a6376374901beb84c8d6a9b9455d5fb64a3df54748",
+      "lastAppliedMjgaVersion": "3.0.0"
+    },
+    {
+      "path": "src/test/java/ModularityTests.java",
+      "ownership": "mjga",
+      "originatingOperation": "base-template",
+      "originalContentHash": "2028ddcb83c081fbf5e9ea8207e83e2bc4f1a310e576f8614cce4c7e5f1866ed",
+      "lastAppliedMjgaVersion": "3.0.0"
+    }
+  ]
+}
