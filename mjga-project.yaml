@@ -1,0 +1,33 @@
+schemaVersion: 3
+mjgaVersion: 3.0.0
+project:
+  group: com.zl.mjga
+  artifact: contract-first-service
+  version: 1.0.0
+  description: Human-Agent Ready Contract First service
+architecture:
+  style: contractfirst
+  language: java
+  database: postgresql
+  persistence: jooq
+runtime:
+  java: 21
+capabilities:
+  build: single-stage
+  cache: caffeine
+  dependencyMirror: central
+  timezone: UTC
+  internationalization: local
+  realtime: none
+  scheduling: spring
+  staticResources: none
+  messaging: none
+  authentication:
+    mode: none
+  oauth2:
+    mode: none
+  domainEvents: durable
+  openapi:
+    mode: documentation
+  observability: none
+capabilityModules: []
