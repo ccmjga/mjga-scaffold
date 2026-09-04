@@ -23,4 +23,4 @@ jOOQ 或 Jimmer。
 这里展示的是 MJGA 自动生成的只读示例。请不要直接修改分支中的代码；发现问题时，
 请通过 Issues 或 Discussions 反馈。
 
-生成来源：`a5414566d6a4ca6a238dd5c177babde7e9c821d4`
+生成来源：`31fefd26d2a0720994fe5bca0b708f0b0380a235`
