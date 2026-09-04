@@ -1,5 +1,9 @@
 package com.zl.mjga.platform.events
 
+import io.kotest.property.Arb
+import io.kotest.property.arbitrary.long
+import io.kotest.property.checkAll
+import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Tag
@@ -23,19 +27,32 @@ class EventPublicationPropertiesTest {
             .hasMessageContaining("management credentials are required")
     }
 
-    private fun properties(managementEnabled: Boolean = false) =
-        EventPublicationProperties(
-            managementEnabled,
-            null,
-            null,
-            Duration.ofSeconds(30),
-            Duration.ofSeconds(30),
-            100,
-            4,
-            10,
-            Duration.ofSeconds(30),
-            Duration.ofDays(30),
-            Duration.ofDays(365),
-            100,
-        )
+    @Test
+    fun `every non-positive initial delay is rejected`() {
+        runBlocking {
+            checkAll(Arb.long(-86_400L..0L)) { seconds ->
+                assertThatThrownBy { properties(initialDelay = Duration.ofSeconds(seconds)) }
+                    .isInstanceOf(IllegalArgumentException::class.java)
+                    .hasMessageContaining("initial-delay must be positive")
+            }
+        }
+    }
+
+    private fun properties(
+        managementEnabled: Boolean = false,
+        initialDelay: Duration = Duration.ofSeconds(30),
+    ) = EventPublicationProperties(
+        managementEnabled,
+        null,
+        null,
+        initialDelay,
+        Duration.ofSeconds(30),
+        100,
+        4,
+        10,
+        Duration.ofSeconds(30),
+        Duration.ofDays(30),
+        Duration.ofDays(365),
+        100,
+    )
 }

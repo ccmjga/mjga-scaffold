@@ -31,9 +31,11 @@ kotlin {
     }
 }
 
-val mockitoAgent = configurations.create("mockitoAgent")
-
 repositories { mavenCentral() }
+
+configurations.matching { it.name.startsWith("test") }.configureEach {
+    exclude(group = "org.mockito")
+}
 
 dependencyLocking {
     lockAllConfigurations()
@@ -66,20 +68,23 @@ dependencies {
     runtimeOnly("org.postgresql:postgresql")
     runtimeOnly("org.flywaydb:flyway-database-postgresql")
     runtimeOnly("io.micrometer:micrometer-registry-otlp")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude(group = "org.mockito")
+    }
+    testImplementation(kotlin("test-junit5"))
+    testImplementation("io.mockk:mockk:1.14.11")
+    testImplementation("io.kotest:kotest-property-jvm:6.1.4")
     testImplementation("org.springframework.boot:spring-boot-testcontainers")
     testImplementation("org.springframework.modulith:spring-modulith-starter-test")
     testImplementation("org.testcontainers:testcontainers-junit-jupiter")
     testImplementation("org.testcontainers:testcontainers-postgresql")
     testRuntimeOnly("org.testcontainers:testcontainers")
-    mockitoAgent(platform(SpringBootPlugin.BOM_COORDINATES))
-    mockitoAgent("org.mockito:mockito-core") { isTransitive = false }
 }
 
 tasks.withType<BootJar> { archiveFileName.set("app.jar") }
 tasks.withType<Test> {
     useJUnitPlatform()
-    jvmArgs("-Xshare:off", "--enable-native-access=ALL-UNNAMED", "-javaagent:${mockitoAgent.asPath}")
+    jvmArgs("-Xshare:off", "--enable-native-access=ALL-UNNAMED", "-XX:+EnableDynamicAgentLoading")
 }
 tasks.test { useJUnitPlatform { excludeTags("unit", "architecture", "integration", "contract") } }
 tasks.named("detekt") { mustRunAfter(tasks.spotlessApply) }
@@ -185,7 +190,7 @@ pitest {
     timestampedReports.set(false)
     mutationThreshold.set(41)
     coverageThreshold.set(55)
-    jvmArgs.set(listOf("-Xshare:off", "--enable-native-access=ALL-UNNAMED", "-javaagent:${mockitoAgent.asPath}"))
+    jvmArgs.set(listOf("-Xshare:off", "--enable-native-access=ALL-UNNAMED", "-XX:+EnableDynamicAgentLoading"))
 }
 
 kover {

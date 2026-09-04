@@ -1,10 +1,10 @@
 package com.zl.mjga.platform.events
 
+import io.mockk.mockk
 import org.assertj.core.api.Assertions.assertThat
 import org.flywaydb.core.Flyway
 import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
-import org.mockito.Mockito.mock
 import org.springframework.jdbc.core.simple.JdbcClient
 import org.springframework.jdbc.datasource.DriverManagerDataSource
 import org.springframework.modulith.events.IncompleteEventPublications
@@ -43,7 +43,7 @@ class EventPublicationRecoveryTest {
         val operations: EventPublicationOperations =
             JdbcEventPublicationOperations(
                 jdbc,
-                mock(IncompleteEventPublications::class.java),
+                mockk<IncompleteEventPublications>(),
                 properties(),
             )
         assertThat(operations.incomplete(10).map { it.publicationId }).containsExactly(publicationId)

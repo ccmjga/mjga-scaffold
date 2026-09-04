@@ -18,7 +18,7 @@
       "path": "build.gradle.kts",
       "ownership": "mjga",
       "originatingOperation": "base-template",
-      "originalContentHash": "b56df7bcfe124998a9570fd5273e34498973aa77f60df0e330b11337eeceaa1f",
+      "originalContentHash": "309352016adee9b3c28d43c28db27176d05698ade2c6d99955e4bf179ebead41",
       "lastAppliedMjgaVersion": "3.0.0"
     },
     {
@@ -74,7 +74,7 @@
       "path": "gradle.lockfile",
       "ownership": "mjga",
       "originatingOperation": "base-template",
-      "originalContentHash": "c7570e0a7eca3ee95816642b6ae5460636a3b9da8d902b128f78521c22d3b830",
+      "originalContentHash": "c32edccb551f1aca90259ea113a4c7f0a8c9bb53ac13e7cdc131b813b56001c2",
       "lastAppliedMjgaVersion": "3.0.0"
     },
     {
@@ -88,7 +88,7 @@
       "path": "gradle/verification-metadata.xml",
       "ownership": "mjga",
       "originatingOperation": "base-template",
-      "originalContentHash": "d86d5860e03671167387e36d463de2f2aba319333afd51b6e5548ecb04c47e83",
+      "originalContentHash": "268cb7d8d88901020680418bc5c33e9bad0a8c320e78479d9674c47808c9a9be",
       "lastAppliedMjgaVersion": "3.0.0"
     },
     {
@@ -256,14 +256,14 @@
       "path": "src/test/kotlin/com/zl/mjga/platform/events/EventPublicationPropertiesTest.kt",
       "ownership": "mjga",
       "originatingOperation": "base-template",
-      "originalContentHash": "f358cc0921929e64e579f33a1083a4f1f25bacba43cd0547245b60270d48e235",
+      "originalContentHash": "9258bbc0dad4ff1eb17c1e03045814258c6f12b31612bd483645838e62458794",
       "lastAppliedMjgaVersion": "3.0.0"
     },
     {
       "path": "src/test/kotlin/com/zl/mjga/platform/events/EventPublicationRecoveryTest.kt",
       "ownership": "mjga",
       "originatingOperation": "base-template",
-      "originalContentHash": "2a3f4c780741d5be82393728dbfde2745021c879ea02fa4e023465a85acd9a4c",
+      "originalContentHash": "d5aa2ce2d93b869966de4004b936b65a85c3b01ad674b5739ca95dbffca49b19",
       "lastAppliedMjgaVersion": "3.0.0"
     },
     {
