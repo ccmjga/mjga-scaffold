@@ -1,1 +1,0 @@
-export { getPlatformStatus } from "./getPlatformStatus";

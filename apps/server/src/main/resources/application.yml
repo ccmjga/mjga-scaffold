@@ -2,10 +2,10 @@ server:
   port: 8080
 info:
   app:
-    version: 1.0.0
+    version: __MJGA_PROJECT_VERSION__
 spring:
   application:
-    name: contract-first-service
+    name: __MJGA_APPLICATION_NAME__
   datasource:
     url: jdbc:postgresql://${DATABASE_HOST_PORT:localhost:5432}/${DATABASE_DB:contract_first}
     username: ${DATABASE_USER:contract_first}

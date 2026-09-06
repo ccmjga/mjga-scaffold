@@ -1,1 +1,1 @@
-rootProject.name = "contract-first-service"
+rootProject.name = "contract-first-kotlin-service"
