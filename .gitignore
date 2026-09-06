@@ -225,3 +225,8 @@ Temporary Items
 logs
 db.d/store/*
 .git
+.env
+node_modules/
+apps/web/dist/
+packages/api-client/dist/
+*.tsbuildinfo
