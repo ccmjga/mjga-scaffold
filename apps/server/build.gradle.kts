@@ -35,7 +35,7 @@ plugins {
 
 group = "com.zl.mjga"
 version = "1.0.0"
-description = "Human-Agent Ready Contract First service"
+description = "Human-Agent Ready Contract First Kotlin service"
 
 kotlin {
     jvmToolchain(21)
@@ -98,7 +98,7 @@ dependencies {
     jooqCodegen("org.postgresql:postgresql")
 }
 
-tasks.withType<BootJar> { archiveFileName.set("contract-first-service.jar") }
+tasks.withType<BootJar> { archiveFileName.set("app.jar") }
 tasks.withType<Test> {
     useJUnitPlatform()
     jvmArgs("-Xshare:off", "--enable-native-access=ALL-UNNAMED", "-XX:+EnableDynamicAgentLoading")

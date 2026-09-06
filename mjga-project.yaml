@@ -30,5 +30,4 @@ capabilities:
   openapi:
     mode: documentation
   observability: none
-capabilityModules: [
-  ]
+capabilityModules: []
