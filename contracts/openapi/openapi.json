@@ -1,0 +1,59 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Contract First Full-stack API", "version": "1.0.0" },
+  "paths": {
+    "/api/v1/platform/status": {
+      "get": {
+        "operationId": "getPlatformStatus",
+        "summary": "Get application status",
+        "tags": ["Platform"],
+        "responses": {
+          "200": {
+            "description": "Application status",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/PlatformStatus" } } }
+          },
+          "500": {
+            "description": "Unexpected failure",
+            "content": { "application/problem+json": { "schema": { "$ref": "#/components/schemas/Problem" } } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PlatformStatus": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["status", "application", "version"],
+        "properties": {
+          "status": { "type": "string", "enum": ["UP"] },
+          "application": { "type": "string", "minLength": 1 },
+          "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" }
+        }
+      },
+      "Problem": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["type", "title", "status", "code"],
+        "properties": {
+          "type": { "type": "string", "format": "uri" },
+          "title": { "type": "string" },
+          "status": { "type": "integer", "minimum": 400, "maximum": 599 },
+          "detail": { "type": "string" },
+          "instance": { "type": "string", "format": "uri-reference" },
+          "code": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$" },
+          "violations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["field", "code"],
+              "properties": { "field": { "type": "string" }, "code": { "type": "string" }, "message": { "type": "string" } }
+            }
+          }
+        }
+      }
+    }
+  }
+}

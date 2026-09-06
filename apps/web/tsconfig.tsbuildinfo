@@ -1,0 +1,1 @@
+{"root":["./src/global.d.ts","./src/main.tsx","./src/query-client.ts","./src/routetree.gen.ts","./src/runtime-config.test.ts","./src/runtime-config.ts","./src/routes/-index.browser.test.tsx","./src/routes/__root.tsx","./src/routes/index.tsx","./vite.config.ts","./vitest.config.ts"],"version":"5.9.2"}

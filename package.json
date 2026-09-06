@@ -1,0 +1,22 @@
+{
+  "name": "contract-first-scaffold",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@11.13.0",
+  "workspaces": ["apps/web", "packages/api-client"],
+  "engines": { "node": ">=24.16.0 <25", "npm": "11.13.0" },
+  "scripts": {
+    "dev": "node ./scripts/workspace.mjs dev",
+    "build": "npm run generate:client && npm run build --workspace @mjga/api-client && npm run build --workspace @mjga/web && npm run server:build",
+    "test": "npm run test --workspace @mjga/api-client && npm run test --workspace @mjga/web && npm run server:test",
+    "check": "npm run check --workspace @mjga/api-client && npm run check --workspace @mjga/web && npm run server:check",
+    "generate:client": "npm run generate --workspace @mjga/api-client",
+    "server:build": "node ./scripts/workspace.mjs server build",
+    "server:test": "node ./scripts/workspace.mjs server test",
+    "server:check": "node ./scripts/workspace.mjs server check",
+    "compose:up": "node ./scripts/workspace.mjs compose up",
+    "compose:verify": "node ./scripts/workspace.mjs compose verify",
+    "compose:down": "node ./scripts/workspace.mjs compose down"
+  }
+}

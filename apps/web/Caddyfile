@@ -1,0 +1,13 @@
+:8080 {
+  encode zstd gzip
+  route {
+    handle /healthz {
+      respond "ok" 200
+    }
+    handle /api/* {
+      reverse_proxy {$SERVER_ORIGIN:server:8080}
+    }
+    try_files {path} /index.html
+    file_server
+  }
+}
