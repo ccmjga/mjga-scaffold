@@ -1,0 +1,98 @@
+@import "tailwindcss";
+:root {
+  color-scheme: light dark;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  --surface: #f7f7f3;
+  --ink: #17211b;
+  --accent: #19704b;
+  --panel: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #101713;
+    --ink: #e9f2ec;
+    --accent: #64d49d;
+    --panel: #18231d;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(
+      circle at top right,
+      color-mix(in srgb, var(--accent) 18%, transparent),
+      transparent 42%
+    ),
+    var(--surface);
+}
+main {
+  width: min(52rem, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 12vh 0;
+}
+header {
+  margin-bottom: 3rem;
+}
+h1 {
+  max-width: 14ch;
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  margin: 0.4rem 0;
+}
+.eyebrow {
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+section {
+  padding: 2rem;
+  border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  border-radius: 1.25rem;
+  background: var(--panel);
+  box-shadow: 0 1.5rem 5rem color-mix(in srgb, var(--ink) 9%, transparent);
+}
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--accent);
+  font-size: 1.4rem;
+  font-weight: 750;
+}
+.status span {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 0.35rem color-mix(in srgb, currentColor 18%, transparent);
+}
+dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.75rem 1.5rem;
+}
+dt {
+  color: color-mix(in srgb, var(--ink) 62%, transparent);
+}
+dd {
+  margin: 0;
+  font-weight: 650;
+}
+button {
+  border: 0;
+  border-radius: 0.6rem;
+  padding: 0.8rem 1rem;
+  color: white;
+  background: var(--accent);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}

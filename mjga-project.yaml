@@ -1,4 +1,4 @@
-schemaVersion: 3
+schemaVersion: 4
 mjgaVersion: 3.0.0
 project:
   group: com.zl.mjga
@@ -13,7 +13,7 @@ architecture:
 runtime:
   java: 21
 capabilities:
-  build: single-stage
+  build: multi-stage
   cache: caffeine
   dependencyMirror: central
   timezone: UTC
@@ -30,4 +30,5 @@ capabilities:
   openapi:
     mode: documentation
   observability: none
-capabilityModules: []
+capabilityModules: [
+  ]

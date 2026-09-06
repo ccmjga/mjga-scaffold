@@ -1,26 +1,25 @@
-# Contract First Kotlin service
+# Contract First Full-stack Scaffold
 
 This is an idiomatic Kotlin Human-Agent Ready Scaffold with no fictitious business domain.
+`apps/web` is a React/Vite application, `apps/server` is an independently buildable Spring Boot
+application, and `packages/api-client` is generated from `contracts/openapi/openapi.json`.
 
-```bash
+```sh
+npm ci
 docker compose up -d database
-./gradlew check
 mjga add capability order-management --apply
-```
-
-Capability APIs are the only business calling surface. PostgreSQL schemas, migrations, transactions, persistence types, and event recovery remain owned by their declaring Capability or the MJGA platform baseline.
-
-Continue the Typed Contract Chain with preview-first Contract Authoring:
-
-```bash
 mjga add use-case order-management create-order --kind command --transport http --apply
-mjga add event order-management order-created --apply
-mjga evolve event order-management order-created --version 2 --apply
-mjga add workflow order-fulfillment --apply
-mjga add read-model order-overview --consume order-management.order-created.v2 --apply
-mjga workbench .
+mjga verify .
+npm run dev
 ```
 
-Use `mjga workbench . --serve` with `MJGA_MANAGEMENT_SERVER`, `MJGA_MANAGEMENT_USER`, and `MJGA_MANAGEMENT_PASSWORD` to inspect redacted recovery summaries without exposing payloads.
+Contract Authoring previews by default and changes files only with `--apply`. It supports
+Capabilities, typed use cases, versioned events, Workflows, Read Models, database-role hardening,
+and Consumer Contracts while preserving User-Owned Source. Run `mjga workbench .`, `mjga dev mock`,
+or `mjga dev mcp` for local contract feedback. Extraction assessment and Capability migration are
+plan-only operations; see `mjga help` for the complete command surface.
 
-`mjga dev mock` serves the OpenAPI contract locally, while `mjga dev mcp` exposes the same read and preview Interfaces to a coding Agent. Database-role hardening, Consumer Contracts, Capability migration planning, and extraction assessment are available through `mjga --help`. Run `mjga verify .` after applying a plan.
+Use `npm run build`, `npm test`, and `npm run check` for individual workspace tasks. `mjga verify .`
+checks the Web Application and Generated TypeScript Client before running the Server's complete
+`clean projectHealth check bootJar` gate. `npm run compose:up` starts the complete local topology,
+`npm run compose:verify` checks the same-origin status slice, and `npm run compose:down` stops it.
