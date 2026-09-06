@@ -1,270 +1,1031 @@
 {
-  "schemaVersion": 2,
-  "mjgaVersion": "3.0.0",
-  "immutableVariant": "contractfirst-postgresql-jooq",
-  "rendererLineage": {
-    "id": "contract-authoring-java",
-    "version": 1
+  "schemaVersion" : 2,
+  "mjgaVersion" : "3.0.0",
+  "immutableVariant" : "contractfirst-postgresql-jooq",
+  "rendererLineage" : {
+    "id" : "contract-authoring-java",
+    "version" : 1
   },
-  "assets": [
-    {
-      "path": ".mjga/capabilities.json",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "e79bac5c7a01447f2f16e2da7bd27b1ae6863171b9b9ed678d2fb7251aa422e8",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "build.gradle.kts",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "2ceec8831185bfae255a9ff245d58c9572bbee724971bb9b54a1c76859ea7f49",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "clients/typescript/package-lock.json",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "11a8e23faaad61c9d73f0a7c8adc80ad9567aca5af03930bdc931fb5e27b83f5",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "clients/typescript/package.json",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "484c1e79e348cb17928483cf9e944b45e947fc97d43d333683ed7cb0d1df2ad8",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "clients/typescript/scripts/verify.mjs",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "b41d941433405fece508fb5ae1114785049f5a4a1fa3c5e6742306e4305d3b32",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "clients/typescript/src/index.ts",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "f3cf5290b71fb3b808299cf4ca24b981c44b527b454d231e0b122f21ead4582d",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "compose.yaml",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "4a4185094a278a0b92c41c3e75bfeebcec134ba150805b1a6c67f625b6a64172",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "contracts/events/versioned-domain-event.schema.json",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "3299458f172ececae70d21780804f2cf99559f4e8ab9230893585a0bbc87df6d",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "Dockerfile",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "11ccdee2fe7eaa87d952033b92097f1d61b19f40ec9179ba1a8bcc8a724b689d",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "gradle.lockfile",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "0262a37c17a01e6698336f30f848c37d6dd93523259c4fd4bee711c0317505ad",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "gradle.properties",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "6bc28c810ff2e25823ad26d9f4e95aedd4ccbd22727ebe22b6ae7230f636920e",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "gradle/verification-metadata.xml",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "8b35e30ca2b0d54711532ec346a249f9f6fb7870f5b7f9aed81380e972510d17",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "gradle/wrapper/gradle-wrapper.jar",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "7a9ce74cff467ca1bf60a4fcd9f05185acceda4d0f382434d393e17864262c5d",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "gradle/wrapper/gradle-wrapper.properties",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "d0bebe8133babb74ab29a31ee6616c56ef8985fc801e1fd16c61b5ed2189e907",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "gradlew",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "a5a5c199ba02189ae8c46a334223371a20599d9c298ef65e7540ede4a3f72d59",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "gradlew.bat",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "d539676c48b596afda64c963ec8f7ee56c7b3fe7e3b81d1dbe2d1a1e3dd9e9f8",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "openapi/openapi.json",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "87cf5f363b646738cf65afaa7bd08fd868c6cacb745eedad69aac7b1a39e851a",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "scripts/verify-capabilities.mjs",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "d6ddfb9fb4204661a2f10a638241a83eb0dd99f006f67f5a66c7629288eb1016",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "settings.gradle.kts",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "f5c9818aa0079a366abf364992c7c8b619ae34ead0942f6d834a35533bca780c",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/main/java/com/zl/mjga/ApplicationService.java",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "746393ffbe2776dfad8916f6e8f7326d19a0baaa591908586adc472d38c7a266",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/main/java/com/zl/mjga/platform/cache/CacheConfiguration.java",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "e444b7d1a5e39baf0fe3c1c0848686fcf6ac706ee4b3cc60bc6859da72b17670",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/main/java/com/zl/mjga/platform/events/EventPublicationEndpoint.java",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "e9f1ce8aa26b9658b4e9935748093dd71b735f255799960d539e5bc2bf43d2c1",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/main/java/com/zl/mjga/platform/events/EventPublicationOperations.java",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "0ed316a9e9885428d66ab3e44a4fbad4cbbeefed9ca514a5d4cced0267bac9c5",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/main/java/com/zl/mjga/platform/events/EventPublicationProperties.java",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "1557e55a20019fa355205d5ed54f176bed41dab0f6335c3347fde33a9c790c7d",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/main/java/com/zl/mjga/platform/events/EventPublicationRecovery.java",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "cc32bb7f15cc3917fa25973d3fd4ef8b10f09ae2b39f3f353a9d3d6719fa7807",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/main/java/com/zl/mjga/platform/events/EventPublicationSecurityConfiguration.java",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "255de2bede66583179607a41ef888a9d1027d0bc4225ed584d0dc79a4bc0f2ba",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/main/java/com/zl/mjga/platform/events/InvocationContext.java",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "55fb8c8ed47a97ae40857b0ac93f11cea9d62ccd45a31ddaecbab413629a355e",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/main/java/com/zl/mjga/platform/events/JdbcEventPublicationOperations.java",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "45924787ebf9882e81ab52946691f60efab9d018b369bd8a78d32824d630dd39",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/main/java/com/zl/mjga/platform/events/package-info.java",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "86ca107fda9a8dcf33ce50be044de4dd50b59e2cd2e782489abf17127fc93cce",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/main/java/com/zl/mjga/platform/events/VersionedDomainEvent.java",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "97616c0323a407a64793bfa081703fdd6ab8eff9c2651c759d25784c1ab229c4",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/main/java/com/zl/mjga/platform/events/VersionedEventJson.java",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "2c39a6cae2fafd8d9cb26c9021ac6b74524dcfb2544ea6f9cbcd4a80df4c726d",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/main/resources/application.yml",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "c37d0997c94bb9b49a48cf402faa8f6a07c37c21486500d322f0412d467bbc94",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/main/resources/db/platform/V1__event_publication.sql",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "7f5e583a4bf957b602353fa547493e28ed5995771219e749036aabe2fdd05d33",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/test/java/com/zl/mjga/platform/events/EventContractTest.java",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "42d262a6c20dc71dcae32d2ba355cd73eb45e68f2e6f37cbdeef8c67c3f0d67b",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/test/java/com/zl/mjga/platform/events/EventPublicationPropertiesTest.java",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "bd95e039fcebab06c2fe009df9135e175696915157226281ae9dc3143f89d6c1",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/test/java/com/zl/mjga/platform/events/EventPublicationRecoveryTest.java",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "0c9ba5b16e71ebe8c43aa2a6376374901beb84c8d6a9b9455d5fb64a3df54748",
-      "lastAppliedMjgaVersion": "3.0.0"
-    },
-    {
-      "path": "src/test/java/ModularityTests.java",
-      "ownership": "mjga",
-      "originatingOperation": "base-template",
-      "originalContentHash": "2028ddcb83c081fbf5e9ea8207e83e2bc4f1a310e576f8614cce4c7e5f1866ed",
-      "lastAppliedMjgaVersion": "3.0.0"
-    }
-  ]
+  "assets" : [ {
+    "path" : ".env.example",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "6ae758db3f56abee800f8c08ed59a39e085e166ada92329298f397db2d1b190c",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : ".mjga/capabilities.json",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "e79bac5c7a01447f2f16e2da7bd27b1ae6863171b9b9ed678d2fb7251aa422e8",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/.dockerignore",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "9132949e3a33454ad61ac6429a6d68bdad3b93ff87f79da283b6cf8a5dcb1f41",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/Dockerfile",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "c71771984d65450bbdf3a6fba854137bf492f9fe225ab96bf166fa2d2a80ed6c",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/build.gradle.kts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "048909e6771a84d3ebc4483705b5666e5abc6958a71ccee4e377df5d0bf153a1",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/gradle.lockfile",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "0262a37c17a01e6698336f30f848c37d6dd93523259c4fd4bee711c0317505ad",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/gradle.properties",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "6bc28c810ff2e25823ad26d9f4e95aedd4ccbd22727ebe22b6ae7230f636920e",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/gradle/verification-metadata.xml",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "8b35e30ca2b0d54711532ec346a249f9f6fb7870f5b7f9aed81380e972510d17",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/gradle/wrapper/gradle-wrapper.jar",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "7a9ce74cff467ca1bf60a4fcd9f05185acceda4d0f382434d393e17864262c5d",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/gradle/wrapper/gradle-wrapper.properties",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "d0bebe8133babb74ab29a31ee6616c56ef8985fc801e1fd16c61b5ed2189e907",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/gradlew",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "a5a5c199ba02189ae8c46a334223371a20599d9c298ef65e7540ede4a3f72d59",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/gradlew.bat",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "d539676c48b596afda64c963ec8f7ee56c7b3fe7e3b81d1dbe2d1a1e3dd9e9f8",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/pmd-rules.xml",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "561193f23c658bb9cde519d24dd73c5d8c9a1433335ae64313859b5c28806376",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/scripts/verify-capabilities.mjs",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "5841cc7620e5d63907cac80d3e5366917076b94da61c58ae9400d90c20bed825",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/settings.gradle.kts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "f5c9818aa0079a366abf364992c7c8b619ae34ead0942f6d834a35533bca780c",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/main/java/com/zl/mjga/ApplicationService.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "746393ffbe2776dfad8916f6e8f7326d19a0baaa591908586adc472d38c7a266",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/main/java/com/zl/mjga/platform/cache/CacheConfiguration.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "e444b7d1a5e39baf0fe3c1c0848686fcf6ac706ee4b3cc60bc6859da72b17670",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/main/java/com/zl/mjga/platform/events/EventPublicationEndpoint.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "e9f1ce8aa26b9658b4e9935748093dd71b735f255799960d539e5bc2bf43d2c1",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/main/java/com/zl/mjga/platform/events/EventPublicationOperations.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "0ed316a9e9885428d66ab3e44a4fbad4cbbeefed9ca514a5d4cced0267bac9c5",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/main/java/com/zl/mjga/platform/events/EventPublicationProperties.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "1557e55a20019fa355205d5ed54f176bed41dab0f6335c3347fde33a9c790c7d",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/main/java/com/zl/mjga/platform/events/EventPublicationRecovery.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "cc32bb7f15cc3917fa25973d3fd4ef8b10f09ae2b39f3f353a9d3d6719fa7807",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/main/java/com/zl/mjga/platform/events/EventPublicationSecurityConfiguration.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "255de2bede66583179607a41ef888a9d1027d0bc4225ed584d0dc79a4bc0f2ba",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/main/java/com/zl/mjga/platform/events/InvocationContext.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "55fb8c8ed47a97ae40857b0ac93f11cea9d62ccd45a31ddaecbab413629a355e",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/main/java/com/zl/mjga/platform/events/JdbcEventPublicationOperations.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "45924787ebf9882e81ab52946691f60efab9d018b369bd8a78d32824d630dd39",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/main/java/com/zl/mjga/platform/events/VersionedDomainEvent.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "97616c0323a407a64793bfa081703fdd6ab8eff9c2651c759d25784c1ab229c4",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/main/java/com/zl/mjga/platform/events/VersionedEventJson.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "2c39a6cae2fafd8d9cb26c9021ac6b74524dcfb2544ea6f9cbcd4a80df4c726d",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/main/java/com/zl/mjga/platform/events/package-info.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "86ca107fda9a8dcf33ce50be044de4dd50b59e2cd2e782489abf17127fc93cce",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/main/java/com/zl/mjga/platform/status/PlatformStatusController.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "93ab897eec2726ba78d21db14d19f71eeac6b65ddaa17ed5810fe7282f074e31",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/main/java/com/zl/mjga/platform/status/PlatformStatusSecurityConfiguration.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "80846f4fcc5afc8a08b815558100cc8df311fbaf4740bb30e3999279d02c8bdd",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/main/resources/application.yml",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "640ab53c0ee6c4641f756c98c960123adb31d32289c44dde066922844920406b",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/main/resources/db/platform/V1__event_publication.sql",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "7f5e583a4bf957b602353fa547493e28ed5995771219e749036aabe2fdd05d33",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/test/java/ModularityTests.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "2028ddcb83c081fbf5e9ea8207e83e2bc4f1a310e576f8614cce4c7e5f1866ed",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/test/java/com/zl/mjga/platform/events/EventContractTest.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "9d62274ed8511e356f642d3de1a0fe74860fa0070dbef17b240847992928ead6",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/test/java/com/zl/mjga/platform/events/EventPublicationPropertiesTest.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "bd95e039fcebab06c2fe009df9135e175696915157226281ae9dc3143f89d6c1",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/test/java/com/zl/mjga/platform/events/EventPublicationRecoveryTest.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "0c9ba5b16e71ebe8c43aa2a6376374901beb84c8d6a9b9455d5fb64a3df54748",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/server/src/test/java/com/zl/mjga/platform/status/PlatformStatusControllerTest.java",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "f033c291e8e2fe5476384f073027bf09ac75fd5948a33a4cb12fc4691045b736",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/.prettierignore",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "0b9cc8ea2c1de83487be41329e897de551f13632f0c5fa61154e8b3a278c28a3",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/Caddyfile",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "5c397e71df923d92905af626627bc06d8f225096dc61928586684eb1100343e4",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/Dockerfile",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "b20fab1f00ddaea3327968d7555d331891471fc5153fedffbaa697f70096f8ea",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/dist/assets/index-BVzjy9ag.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "67d00256c9fe5f37bf2ded36af36cdcc397d2e2ff1731dca6717f9b8f4f7918d",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/dist/assets/index-jUAY8gDq.css",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "52f14fd922e0160d0496726e324c2d4260a5b0c0a956e210036fe9b91e1254cc",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/dist/index.html",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "685b5edfd2594575641cf78d9a64be327c35c55b82534581f66fc3adce86f7e4",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/dist/runtime-config.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "fc8c905ca6dbe0156d150fad1edfdf70da4a931cbea526e08f9170c694992e34",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/docker-entrypoint.sh",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "b03f913a6a8630e45a16fd4c17ba1a49906a070c5efe77f0cc9181bd09cfa29b",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/eslint.config.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "63c941b6ab6bff6b54630d2216d0c9a0d8b4630d902e589716af0ac59f5e5e69",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/index.html",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "12067ddc94f3c78344531e69686e56131da64b5f078570588ca70aa8d8db6268",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/package.json",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "bf1d3d6d39c8ef6c3457f96967f22788d75be2f40650db01a53f8a2280898ffa",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/public/runtime-config.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "fc8c905ca6dbe0156d150fad1edfdf70da4a931cbea526e08f9170c694992e34",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/scripts/check-production-bundle.mjs",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "dd4817fa4aab3fdfdfd294d8fcfbbb4208696d099dd1b8200ce73d624cd97ad7",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/src/global.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "a8057f31515251bbcb658e6e38d2f9af238a1c5f96565ef1fb8dd8aa3ec04169",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/src/main.tsx",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "c6a12051cdb46c541f70fd5461cfce9d0f43e388d129e4a4c049a99d1b5dc677",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/src/query-client.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "df6cf46316f0e9104dc01fc9d1ca97e83f7f7ad7a402602d84a245dba593a0bf",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/src/routeTree.gen.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "75f316e0a6898e4c53b8018748dfae12cb82ea5a82163fb0c693c1153d0243ca",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/src/routes/-index.browser.test.tsx",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "ffb8f6b9ff5e0cb0c10196440eb76c4158ab5ccc46b9f82e3d7c6c9c12bf215c",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/src/routes/__root.tsx",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "729eba2539a4203b5ea900358381d62a166154a3389cbd223a6d4643b8be27ad",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/src/routes/index.tsx",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "cd02619a8be531a591277548cf7f6b53976063b0c2add010de6e522e1f72e339",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/src/runtime-config.test.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "bc94004875ba81d2a49d21564e249c7563a8b0ef838c5a1525dcdbcecf5352a7",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/src/runtime-config.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "9fe5c39073bc6315f80646e695c484ab08c5fe60786029c93d15699c448644b4",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/src/styles.css",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "375c135bb5257f13e7cb08620962cf6c94f0492231097f097035461da86e6ccb",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/stryker.config.mjs",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "3444ea9861bc9dc3dba53fb54c734feecb09ebf9c5ea0ad82208cf49a9f642a0",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/test/fixtures.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "eef3bde9c3772ef9633c82ae6406d76c5f1be95424539a8fb476e772cfa910dc",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/test/msw.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "0a87b8c5d2713dcf9c6c058e28712888b859535fb0b2c2e20f82b014a4d8fa53",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/test/public/mockServiceWorker.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "91f3fd38c6d2cc31b8863e2aa8816110cc387dad2349887812e3b4ccfb0440ac",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/tsconfig.json",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "9aaabe75759e45098300d93350b1b8bb5348afa0d0fde76a9e3152007dbf04f1",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/tsconfig.tsbuildinfo",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "9837772828d7efb310944a3779f6bce72961dd99e784b5e10d42403844a93bd3",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/vite.config.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "c9a0d43fb14b9fb8a5634bc52d645f9cdd68a57439a65c86602f67bb8d466ba3",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "apps/web/vitest.config.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "261ddfdaf407e4a2a13af2a8070f765ca94e763a1a4e17a9db23a6b7ca4b646e",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "compose.yaml",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "6796263447edd5898d010543811d0a8edbf4ea9d38dc92b1057115a06a545f07",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "contracts/events/versioned-domain-event.schema.json",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "3299458f172ececae70d21780804f2cf99559f4e8ab9230893585a0bbc87df6d",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "contracts/openapi/openapi.json",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "6800c2e38b73a9ab525742594e7e0db27680461c0efae9263d58ef899fcc9060",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "package-lock.json",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "155f4f5d7b4dee1976f21a7f3d7ca24a0709742ca2de667086276d01cc6ef964",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "package.json",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "30ecc02ef8e7f827ce4dc854df58cb8a697b7fa9906bb556d69663e9b8db44f1",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/.kubb/client.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "4992d2db17466fd1d91727c1a1f90ac950109b44362211da1a5f90db82e95386",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/.kubb/client.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "bf54198dd559c9226fdff9b04d6e89619c2310822b23d0ce96158ec20c41d1c2",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/.kubb/serializers.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "b8c400d2359375382a397ec009639de10b4d85b3cd364522a1a9f8b49a73f744",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/.kubb/serializers.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "fd5a0fd613970dd39722640f1189cf5be038afaa09dc3a88a426e07639e2a89e",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/.kubb/standardSchema.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "bfc2333541044dfebf0bc62e6570610dde679f33d122940b35670cea4197bb35",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/.kubb/standardSchema.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "c825458688599888a087665d7604d00d92f2cd5e350110376f21a3eacd472a32",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/client.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "e85a06a9e5c10f2cc33dbb1b5dcd1409ab2b46ea191797682c7ba41076f1e8bd",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/client.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "093e61ba1d087dbf94ee85b8b0da0a53faec83120bb3de25229e90320e0169be",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/clients/index.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "f9cf30cf60bea01c3e42d763c6a1a7fe162febe12986ea9dcd7b6d77254a8154",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/clients/index.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "f9cf30cf60bea01c3e42d763c6a1a7fe162febe12986ea9dcd7b6d77254a8154",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/clients/platform/getPlatformStatus.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "157d361900d34d8b8238afd1f00b721e71f57f8a0e0ee785537de16548d3a18a",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/clients/platform/getPlatformStatus.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "20dc3b10a3b9832c267590561e2f5109925c4ae9fcbee80c6bdd0cb292b193fd",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/clients/platform/index.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "d1d761e8e81b02b066fcc0a219885b3e91d61a6d5df6b755bec1e5969e2f5117",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/clients/platform/index.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "d1d761e8e81b02b066fcc0a219885b3e91d61a6d5df6b755bec1e5969e2f5117",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/fixtures/createGetPlatformStatus.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "c87364ae4d3d8433b41a44d5f6add9d039f5e125919cf760b8c22ea871e4ee12",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/fixtures/createGetPlatformStatus.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "bede824953a8e0d4d2fd2a064c4fdf0ac399e138aa288db5ffe3bb508f29fdaa",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/fixtures/createPlatformStatus.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "86666bff1371a1a3439955eb29e4cd7dd8bdb1eb0571b38753ec539966e954f0",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/fixtures/createPlatformStatus.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "d26f28ac5e9333f543764fbbcb30c9746e4f5d722a02a6399d9e933216b552d4",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/fixtures/createProblem.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "addf816d2293a66a5cfc2a9819b7d21272fdba0c255cd29b73a74a62c2ac1d91",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/fixtures/createProblem.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "e88335b14f466c04e64a242c00cd1244636d2fbe98e66dd514e08df69f61542d",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/fixtures/index.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "e2130cb4c22a1734b835e4a9688c754562f10aeabf7adbd741fe5b016046445a",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/fixtures/index.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "e2130cb4c22a1734b835e4a9688c754562f10aeabf7adbd741fe5b016046445a",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/handlers/index.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "3ab09f6b47988b2093ab1bbf038b15f8ed1c718ef3f0155587b6e4dd5ff14f9b",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/handlers/index.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "3ab09f6b47988b2093ab1bbf038b15f8ed1c718ef3f0155587b6e4dd5ff14f9b",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/handlers/platform/getPlatformStatusHandler.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "a983a214cf0e43e080d7bb0c5b4afa4583f40dce924889cc365610e2574d5021",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/handlers/platform/getPlatformStatusHandler.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "da921839ceb4c59e578e5698bcd737684a77ee05e50ecc5d17d4c5f81706bd50",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/handlers/platform/index.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "a31bbb64afa82f5782e9c818d4b30869e6d38f0e5c1bf0a7e649eac5bb77b696",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/handlers/platform/index.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "a31bbb64afa82f5782e9c818d4b30869e6d38f0e5c1bf0a7e649eac5bb77b696",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/model/index.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "9ca4e9e12456c8293d1e094d5f682a128a5720e01e61665f2282e98c01179a68",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/model/index.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "9ca4e9e12456c8293d1e094d5f682a128a5720e01e61665f2282e98c01179a68",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/model/platformStatus.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "f3676342c1cc4284b48806f368912e528e847e86b6bf94a7c024b8727e59396a",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/model/platformStatus.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/model/platformStatusStatus.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "8b95dc428e43bc1d893456ad8ac8128d3772622fa9206136f9106ea20f700518",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/model/platformStatusStatus.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "748750852ffc923d1f7dd7defffbef7ee72b2b189a0864411487b1d75f2a0149",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/model/problem.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "aedb9ecab54ad6967e64afa1c7728ebed09454a15d247fe0fb3aee369828beab",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/model/problem.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/model/problemViolationsItem.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "9dfaa5e1992c20f96480218032c13a9ae6b41548cbaa28a1346d6487370d1771",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/model/problemViolationsItem.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "300f1b0d35b277e0fcc72e1b74eba37ec767a5a8e08bc6f0269bf63e23f58cb1",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/queries/index.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "950675cc126650b00998ab4bd11f5b8f69db3dc443ebf6ae5c557d613890b9d0",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/queries/index.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "950675cc126650b00998ab4bd11f5b8f69db3dc443ebf6ae5c557d613890b9d0",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/queries/platform/index.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "35445c8a85be0c2d9493c6ac422490c4bad3d1635609d53ce6443ccff4deb840",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/queries/platform/index.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "35445c8a85be0c2d9493c6ac422490c4bad3d1635609d53ce6443ccff4deb840",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/queries/platform/useGetPlatformStatus.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "19d9d50ccc0995b26a30f96ca3f5727ba04f8aa8a03c8124e8f4407d302db9ec",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/queries/platform/useGetPlatformStatus.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "e67dd81b88b337fc1678dd5db839704a992e94ced81cf3684dc0d4865e259b47",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/schemas/getPlatformStatusSchema.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "1d22e42e7a564a9eb5642bb03f79a3a25354d4988706f84aca8381158787e3cc",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/schemas/getPlatformStatusSchema.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "65f3d75a8597f303cbb4ffd6f3a0dd1735bdc2feee8f26e27da894c99dfe9e7c",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/schemas/index.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "c7dc636fec9b794f97fae41fd281a654c78da07943b5e88615ff846fad04de66",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/schemas/index.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "c7dc636fec9b794f97fae41fd281a654c78da07943b5e88615ff846fad04de66",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/schemas/platformStatusSchema.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "8dd9efde74c17536686f4b80cca1c885424ccb615321713a7c9169912d530bbd",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/schemas/platformStatusSchema.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "f4d130da01e504d03dbe5ee9e66f76316b3f6dea9eb5f872e0c3f5dfc217713b",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/schemas/problemSchema.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "7a2ade85f1cde1fe11852354f32e06494081f4683d3611ace667605e318662d7",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/schemas/problemSchema.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "d1cfe366c9be8382a61a5d2b6fc750c0eece3eb3c2328f03810c98ebd51654bb",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/types/GetPlatformStatus.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "ed31f0a6f907337a4d9f88232f70a0f40e3736655e1a886f60ace2dd8dd0d1a9",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/types/GetPlatformStatus.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "6d5a496b27765369ca29c87e047eee6ba44733a70ab95bb04c372d194657522d",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/types/PlatformStatus.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "8ee7e27f9cb7bfc6ab7fa30f07b1011f751c28e84e4772fa19f2c387bc635880",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/types/PlatformStatus.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "6d5a496b27765369ca29c87e047eee6ba44733a70ab95bb04c372d194657522d",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/types/Problem.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "e421d64a6ec9918fe42fd5f39b79cd9aafbabd68f6875868df32f405e9a5db6d",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/types/Problem.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "6d5a496b27765369ca29c87e047eee6ba44733a70ab95bb04c372d194657522d",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/types/index.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "2e7c5f75373c23cef7084b5e0bdebc2a3b818ff150a275e21a3396012f3abadc",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/types/index.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/validation.zod.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "bcf45ad8b6cbed1f7da050a209fd78a20d2fa42e3e48904ffd29a64045352482",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/generated/validation.zod.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "978a23c1eb7492f88eccf5693af5869d46cfaeb94dee7e4351f66f669b443924",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/index.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "12401f879810fca42b3a6554fd0cc3404a10bf8b5f19b0588368706ac0d80b0d",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/index.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "e1ed64313b7a4f58bf2f2f65cb3b7568b87c2c677b59531173ec3d17512d09a9",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/mocks.d.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "f019d094a0adcfc2a5446dff6adb358a8069e5718b0dbd8cbd3aa82cb7330438",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/dist/mocks.js",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "66684436b947480662ba6b2599af59ead8cf2338df6315b79aecd0ff8c2ac99b",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/kubb.config.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "6cca27e96c146aae48f5c5a5f9265aab4ace7236795807fbf1e9a790af1fbccc",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/package.json",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "1f1d2f1f1ab4d36e60279243bc6fa91162f739a157288523f765333bedf35056",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/scripts/check-generated.mjs",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "6bcf7b9f0edb825882f37a1285ed9063a70403be7c0f09ed86c724541e5c90d2",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/.kubb/client.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "b1497eb8a0bd7c5b5d5034e392dcf8bead7da4ea598c5cdc89234b2d12628c7d",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/.kubb/serializers.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "2f00e7b3087bd0ac8340367204e2828d9c32ccf88a4a2e189b4eaff9e4c39327",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/.kubb/standardSchema.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "4cda9329c13388af482bda187c877ffed8d68d1c93bb8b638835884d933a1edb",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/clients/index.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "f9cf30cf60bea01c3e42d763c6a1a7fe162febe12986ea9dcd7b6d77254a8154",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/clients/platform/getPlatformStatus.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "a9982906ff2dea80fecc680d3290d38ab87a4e4857dfe40627ba7ebd8e33d19e",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/clients/platform/index.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "d1d761e8e81b02b066fcc0a219885b3e91d61a6d5df6b755bec1e5969e2f5117",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/fixtures/createPlatformStatus.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "be4a9e200ac4d6c167c7717acb479f9309e96fdd34e7841f47a81a56f075d175",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/fixtures/createProblem.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "f6e0e0fe6850f50ca3927900710da984a1af81b46e72bc7af5b04e437fd0c31c",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/fixtures/index.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "e2130cb4c22a1734b835e4a9688c754562f10aeabf7adbd741fe5b016046445a",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/handlers/index.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "8d98a9aadf52313af83757b602fbaa3de221b3193a113ac27876677014183dbb",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/handlers/platform/getPlatformStatusHandler.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "9f3803c9100413699ff82d3fff9f0172c5b8f0a446aad9114ebf43401b5d410f",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/handlers/platform/index.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "4c1c609c1e34585f64345d4973420290c08a58e01230dbddc62cb30f65723ca5",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/queries/index.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "4ac3afa182f20165fb3126949ce3397743f18da45fbc364fe9e6364a6a91e21f",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/queries/platform/index.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "26c4c66b9c2bbdad381b6befeec42ec8d8510907cb2818ab3d6bc24cdf478410",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/queries/platform/useGetPlatformStatus.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "aa9d2cc8b6717b1025663b02a3070f783a2b10dec2d4862d3d92d74e04c8d4b1",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/schemas/getPlatformStatusSchema.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "8b9892bff0712e6b5d629c166659f588370c5d29e085337ed8dc52f90eeeefd6",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/schemas/index.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "343e38bf106b010577eeb7f3e910790a4c0b94380bb48e5f71964a1fd4b9487b",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/schemas/platformStatusSchema.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "15449ffd6d12631d5d4c04c2fddd0994955ff944b9e5a516c3c760f91d79caa5",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/schemas/problemSchema.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "826b8e17856ae24f652f87b8105e72940091c6398ae4f9950421b3a3735ada37",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/types/GetPlatformStatus.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "4018142175a8a250a9a762d71d880c6e28ce203cb4f2866a90cae27c67eaaa08",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/types/PlatformStatus.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "4d14b88a146470d412bffce1fe1bc06632af059e381bf67df43dabd7abaa9788",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/types/Problem.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "5e40d1baf907951e04b0d1de2cf6797d8470ea7c2d3f672d296e78a07d9fefa0",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/generated/types/index.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "b49959163ad3aee437a85a618689eef360584c7fda1a0a3d7ed700abdb1b5f6e",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/index.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "a65404773324b9b765cb21ca77c42332b9316d1a3e8df11d8ccfaa7f3a689272",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/src/mocks.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "f9ca7d10eac06008e873c128982784a4760c7be35a0078a50fe77f35b16c5f9e",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/test/client.test.ts",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "f5eb5c97f39ecb44f5f0508f987ca3b812e7fb9fed3dc31c1924da75f285760a",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/test/contract.test.mjs",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "fc6ebc117492410b83227857ec710b9af0eff197751acebf248347a8c7ad48fe",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "packages/api-client/tsconfig.json",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "f758b2c2d679b1ae5aaa606a1959e5411b1d7d608ac0126861d72baef614a1d2",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  }, {
+    "path" : "scripts/workspace.mjs",
+    "ownership" : "mjga",
+    "originatingOperation" : "base-template",
+    "originalContentHash" : "d7bc98fd65fbfdca671e33770cb09098d26f98bc8dd193e00879a084e9661f21",
+    "lastAppliedMjgaVersion" : "3.0.0"
+  } ],
+  "recipeSchemaVersion" : 4
 }
