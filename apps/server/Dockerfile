@@ -5,6 +5,6 @@ RUN --mount=type=cache,target=/home/gradle/.gradle ./gradlew clean bootJar --no-
 
 FROM bellsoft/liberica-openjdk-alpine:21@sha256:16a531f9a87a9c7fe1a46895dbba6d96a900658a2a96da8b7c094a8cb476c5a3 AS runner
 WORKDIR /app
-COPY --from=builder /workspace/build/libs/contract-first-service.jar contract-first-service.jar
+COPY --from=builder /workspace/build/libs/app.jar app.jar
 USER 10001
-ENTRYPOINT ["java", "-jar", "contract-first-service.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]

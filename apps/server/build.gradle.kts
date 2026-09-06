@@ -69,7 +69,7 @@ dependencies {
     errorprone("com.uber.nullaway:nullaway:0.13.8")
 }
 
-tasks.withType<BootJar> { archiveFileName.set("contract-first-service.jar") }
+tasks.withType<BootJar> { archiveFileName.set("app.jar") }
 tasks.withType<Test> {
     useJUnitPlatform()
     jvmArgs("-Xshare:off", "--enable-native-access=ALL-UNNAMED", "-javaagent:${mockitoAgent.asPath}")
