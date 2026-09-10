@@ -108,4 +108,4 @@ CLI 完整示例参见 [中文指南](./docs/mjga-cli.zh-CN.md) 或
 欢迎通过 [Issues](https://github.com/ccmjga/mjga-scaffold/issues) 提交问题，但不要把生成分支
 当作手工维护的 Template Source。
 
-当前投影来源：`08b516457bfb34745a2d3d8adb8ce45fb66541ee`
+当前投影来源：`e7e2142e6268852b353c66356270de7d385fce82`
